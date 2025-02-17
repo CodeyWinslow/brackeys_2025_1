@@ -21,6 +21,12 @@ Console="*res://addons/console/console.gd"
 Logger="*res://scripts/util/logger.gd"
 GameManager="*res://scripts/application/game_manager.gd"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=2
+
 [input]
 
 pause={
