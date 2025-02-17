@@ -8,3 +8,4 @@
 script = ExtResource("1_fb3nu")
 game_config = ExtResource("1_4ktkx")
 shell_scene = ExtResource("3_ur407")
+force_load_shell = true
