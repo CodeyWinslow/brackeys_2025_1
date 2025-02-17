@@ -17,6 +17,8 @@ config/icon="res://assets/textures/icon.svg"
 
 [autoload]
 
+Console="*res://addons/console/console.gd"
+Logger="*res://scripts/util/logger.gd"
 GameManager="*res://scripts/application/game_manager.gd"
 
 [input]

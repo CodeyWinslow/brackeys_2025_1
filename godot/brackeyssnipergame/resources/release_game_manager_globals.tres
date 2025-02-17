@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GameManagerGlobals" load_steps=4 format=3 uid="uid://bkriafonpch8"]
+
+[ext_resource type="Resource" uid="uid://x7xdhydsr1al" path="res://resources/release_game_config.tres" id="1_4ktkx"]
+[ext_resource type="Script" path="res://scripts/resources/res_game_manager_globals.gd" id="1_fb3nu"]
+[ext_resource type="PackedScene" uid="uid://bt3cr534gm5ah" path="res://scenes/GUI/StartMenu/main_menu.tscn" id="3_ur407"]
+
+[resource]
+script = ExtResource("1_fb3nu")
+game_config = ExtResource("1_4ktkx")
+shell_scene = ExtResource("3_ur407")
