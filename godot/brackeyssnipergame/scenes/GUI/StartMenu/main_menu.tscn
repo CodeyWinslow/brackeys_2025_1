@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://bt3cr534gm5ah"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_clnx7"]
+[ext_resource type="Texture2D" uid="uid://cnarjjjpbt7py" path="res://assets/textures/button_dark_512.png" id="2_fw0ao"]
+[ext_resource type="Texture2D" uid="uid://c3lthq1ow8cm5" path="res://assets/textures/button_light_256.png" id="3_uw727"]
+[ext_resource type="Script" path="res://scripts/menu_button.gd" id="4_6gj8u"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_clnx7")
+
+[node name="Title" type="Sprite2D" parent="."]
+texture = ExtResource("2_fw0ao")
+centered = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Title"]
+offset_left = 191.0
+offset_top = 67.0
+offset_right = 426.0
+offset_bottom = 161.0
+text = "Secret Squire"
+
+[node name="StartButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.067
+anchor_top = 0.329
+anchor_right = 0.374
+anchor_bottom = 0.54
+offset_left = -0.184006
+offset_top = -0.192017
+offset_right = 0.151978
+offset_bottom = 0.0799866
+texture_normal = ExtResource("3_uw727")
+stretch_mode = 0
+script = ExtResource("4_6gj8u")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="StartButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.414
+anchor_top = 0.364
+anchor_right = 0.566
+anchor_bottom = 0.636
+offset_left = 6.44398
+offset_top = 0.132
+offset_right = 6.53198
+offset_bottom = 0.195999
+mouse_filter = 2
+text = "Start"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
