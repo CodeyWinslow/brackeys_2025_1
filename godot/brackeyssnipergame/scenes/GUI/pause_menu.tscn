@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://b7ko7erdet6wk"]
 
-[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_siiuu"]
+[ext_resource type="Script" path="res://scripts/GUI/pause_menu.gd" id="1_siiuu"]
 [ext_resource type="Texture2D" uid="uid://cnarjjjpbt7py" path="res://assets/textures/button_dark_512.png" id="2_mhnoy"]
 [ext_resource type="Texture2D" uid="uid://c3lthq1ow8cm5" path="res://assets/textures/button_light_256.png" id="3_c038b"]
-[ext_resource type="Script" path="res://scripts/menu_button.gd" id="4_arfiy"]
+[ext_resource type="Script" path="res://scripts/GUI/menu_button.gd" id="4_arfiy"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
