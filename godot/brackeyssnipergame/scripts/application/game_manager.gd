@@ -1,10 +1,25 @@
 extends Node
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+enum GameFlowState
+{
+	SHELL,
+	INGAME
+}
 
+var game_flow_state : GameFlowState = GameFlowState.SHELL
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+# Game Flow API
+
+func start_game():
+	if game_flow_state != GameFlowState.SHELL:
+		printerr('could not start game. application is not in menus')
+		return
+	
+	print('starting game!')
+	
+func quit_to_menu():
+	if game_flow_state != GameFlowState.INGAME:
+		printerr('can not quit to menus when out of game')
+		return
+	
+	print('quitting to menu')
