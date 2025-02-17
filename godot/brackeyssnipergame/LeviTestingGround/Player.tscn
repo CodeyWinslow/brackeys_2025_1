@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8ak1ey0sgq60"]
+[gd_scene load_steps=5 format=3 uid="uid://c8ak1ey0sgq60"]
 
 [ext_resource type="Script" path="res://LeviTestingGround/player.gd" id="1_i8u1n"]
+[ext_resource type="Script" path="res://LeviTestingGround/shoot.gd" id="2_atgws"]
+[ext_resource type="PackedScene" uid="uid://b4vvnl2bli1w6" path="res://LeviTestingGround/demo_bolt.tscn" id="3_u0dbq"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_qxkap"]
 
@@ -9,6 +11,13 @@ script = ExtResource("1_i8u1n")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.348053, -0.240604, -0.351271)
+[node name="crossbow" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 1.07507, 0.348053, -0.240604, -1.04581)
 mesh = SubResource("BoxMesh_qxkap")
+script = ExtResource("2_atgws")
+bolt_scene = ExtResource("3_u0dbq")
+
+[node name="Part" type="MeshInstance3D" parent="Camera3D/crossbow"]
+transform = Transform3D(-4.37114e-08, 0, -4.72802, 0, 1, 0, 0.0930175, 0, -1.92238e-08, 0, 0, -0.223319)
+mesh = SubResource("BoxMesh_qxkap")
+skeleton = NodePath("../..")
