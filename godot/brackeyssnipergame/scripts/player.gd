@@ -4,6 +4,8 @@ extends Node3D
 
 var mouse_sensitivity = 0.15
 
+signal zoom_state_changed(is_zoomed: bool)
+
 # rotation limits (in degrees)
 var min_pitch = -80
 var max_pitch = 80
@@ -13,7 +15,7 @@ var max_yaw = 90
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
+	
 func _unhandled_input(event) -> void:
 	if event is InputEventMouseMotion:
 		#Rotate camera left/right (yaw)
@@ -29,6 +31,11 @@ func _unhandled_input(event) -> void:
 		#Clamp vertical
 		new_pitch_rotation = clamp(new_pitch_rotation, min_pitch, max_pitch)
 		camera.rotation_degrees.x = new_pitch_rotation
+		
+	if event.is_action_pressed("zoom"):
+		zoom_state_changed.emit(true)
+	elif event.is_action_released("zoom"):
+		zoom_state_changed.emit(false)
 		
 	# Press ESC to free the mouse
 	if event.is_action_pressed("ui_cancel"):
