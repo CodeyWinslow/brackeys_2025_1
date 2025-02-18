@@ -102,5 +102,8 @@ func unregister_gameplay_director(director : GameplayDirector):
 		return
 		
 	game_director = null
+	
+func get_gameplay_director() -> GameplayDirector:
+	return game_director
 
 # Console commands
