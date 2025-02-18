@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://cke1426c8tnhw"]
 
-[ext_resource type="PackedScene" uid="uid://c8ak1ey0sgq60" path="res://LeviTestingGround/Player.tscn" id="1_3anda"]
+[ext_resource type="PackedScene" uid="uid://c8ak1ey0sgq60" path="res://prefabs/player.tscn" id="1_3anda"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ksbn1"]
 

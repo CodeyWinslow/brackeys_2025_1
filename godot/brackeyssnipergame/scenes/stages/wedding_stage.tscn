@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bxi3joe7riqat"]
 
-[ext_resource type="PackedScene" uid="uid://c8ak1ey0sgq60" path="res://LeviTestingGround/Player.tscn" id="1_cebmv"]
+[ext_resource type="PackedScene" uid="uid://c8ak1ey0sgq60" path="res://prefabs/player.tscn" id="1_cebmv"]
 
 [node name="WeddingStage" type="Node3D"]
 
