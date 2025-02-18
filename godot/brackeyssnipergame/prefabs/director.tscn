@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnbwy5ot20x5l"]
+[gd_scene load_steps=7 format=3 uid="uid://jxsemljcrvni"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/gameplay_director.gd" id="1_nyypg"]
 [ext_resource type="PackedScene" uid="uid://c8ak1ey0sgq60" path="res://prefabs/player.tscn" id="2_qjdkg"]
@@ -19,9 +19,8 @@ player_prefab = ExtResource("2_qjdkg")
 chaos_system = NodePath("ChaosSystem")
 incident_system = NodePath("IncidentSystem")
 
-[node name="IncidentSystem" type="Node" parent="." node_paths=PackedStringArray("chaos_system")]
+[node name="IncidentSystem" type="Node" parent="."]
 script = ExtResource("3_a8aa7")
-chaos_system = NodePath("")
 
 [node name="ChaosSystem" type="Node" parent="."]
 script = ExtResource("4_cyk3e")
