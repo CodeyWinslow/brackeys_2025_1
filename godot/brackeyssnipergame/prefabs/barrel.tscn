@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtti4exjst7xs"]
+
+[ext_resource type="PackedScene" uid="uid://dmbgnx0qj82b8" path="res://assets/meshes/sm_barrel_01.glb" id="1_u6ei0"]
+[ext_resource type="Material" uid="uid://bukb65lpo1t32" path="res://resources/materials/base_material.tres" id="2_h0yl8"]
+
+[node name="sm_barrel_012" instance=ExtResource("1_u6ei0")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="sm_barrel_01" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_h0yl8")

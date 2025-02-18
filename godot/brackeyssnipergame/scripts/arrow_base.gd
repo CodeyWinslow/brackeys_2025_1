@@ -26,4 +26,4 @@ func _on_body_entered(body):
 	collision_mask = 0
 	
 	# Attach arrow to the hit object (optional, prevents floating)
-	reparent(body, true)
+	reparent.call_deferred(body, true)
