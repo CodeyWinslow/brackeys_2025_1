@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://scripts/GUI/main_menu.gd" id="1_2wb4s"]
 [ext_resource type="Texture2D" uid="uid://cnarjjjpbt7py" path="res://assets/textures/button_dark_512.png" id="2_3vuga"]
-[ext_resource type="Theme" uid="uid://ba2qnqoou88i7" path="res://resources/TitleFont.tres" id="3_d6fs7"]
+[ext_resource type="Theme" path="res://resources/TitleFont.tres" id="3_d6fs7"]
 [ext_resource type="Texture2D" uid="uid://c3lthq1ow8cm5" path="res://assets/textures/button_light_256.png" id="4_52nja"]
 [ext_resource type="Script" path="res://scripts/GUI/play_button.gd" id="5_jfnns"]
-[ext_resource type="Theme" uid="uid://f8qsep8o8m6e" path="res://resources/SecondFont.tres" id="6_3ptvw"]
+[ext_resource type="Theme" path="res://resources/SecondFont.tres" id="6_3ptvw"]
 [ext_resource type="Script" path="res://scripts/GUI/options_button.gd" id="7_tw7u8"]
 [ext_resource type="Script" path="res://scripts/GUI/credits_button.gd" id="8_r6uag"]
 [ext_resource type="PackedScene" uid="uid://q0l83x3lsh41" path="res://prefabs/GUI/Credits.tscn" id="9_ji3pb"]
