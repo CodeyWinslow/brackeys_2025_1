@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="BoltConfig" load_steps=4 format=3 uid="uid://lk1fd3hp0vm6"]
+
+[ext_resource type="Script" path="res://scripts/resources/bolts/res_bolt_config.gd" id="1_nhm8n"]
+[ext_resource type="Script" path="res://scripts/resources/bolts/res_bolt_definition.gd" id="1_ys3sp"]
+[ext_resource type="Resource" uid="uid://bcn2c6ax321h2" path="res://resources/bolts/base_bolt.tres" id="2_3d6no"]
+
+[resource]
+script = ExtResource("1_nhm8n")
+bolts = Array[ExtResource("1_ys3sp")]([ExtResource("2_3d6no")])

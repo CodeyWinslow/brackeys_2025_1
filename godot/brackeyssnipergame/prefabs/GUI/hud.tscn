@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcnjlp2j2hry0"]
+
+[ext_resource type="Script" path="res://scripts/GUI/hud.gd" id="1_vl6sq"]
+[ext_resource type="Resource" uid="uid://lk1fd3hp0vm6" path="res://resources/bolts/release_bolt_config.tres" id="2_st5u0"]
+[ext_resource type="Texture2D" uid="uid://b8m44jalstqwr" path="res://assets/textures/crosshair.png" id="3_mdwmi"]
+
+[node name="HUD" type="Control" node_paths=PackedStringArray("chaos_meter", "scope_overlay", "bolt_image_texture")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_vl6sq")
+chaos_meter = NodePath("ProgressBar")
+scope_overlay = NodePath("Scope")
+bolt_config = ExtResource("2_st5u0")
+bolt_image_texture = NodePath("BoltInfo/HBoxContainer/BoltImage")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(450, 50)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -296.0
+offset_top = 36.0
+offset_right = -46.0
+offset_bottom = 86.0
+grow_horizontal = 0
+mouse_filter = 2
+show_percentage = false
+
+[node name="Scope" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Scope"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_mdwmi")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="BoltInfo" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -94.0
+offset_right = 215.0
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BoltInfo"]
+layout_mode = 2
+
+[node name="BoltImage" type="TextureRect" parent="BoltInfo/HBoxContainer"]
+layout_mode = 2
+expand_mode = 2
