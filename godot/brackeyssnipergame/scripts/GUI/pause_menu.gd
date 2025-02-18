@@ -5,5 +5,4 @@ func _on_exit_button_pressed() -> void:
 
 
 func _on_resume_button_pressed() -> void:
-	# We will need to call game's unpause logic
-	pass
+	GameManager.set_paused(false)
