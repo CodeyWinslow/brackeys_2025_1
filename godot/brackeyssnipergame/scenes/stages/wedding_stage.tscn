@@ -1,13 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://bxi3joe7riqat"]
 
 [ext_resource type="PackedScene" uid="uid://c8ak1ey0sgq60" path="res://prefabs/player.tscn" id="1_cebmv"]
+[ext_resource type="PackedScene" uid="uid://cwbou5otgers8" path="res://prefabs/temp_castle.tscn" id="1_cspny"]
 [ext_resource type="Script" path="res://scripts/gameplay/gameplay_director.gd" id="2_vvwnj"]
 [ext_resource type="Script" path="res://scripts/gameplay/incident_system.gd" id="3_hpjq5"]
 [ext_resource type="Script" path="res://scripts/gameplay/chaos_system.gd" id="3_j7k0g"]
 [ext_resource type="Script" path="res://scripts/resources/res_chaos_config.gd" id="4_6cog3"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hoyb3"]
-albedo_color = Color(0.295867, 0.295866, 0.295866, 1)
 
 [sub_resource type="Resource" id="Resource_pv35o"]
 script = ExtResource("4_6cog3")
@@ -29,18 +27,7 @@ sky = SubResource("Sky_avw88")
 
 [node name="WeddingStage" type="Node3D"]
 
-[node name="Geo" type="Node3D" parent="."]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Geo"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.249512, 0)
-use_collision = true
-size = Vector3(7.93555, 0.500977, 6.92871)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Geo"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.67669, 1.72684, 3.20924)
-use_collision = true
-size = Vector3(0.568359, 3.46631, 0.494141)
-material = SubResource("StandardMaterial3D_hoyb3")
+[node name="TempCastle" parent="." instance=ExtResource("1_cspny")]
 
 [node name="Lighting" type="Node3D" parent="."]
 
