@@ -30,6 +30,7 @@ func _spawn_player():
 	if player != null:
 		add_child(player)
 		player.global_position = position.global_position
+		player.global_rotation = position.global_rotation
 	else:
 		Logger.print_error('player prefab failed to instantiate (is it a Player script?)')
 		
