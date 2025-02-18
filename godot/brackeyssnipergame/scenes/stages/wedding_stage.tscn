@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bxi3joe7riqat"]
 
-[ext_resource type="PackedScene" uid="uid://c8ak1ey0sgq60" path="res://LeviTestingGround/Player.tscn" id="1_cebmv"]
+[ext_resource type="PackedScene" uid="uid://c8ak1ey0sgq60" path="res://prefabs/player.tscn" id="1_cebmv"]
 [ext_resource type="Script" path="res://scripts/gameplay/gameplay_director.gd" id="2_vvwnj"]
 [ext_resource type="Script" path="res://scripts/gameplay/incident_system.gd" id="3_hpjq5"]
 [ext_resource type="Script" path="res://scripts/gameplay/chaos_system.gd" id="3_j7k0g"]
