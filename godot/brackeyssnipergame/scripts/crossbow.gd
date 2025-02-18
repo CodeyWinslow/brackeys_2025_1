@@ -1,7 +1,5 @@
 extends Node3D
 
-class_name Player
-
 @export var arrow: PackedScene 
 @export var launch_power = 20.0
 @export var reload_time = 1.0

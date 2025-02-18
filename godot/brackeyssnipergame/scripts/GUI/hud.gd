@@ -2,10 +2,9 @@ extends Node
 class_name HUD
 
 @export var chaos_meter : ProgressBar
-@export var test_string : Label
 
 var chaos_system : ChaosSystem
-var player : Node3D
+var player : Player
 
 func _ready():
 	chaos_system = GameManager.game_director.chaos_system
