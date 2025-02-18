@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://b7ko7erdet6wk"]
 
 [ext_resource type="Script" path="res://scripts/GUI/pause_menu.gd" id="1_siiuu"]
-[ext_resource type="Texture2D" uid="uid://cnarjjjpbt7py" path="res://assets/textures/button_dark_512.png" id="2_mhnoy"]
 [ext_resource type="Texture2D" uid="uid://c3lthq1ow8cm5" path="res://assets/textures/button_light_256.png" id="3_c038b"]
 [ext_resource type="Script" path="res://scripts/GUI/menu_button.gd" id="4_arfiy"]
+[ext_resource type="Theme" uid="uid://f8qsep8o8m6e" path="res://resources/SecondFont.tres" id="4_ddiva"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -14,82 +14,71 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_siiuu")
 
-[node name="PausedText" type="Sprite2D" parent="."]
-position = Vector2(296, 40)
-texture = ExtResource("2_mhnoy")
-centered = false
-
-[node name="RichTextLabel" type="RichTextLabel" parent="PausedText"]
-anchors_preset = -1
-anchor_left = 0.428
-anchor_top = 0.398
-anchor_right = 0.555
-anchor_bottom = 0.54
-offset_left = -0.136017
-offset_top = -0.0480042
-offset_right = -0.160004
-offset_bottom = -0.0400009
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -98.0
+offset_right = 128.0
+offset_bottom = 98.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Paused"
+size_flags_vertical = 4
+theme_override_constants/separation = 20
 
-[node name="ResumeButton" type="TextureButton" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.319
-anchor_top = 0.41
-anchor_right = 0.627
-anchor_bottom = 0.622
-offset_left = 0.511993
-offset_top = 0.319977
-offset_right = -0.304016
-offset_bottom = -0.0560303
+[node name="ResumeButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture_normal = ExtResource("3_c038b")
 stretch_mode = 0
 script = ExtResource("4_arfiy")
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="ResumeButton"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer/ResumeButton"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.395
-anchor_top = 0.394
-anchor_right = 0.599
-anchor_bottom = 0.664
-offset_left = 0.169983
-offset_top = 0.0219955
-offset_right = -0.0460358
-offset_bottom = 0.0319824
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.0
+offset_top = -29.0
+offset_right = 67.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("4_ddiva")
 text = "Resume"
 
-[node name="ExitButton" type="TextureButton" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.319
-anchor_top = 0.41
-anchor_right = 0.627
-anchor_bottom = 0.622
-offset_left = 3.51199
-offset_top = 176.32
-offset_right = 2.69598
-offset_bottom = 175.944
+[node name="ExitButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture_normal = ExtResource("3_c038b")
 stretch_mode = 0
 script = ExtResource("4_arfiy")
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="ExitButton"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer/ExitButton"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.395
-anchor_top = 0.394
-anchor_right = 0.599
-anchor_bottom = 0.664
-offset_left = 0.169983
-offset_top = 0.0219955
-offset_right = -0.0460358
-offset_bottom = 0.0319824
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -29.0
+offset_right = 38.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("4_ddiva")
 text = "Exit"
 
-[connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
