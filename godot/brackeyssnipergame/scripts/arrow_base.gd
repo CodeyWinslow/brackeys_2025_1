@@ -1,6 +1,7 @@
 extends RigidBody3D
 
 @export var launch_force = 20.0
+@export var smoke_emitter : CPUParticles3D
 
 var stuck := false
 
@@ -26,4 +27,8 @@ func _on_body_entered(body):
 	collision_mask = 0
 	
 	# Attach arrow to the hit object (optional, prevents floating)
-	reparent(body, true)
+	call_deferred("_stick_to_body", body)
+
+func _stick_to_body(body):
+	reparent(body, true)  # Reparent safely after physics processing
+	smoke_emitter.emitting = false;
