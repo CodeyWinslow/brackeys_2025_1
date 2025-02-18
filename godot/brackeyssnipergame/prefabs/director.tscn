@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://jxsemljcrvni"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/gameplay_director.gd" id="1_nyypg"]
+[ext_resource type="PackedScene" uid="uid://c8ak1ey0sgq60" path="res://prefabs/player.tscn" id="2_qjdkg"]
+[ext_resource type="Script" path="res://scripts/gameplay/incident_system.gd" id="3_a8aa7"]
+[ext_resource type="Script" path="res://scripts/gameplay/chaos_system.gd" id="4_cyk3e"]
+[ext_resource type="Script" path="res://scripts/resources/res_chaos_config.gd" id="5_fy21w"]
+
+[sub_resource type="Resource" id="Resource_dt1ow"]
+script = ExtResource("5_fy21w")
+initial_chaos = 0
+chaos_threshold = 100
+decay_amount = 1
+decay_time = 1.0
+
+[node name="Director" type="Node" node_paths=PackedStringArray("chaos_system", "incident_system")]
+script = ExtResource("1_nyypg")
+player_prefab = ExtResource("2_qjdkg")
+chaos_system = NodePath("ChaosSystem")
+incident_system = NodePath("IncidentSystem")
+
+[node name="IncidentSystem" type="Node" parent="."]
+script = ExtResource("3_a8aa7")
+
+[node name="ChaosSystem" type="Node" parent="."]
+script = ExtResource("4_cyk3e")
+config = SubResource("Resource_dt1ow")
+
+[node name="AISystem" type="Node" parent="."]
