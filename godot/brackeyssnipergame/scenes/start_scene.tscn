@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cotilti8uvxif"]
 
 [ext_resource type="PackedScene" uid="uid://bt3cr534gm5ah" path="res://scenes/GUI/main_menu.tscn" id="1_is85g"]
-[ext_resource type="Script" path="res://scenes/start_scene.gd" id="1_nddwb"]
+[ext_resource type="Script" path="res://scripts/start_scene.gd" id="1_nddwb"]
 [ext_resource type="PackedScene" uid="uid://cwbou5otgers8" path="res://prefabs/temp_castle.tscn" id="2_relrn"]
 
 [node name="StartScene" type="Node3D" node_paths=PackedStringArray("castle_asset")]
