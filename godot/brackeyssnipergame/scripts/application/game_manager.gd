@@ -13,6 +13,8 @@ var stages : Array[PackedScene]
 var current_stage = 0
 
 var game_director : GameplayDirector = null
+var paused : bool = false
+var pause_screen_instance : Node = null
 
 func _ready():
 	_validate_globals()
@@ -26,7 +28,13 @@ func _ready():
 	else:
 		_register_commands()
 	
+	process_mode = PROCESS_MODE_ALWAYS
+	
 	# TODO: fixup game flow state if loading into a non-shell scene
+
+func _process(delta):
+	if Input.is_action_just_pressed('pause') and game_flow_state == GameFlowState.INGAME:
+		set_paused(not paused)
 
 func _validate_globals():
 	var has_failure = false
@@ -66,6 +74,7 @@ func quit_to_menu():
 		Logger.print_error('can not quit to menus when out of game')
 		return
 	
+	set_paused(false)
 	Logger.print('quitting to menu')
 	current_stage = 0
 	_load_shell()
@@ -105,5 +114,17 @@ func unregister_gameplay_director(director : GameplayDirector):
 	
 func get_gameplay_director() -> GameplayDirector:
 	return game_director
+
+func set_paused(is_paused : bool):
+	if is_paused != paused:
+		if is_paused:
+			pause_screen_instance = global_config.pause_scene.instantiate()
+			add_child(pause_screen_instance)
+		else:
+			pause_screen_instance.queue_free()
+			pause_screen_instance = null
+			
+		paused = is_paused
+		get_tree().paused = paused
 
 # Console commands
