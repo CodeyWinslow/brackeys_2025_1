@@ -16,12 +16,16 @@ var game_director : GameplayDirector = null
 var paused : bool = false
 var pause_screen_instance : Node = null
 
+var debug_mouse_released = false
+var is_editor = false
+
 func _ready():
 	_validate_globals()
 	
 	stages = global_config.game_config.stages
 	
-	if not OS.has_feature("editor"):
+	is_editor = OS.has_feature("editor")
+	if not is_editor:
 		if global_config.force_load_shell:
 			_load_shell()
 		Console.disable()
@@ -30,11 +34,16 @@ func _ready():
 	
 	process_mode = PROCESS_MODE_ALWAYS
 	
+	_update_mouse_mode()
+	
 	# TODO: fixup game flow state if loading into a non-shell scene
 
 func _process(delta):
 	if Input.is_action_just_pressed('pause') and game_flow_state == GameFlowState.INGAME:
 		set_paused(not paused)
+	if Input.is_action_just_pressed('debug_toggle_mouse') and is_editor:
+		debug_mouse_released = not debug_mouse_released
+		_update_mouse_mode()
 
 func _validate_globals():
 	var has_failure = false
@@ -48,6 +57,12 @@ func _validate_globals():
 	
 	if has_failure:
 		get_tree().quit()
+
+func _update_mouse_mode():
+	var mouse_mode = Input.MOUSE_MODE_VISIBLE
+	if game_flow_state == GameFlowState.INGAME and not paused and not debug_mouse_released:
+		mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Input.set_mouse_mode(mouse_mode)
 
 func _register_commands():
 	Console.add_command('gameflow.start', start_game, [], 0, 'force start da game')
@@ -68,6 +83,7 @@ func start_game():
 	
 	Logger.print('starting game!')
 	_load_current_stage()
+	_update_mouse_mode()
 	
 func quit_to_menu():
 	if game_flow_state != GameFlowState.INGAME:
@@ -78,6 +94,7 @@ func quit_to_menu():
 	Logger.print('quitting to menu')
 	current_stage = 0
 	_load_shell()
+	_update_mouse_mode()
 	
 func proceed_stage():
 	if game_flow_state != GameFlowState.INGAME:
@@ -126,5 +143,6 @@ func set_paused(is_paused : bool):
 			
 		paused = is_paused
 		get_tree().paused = paused
+		_update_mouse_mode()
 
 # Console commands

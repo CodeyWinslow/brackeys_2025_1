@@ -37,10 +37,3 @@ func _unhandled_input(event) -> void:
 		zoom_state_changed.emit(true)
 	elif event.is_action_released("zoom"):
 		zoom_state_changed.emit(false)
-		
-	# Press ESC to free the mouse
-	if event.is_action_pressed("ui_cancel"):
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
