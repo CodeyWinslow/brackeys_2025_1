@@ -5,6 +5,7 @@ class_name GameplayDirector
 @export var player_anchors : Array[Node3D]
 
 @export var chaos_system : ChaosSystem
+@export var incident_system : IncidentSystem
 
 func _ready():
 	_validate_properties()

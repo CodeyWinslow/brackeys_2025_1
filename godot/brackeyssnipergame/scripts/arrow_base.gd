@@ -9,6 +9,6 @@ func _ready():
 	contact_monitor = true
 	max_contacts_reported = 1
 
-func launch_bolt(direction: Vector3):
+func fire_arrow():
 	# Apply impulse in the given direction
-	apply_central_impulse(direction * launch_force)
+	apply_central_impulse(-global_transform.basis.z * launch_force)
