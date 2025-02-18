@@ -7,6 +7,8 @@ class_name GameplayDirector
 @export var chaos_system : ChaosSystem
 @export var incident_system : IncidentSystem
 
+var player : Player
+
 func _ready():
 	_validate_properties()
 	GameManager.register_gameplay_director(self)
@@ -24,10 +26,12 @@ func _validate_properties():
 
 func _spawn_player():
 	var position = player_anchors[0]
-	var player_instance = player_prefab.instantiate()
-	add_child(player_instance)
-	if player_instance is Node3D:
-		var player3D : Node3D = player_instance as Node3D
-		player3D.global_position = position.global_position
+	player = player_prefab.instantiate() as Player
+	if player != null:
+		add_child(player)
+		player.global_position = position.global_position
 	else:
-		Logger.print_error('player prefab is not a Node3D')
+		Logger.print_error('player prefab failed to instantiate (is it a Player script?)')
+		
+func get_player() -> Player:
+	return player
