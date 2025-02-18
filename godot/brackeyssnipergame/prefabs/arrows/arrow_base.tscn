@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cohu2xaawvkw3"]
+[gd_scene load_steps=6 format=3 uid="uid://cohu2xaawvkw3"]
 
 [ext_resource type="Script" path="res://scripts/arrow_base.gd" id="1_8vmgy"]
+[ext_resource type="PackedScene" uid="uid://b7moiyt8el657" path="res://vfx/smoke.tscn" id="2_lhfry"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mikyq"]
 size = Vector3(0.035, 0.03, 0.045)
@@ -10,8 +11,9 @@ size = Vector3(0.01, 0.01, 0.37)
 
 [sub_resource type="BoxMesh" id="BoxMesh_e71od"]
 
-[node name="Arrow" type="RigidBody3D"]
+[node name="Arrow" type="RigidBody3D" node_paths=PackedStringArray("smoke_emitter")]
 script = ExtResource("1_8vmgy")
+smoke_emitter = NodePath("Smoke")
 
 [node name="CollisionTip" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0.113513)
@@ -38,3 +40,5 @@ skeleton = NodePath("../..")
 transform = Transform3D(0.066, 0, 0, 0, 0.006, 0, 0, 0, 0.026, 0, 0, -0.193319)
 mesh = SubResource("BoxMesh_e71od")
 skeleton = NodePath("../..")
+
+[node name="Smoke" parent="." instance=ExtResource("2_lhfry")]
