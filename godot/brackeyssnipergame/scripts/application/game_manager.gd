@@ -38,7 +38,7 @@ func _ready():
 	
 	# TODO: fixup game flow state if loading into a non-shell scene
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed('pause') and game_flow_state == GameFlowState.INGAME:
 		set_paused(not paused)
 	if Input.is_action_just_pressed('debug_toggle_mouse') and is_editor:

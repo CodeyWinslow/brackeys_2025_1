@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbbehpjbbi5c5"]
 
-[ext_resource type="PackedScene" uid="uid://by4pud1wclsyw" path="res://assets/meshes/ground-hills.glb" id="1_pavqo"]
+[ext_resource type="PackedScene" uid="uid://by4pud1wclsyw" path="res://assets/meshes/castle_pack/ground-hills.glb" id="1_pavqo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hcpot"]
 albedo_color = Color(0.29886, 0.526428, 0.355992, 1)
