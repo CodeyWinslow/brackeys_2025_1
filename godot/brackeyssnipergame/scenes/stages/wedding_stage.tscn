@@ -51,7 +51,7 @@ transform = Transform3D(0.662803, 0, -0.748794, 0, 1, 0, 0.748794, 0, 0.662803, 
 [node name="Director" parent="." node_paths=PackedStringArray("player_anchors") instance=ExtResource("1_uvbfl")]
 player_anchors = [NodePath("../PlayerAnchors/PlayerAnchor1")]
 
-[node name="HUD" type="Control" parent="." node_paths=PackedStringArray("chaos_meter", "test_string")]
+[node name="HUD" type="Control" parent="." node_paths=PackedStringArray("chaos_meter")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -61,7 +61,6 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("2_skfys")
 chaos_meter = NodePath("ProgressBar")
-test_string = NodePath("")
 
 [node name="ProgressBar" type="ProgressBar" parent="HUD"]
 custom_minimum_size = Vector2(450, 50)
