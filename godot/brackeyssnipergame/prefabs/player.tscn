@@ -8,6 +8,7 @@ script = ExtResource("1_ac3r8")
 camera = NodePath("Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="."]
+fov = 65.0
 
 [node name="Crossbow" parent="Camera3D" instance=ExtResource("2_bjgpu")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.116846, -0.0278318, -0.558068)
