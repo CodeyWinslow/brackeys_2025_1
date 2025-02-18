@@ -16,6 +16,12 @@ func _ready():
 	assert(config != null)
 	chaos_value = config.initial_chaos
 
+func _enter_tree():
+	_register_commands()
+	
+func _exit_tree():
+	_unregister_commands()
+
 func _process(delta):
 	_process_decay(delta)
 	
@@ -34,8 +40,11 @@ func _apply_chaos_decay():
 	if prev_chaos != chaos_value:
 		chaos_changed.emit(chaos_value)
 
-func get_chaos_amount() -> float:
+func get_chaos_amount() -> int:
 	return chaos_value
+	
+func get_chaos_threshold() -> int:
+	return config.chaos_threshold
 
 func add_chaos(amount : float):
 	var prev_value = chaos_value
@@ -45,3 +54,15 @@ func add_chaos(amount : float):
 		chaos_changed.emit(chaos_value)
 		if chaos_value >= config.chaos_threshold:
 			chaos_threshold_reached.emit()
+		decay_delta = 0
+
+# Commands
+
+func _register_commands():
+	Console.add_command('game.chaos.setmax', _cmd_max_chaos)
+
+func _unregister_commands():
+	Console.remove_command('game.chaos.setmax')
+
+func _cmd_max_chaos():
+	add_chaos(get_chaos_threshold() - get_chaos_amount())
