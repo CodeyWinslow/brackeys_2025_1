@@ -12,6 +12,8 @@ var game_flow_state : GameFlowState = GameFlowState.SHELL
 var stages : Array[PackedScene]
 var current_stage = 0
 
+var game_director : GameplayDirector = null
+
 func _ready():
 	_validate_globals()
 	
@@ -40,9 +42,9 @@ func _validate_globals():
 		get_tree().quit()
 
 func _register_commands():
-	Console.add_command('startgame', start_game, [], 0, 'force start da game')
-	Console.add_command('quitgame', quit_to_menu, [], 0, 'quit to main menu')
-	Console.add_command('nextstage', proceed_stage, [], 0, 'force to next stage')
+	Console.add_command('gameflow.start', start_game, [], 0, 'force start da game')
+	Console.add_command('gameflow.quit', quit_to_menu, [], 0, 'quit to main menu')
+	Console.add_command('gameflow.nextstage', proceed_stage, [], 0, 'force to next stage')
 
 func _load_shell():
 	game_flow_state = GameFlowState.SHELL
@@ -84,5 +86,24 @@ func _load_current_stage():
 	game_flow_state = GameFlowState.INGAME
 	var stage_scene : PackedScene = stages[current_stage]
 	get_tree().change_scene_to_packed(stage_scene)
+
+# Gameplay API
+
+func register_gameplay_director(director : GameplayDirector):
+	if game_director != null:
+		Logger.print_error('tried registering a GameplayDirector while one is already registered')
+		return
+		
+	game_director = director
+	
+func unregister_gameplay_director(director : GameplayDirector):
+	if game_director != director:
+		Logger.print_error('tried unregistering a GameplayDirector while it wasn\'t registered')
+		return
+		
+	game_director = null
+	
+func get_gameplay_director() -> GameplayDirector:
+	return game_director
 
 # Console commands

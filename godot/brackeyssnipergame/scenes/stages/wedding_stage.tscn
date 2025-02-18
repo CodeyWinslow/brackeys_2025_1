@@ -1,30 +1,72 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxi3joe7riqat"]
+[gd_scene load_steps=11 format=3 uid="uid://bxi3joe7riqat"]
 
-[ext_resource type="PackedScene" uid="uid://c8ak1ey0sgq60" path="res://prefabs/player.tscn" id="1_cebmv"]
+[ext_resource type="PackedScene" uid="uid://c8ak1ey0sgq60" path="res://LeviTestingGround/Player.tscn" id="1_cebmv"]
+[ext_resource type="Script" path="res://scripts/gameplay/gameplay_director.gd" id="2_vvwnj"]
+[ext_resource type="Script" path="res://scripts/gameplay/incident_system.gd" id="3_hpjq5"]
+[ext_resource type="Script" path="res://scripts/gameplay/chaos_system.gd" id="3_j7k0g"]
+[ext_resource type="Script" path="res://scripts/resources/res_chaos_config.gd" id="4_6cog3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hoyb3"]
+albedo_color = Color(0.295867, 0.295866, 0.295866, 1)
+
+[sub_resource type="Resource" id="Resource_pv35o"]
+script = ExtResource("4_6cog3")
+initial_chaos = 0
+chaos_threshold = 100
+decay_amount = 1
+decay_time = 1.0
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_00btf"]
+sky_top_color = Color(0.0859256, 0.659093, 1, 1)
+sky_horizon_color = Color(0.76813, 0.629032, 0.44828, 1)
+
+[sub_resource type="Sky" id="Sky_avw88"]
+sky_material = SubResource("ProceduralSkyMaterial_00btf")
+
+[sub_resource type="Environment" id="Environment_scjjs"]
+background_mode = 2
+sky = SubResource("Sky_avw88")
 
 [node name="WeddingStage" type="Node3D"]
 
-[node name="geo" type="Node3D" parent="."]
+[node name="Geo" type="Node3D" parent="."]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="geo"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Geo"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.249512, 0)
 use_collision = true
 size = Vector3(7.93555, 0.500977, 6.92871)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="geo"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7685, 1.63965, 0)
-use_collision = true
-size = Vector3(3.71191, 4.2793, 6.92871)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="geo"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Geo"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.67669, 1.72684, 3.20924)
 use_collision = true
 size = Vector3(0.568359, 3.46631, 0.494141)
+material = SubResource("StandardMaterial3D_hoyb3")
 
-[node name="lighting" type="Node3D" parent="."]
+[node name="Lighting" type="Node3D" parent="."]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="lighting"]
-transform = Transform3D(1, 0, 0, 0, 0.584136, 0.811656, 0, -0.811656, 0.584136, 1.2111, 3.89935, -8.40177)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
+transform = Transform3D(-0.840292, 0.440026, -0.31668, 2.53848e-08, 0.584136, 0.811656, 0.542133, 0.682028, -0.490845, 1.2111, 3.89935, -8.40177)
 
-[node name="Player" parent="." instance=ExtResource("1_cebmv")]
-transform = Transform3D(0.642065, 0, -0.76665, 0, 1, 0, 0.76665, 0, 0.642065, -3.72105, 3.87861, 3.22998)
+[node name="PlayerAnchors" type="Node3D" parent="."]
+
+[node name="PlayerAnchor1" type="Node3D" parent="PlayerAnchors"]
+transform = Transform3D(0.662803, 0, -0.748794, 0, 1, 0, 0.748794, 0, 0.662803, -3.68723, 4.03623, 3.20487)
+
+[node name="Director" type="Node" parent="." node_paths=PackedStringArray("player_anchors", "chaos_system", "incident_system")]
+script = ExtResource("2_vvwnj")
+player_prefab = ExtResource("1_cebmv")
+player_anchors = [NodePath("../PlayerAnchors/PlayerAnchor1")]
+chaos_system = NodePath("ChaosSystem")
+incident_system = NodePath("IncidentSystem")
+
+[node name="IncidentSystem" type="Node" parent="Director"]
+script = ExtResource("3_hpjq5")
+
+[node name="ChaosSystem" type="Node" parent="Director"]
+script = ExtResource("3_j7k0g")
+config = SubResource("Resource_pv35o")
+
+[node name="AISystem" type="Node" parent="Director"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_scjjs")
