@@ -8,7 +8,7 @@ var mouse_sensitivity = 0.15
 signal zoom_state_changed(is_zoomed: bool)
 
 var zoom_enabled = false
-var target_fov : float = 60.0  # Default zoom level
+var target_fov : float = 65.0  # Default zoom level
 
 # rotation limits (in degrees)
 var min_pitch = -80
