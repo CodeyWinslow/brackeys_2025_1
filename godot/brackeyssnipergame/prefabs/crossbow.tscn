@@ -1,18 +1,42 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpebgcbj65k35"]
+[gd_scene load_steps=5 format=3 uid="uid://dpebgcbj65k35"]
 
 [ext_resource type="Script" path="res://scripts/crossbow.gd" id="1_4t82j"]
 [ext_resource type="PackedScene" uid="uid://cohu2xaawvkw3" path="res://prefabs/arrows/arrow_base.tscn" id="2_7ri6m"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_yv74s"]
+[ext_resource type="PackedScene" uid="uid://c783u8g5m248t" path="res://assets/meshes/crossbow.gltf" id="3_8ogvc"]
+[ext_resource type="Material" uid="uid://bukb65lpo1t32" path="res://resources/materials/base_material.tres" id="4_hu1mk"]
 
 [node name="Crossbow" type="Node3D" node_paths=PackedStringArray("cooldown_timer")]
 script = ExtResource("1_4t82j")
 arrow = ExtResource("2_7ri6m")
 cooldown_timer = NodePath("Timer")
 
-[node name="Mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.35, 0, 0, 0)
-mesh = SubResource("BoxMesh_yv74s")
+[node name="crossbow" parent="." instance=ExtResource("3_8ogvc")]
+
+[node name="Crossbow" parent="crossbow" index="0"]
+surface_material_override/0 = ExtResource("4_hu1mk")
+
+[node name="ArrowModel" parent="crossbow/Crossbow" index="0"]
+surface_material_override/0 = ExtResource("4_hu1mk")
+
+[node name="ArrowModel_001" parent="crossbow/Crossbow" index="1"]
+surface_material_override/0 = ExtResource("4_hu1mk")
+
+[node name="ArrowModel_002" parent="crossbow/Crossbow" index="2"]
+surface_material_override/0 = ExtResource("4_hu1mk")
+
+[node name="ArrowModel_003" parent="crossbow/Crossbow" index="3"]
+surface_material_override/0 = ExtResource("4_hu1mk")
+
+[node name="BowPart" parent="crossbow/Crossbow" index="4"]
+surface_material_override/0 = ExtResource("4_hu1mk")
+
+[node name="Human 2" parent="crossbow/Crossbow" index="5"]
+surface_material_override/0 = ExtResource("4_hu1mk")
+
+[node name="Telescope" parent="crossbow/Crossbow" index="6"]
+surface_material_override/0 = ExtResource("4_hu1mk")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[editable path="crossbow"]

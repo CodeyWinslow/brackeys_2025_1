@@ -9,6 +9,10 @@ camera = NodePath("Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 fov = 65.0
+near = 0.01
 
 [node name="Crossbow" parent="Camera3D" instance=ExtResource("2_bjgpu")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.116846, -0.0278318, -0.558068)
+transform = Transform3D(-0.0995747, 0.00302081, 0.00870364, 0.00348517, 0.0998021, 0.0052336, -0.00852832, 0.00551467, -0.0994829, 0.028, -0.012, -0.032)
+
+[editable path="Camera3D/Crossbow"]
+[editable path="Camera3D/Crossbow/crossbow"]
