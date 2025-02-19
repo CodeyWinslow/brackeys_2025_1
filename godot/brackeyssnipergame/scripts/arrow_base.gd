@@ -1,6 +1,8 @@
 extends RigidBody3D
 
-@export var launch_force = 20.0
+var launch_force = 200.0
+var current_time = 0
+var lifetime = 100 #seconds
 @export var smoke_emitter : CPUParticles3D
 
 var stuck := false
@@ -13,10 +15,16 @@ func _ready():
 	contact_monitor = true
 	max_contacts_reported = 1
 
+func _process(delta: float) -> void:
+	if stuck:
+		current_time += delta
+		if current_time > lifetime:
+			queue_free()
+
 func fire_arrow():
 	# Apply impulse in the given direction
 	apply_central_impulse(global_transform.basis.z * launch_force)
-	
+
 func _on_body_entered(body):
 	if stuck:
 		return

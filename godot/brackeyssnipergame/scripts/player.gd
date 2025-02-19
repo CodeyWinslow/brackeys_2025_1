@@ -3,7 +3,7 @@ class_name Player
 
 @export var camera : Camera3D
 
-var mouse_sensitivity = 0.15
+var mouse_sensitivity = 0.10
 
 signal zoom_state_changed(is_zoomed: bool)
 
@@ -17,13 +17,18 @@ var min_yaw = -90
 var max_yaw = 90
 
 #zoom:
-var zoom_speed : float = 5.0  # Speed of zoom
-var min_fov : float = 30.0    # Minimum zoom (field of view)
-var max_fov : float = target_fov    # Maximum zoom (field of view)
+var zoom_speed : float = 10.0  # Speed of zoom
+var min_fov : float = 20.0    # Minimum zoom (field of view)
+var max_fov : float = 65.0    # Maximum zoom (field of view)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+func _process(delta: float) -> void:
+	# Smoothly transition FOV
+	if zoom_enabled:
+		camera.fov = lerp(camera.fov, target_fov, 0.1)  # Smooth transition (adjust the lerp speed)
 	
 func _unhandled_input(event) -> void:
 	if event is InputEventMouseMotion:
@@ -51,17 +56,12 @@ func _unhandled_input(event) -> void:
 			# Zoom out (increase FOV)
 			target_fov = min(target_fov + zoom_speed, max_fov)
 		
-	# Smoothly transition FOV
-	camera.fov = lerp(camera.fov, target_fov, 0.1)  # Smooth transition (adjust the lerp speed)
-		
 	if event.is_action_pressed("zoom"):
-		print("Zoom pressed")
-		zoom_enabled = true
-		zoom_state_changed.emit(true)
-		target_fov = max_fov - 10
-		camera.fov = target_fov
-	elif event.is_action_released("zoom"):
-		zoom_enabled = false
-		zoom_state_changed.emit(false)
-		target_fov = max_fov
-		camera.fov = target_fov
+		zoom_enabled = !zoom_enabled
+		if zoom_enabled:
+			zoom_state_changed.emit(true)
+			camera.fov = target_fov
+		else:
+			zoom_state_changed.emit(false)
+			camera.fov = max_fov
+			
