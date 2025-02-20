@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dmbgnx0qj82b8"
-path="res://.godot/imported/sm_barrel_01.glb-b29a3a2068d018a2509361d494f1d399.scn"
+uid="uid://cdchcnoyw1nyd"
+path="res://.godot/imported/sm_bowl_01.glb-292604b764e6ac4688488b9edfdbd63b.scn"
 
 [deps]
 
-source_file="res://assets/meshes/sm_barrel_01.glb"
-dest_files=["res://.godot/imported/sm_barrel_01.glb-b29a3a2068d018a2509361d494f1d399.scn"]
+source_file="res://assets/meshes/sm_bowl_01.glb"
+dest_files=["res://.godot/imported/sm_bowl_01.glb-292604b764e6ac4688488b9edfdbd63b.scn"]
 
 [params]
 
@@ -31,13 +31,6 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"materials": {
-"m_universal_01": {
-"use_external/enabled": true,
-"use_external/path": "res://resources/materials/base_material.tres"
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

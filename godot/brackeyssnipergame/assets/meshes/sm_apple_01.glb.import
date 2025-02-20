@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dmbgnx0qj82b8"
-path="res://.godot/imported/sm_barrel_01.glb-b29a3a2068d018a2509361d494f1d399.scn"
+uid="uid://bsfooothg0lxl"
+path="res://.godot/imported/sm_apple_01.glb-c5a5b1a75a2a98879914fb5a2967a2de.scn"
 
 [deps]
 
-source_file="res://assets/meshes/sm_barrel_01.glb"
-dest_files=["res://.godot/imported/sm_barrel_01.glb-b29a3a2068d018a2509361d494f1d399.scn"]
+source_file="res://assets/meshes/sm_apple_01.glb"
+dest_files=["res://.godot/imported/sm_apple_01.glb-c5a5b1a75a2a98879914fb5a2967a2de.scn"]
 
 [params]
 
@@ -33,7 +33,7 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"m_universal_01": {
+"m_universal_01.003": {
 "use_external/enabled": true,
 "use_external/path": "res://resources/materials/base_material.tres"
 }

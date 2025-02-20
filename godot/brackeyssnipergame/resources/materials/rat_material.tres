@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://c6gali184373j"]
+
+[ext_resource type="Texture2D" uid="uid://bemvmmqsv7pns" path="res://assets/textures/T_ch_rat_01_C.png" id="1_ff2v3"]
+[ext_resource type="Texture2D" uid="uid://sy44i500jj38" path="res://assets/textures/T_ch_rat_01_R.png" id="2_ld0cg"]
+
+[resource]
+albedo_texture = ExtResource("1_ff2v3")
+roughness_texture = ExtResource("2_ld0cg")
