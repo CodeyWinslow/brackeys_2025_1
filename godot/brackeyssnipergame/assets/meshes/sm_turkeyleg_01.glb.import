@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dmbgnx0qj82b8"
-path="res://.godot/imported/sm_barrel_01.glb-b29a3a2068d018a2509361d494f1d399.scn"
+uid="uid://6rydiu1fos6f"
+path="res://.godot/imported/sm_turkeyleg_01.glb-19c96bb4464ef5c7df4f644f3a113d57.scn"
 
 [deps]
 
-source_file="res://assets/meshes/sm_barrel_01.glb"
-dest_files=["res://.godot/imported/sm_barrel_01.glb-b29a3a2068d018a2509361d494f1d399.scn"]
+source_file="res://assets/meshes/sm_turkeyleg_01.glb"
+dest_files=["res://.godot/imported/sm_turkeyleg_01.glb-19c96bb4464ef5c7df4f644f3a113d57.scn"]
 
 [params]
 
@@ -33,7 +33,7 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"m_universal_01": {
+"m_universal_01.013": {
 "use_external/enabled": true,
 "use_external/path": "res://resources/materials/base_material.tres"
 }
