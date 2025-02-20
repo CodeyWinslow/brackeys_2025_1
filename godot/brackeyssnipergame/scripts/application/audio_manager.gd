@@ -15,7 +15,10 @@ func audioManagerDoSomething():
 func playSFX(sfx: AudioStream):
 	sfxPlayer.stream = sfx
 	sfxPlayer.play()
-	
+
+func _ready() -> void:
+	process_mode = PROCESS_MODE_ALWAYS
+
 func _play_random_music_track():
 	var randomSelectedTrack = randi_range(0, music.size() - 1)
 	print("random selected track: " + randomSelectedTrack)

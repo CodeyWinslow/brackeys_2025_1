@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://o7gli1hefjg"]
+[gd_scene load_steps=6 format=3 uid="uid://o7gli1hefjg"]
 
 [ext_resource type="Script" path="res://scripts/GUI/options.gd" id="1_2lqd2"]
 [ext_resource type="Texture2D" uid="uid://c3lthq1ow8cm5" path="res://assets/textures/button_light_256.png" id="1_gy6y5"]
 [ext_resource type="Script" path="res://scripts/GUI/play_button.gd" id="2_884vk"]
-[ext_resource type="Theme" path="res://resources/SecondFont.tres" id="3_58ear"]
+[ext_resource type="Theme" uid="uid://f8qsep8o8m6e" path="res://resources/SecondFont.tres" id="3_58ear"]
+[ext_resource type="PackedScene" uid="uid://beyq01s3mvo52" path="res://prefabs/GUI/slider_base.tscn" id="5_vu67q"]
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -48,5 +49,54 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("3_58ear")
 text = "Back"
+
+[node name="OptionsContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -54.0
+offset_right = 128.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MasterVolume" type="VBoxContainer" parent="OptionsContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="OptionsContainer/VBoxContainer/MasterVolume"]
+layout_mode = 2
+texture = ExtResource("1_gy6y5")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OptionsContainer/VBoxContainer/MasterVolume/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -29.0
+offset_right = 62.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("3_58ear")
+text = "Volume"
+
+[node name="SliderBase" parent="OptionsContainer/VBoxContainer/MasterVolume" instance=ExtResource("5_vu67q")]
+layout_mode = 2
+bus_name = "Master"
 
 [connection signal="pressed" from="MarginContainer/BackButton" to="." method="_on_back_button_pressed"]
