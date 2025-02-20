@@ -8,11 +8,13 @@ class_name GameplayDirector
 @export var incident_system : IncidentSystem
 
 var player : Player
+var round_timer : Timer
 
 func _ready():
 	_validate_properties()
 	GameManager.register_gameplay_director(self)
 	_spawn_player()
+	_start_countdown()
 	
 func _exit_tree():
 	GameManager.unregister_gameplay_director(self)
@@ -36,3 +38,16 @@ func _spawn_player():
 		
 func get_player() -> Player:
 	return player
+
+func _start_countdown() -> void:
+	if round_timer == null:
+		round_timer = Timer.new()
+		add_child(round_timer)
+		round_timer.one_shot = true
+	round_timer.start(30)
+
+func get_time_left() -> float:
+	if round_timer == null:
+		Logger.print_error("Timer not started before attempting to get time left")
+		return 0
+	return round_timer.time_left
