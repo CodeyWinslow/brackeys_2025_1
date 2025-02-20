@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://die4uc5lejjvh"]
+
+[ext_resource type="Script" path="res://scripts/application/audio_manager.gd" id="1_dd38d"]
+[ext_resource type="AudioStream" uid="uid://5qcj2fngsgg6" path="res://assets/audio/goofy_medieval_song.mp3" id="2_px3vn"]
+[ext_resource type="AudioStream" uid="uid://cu42ug8qnenk4" path="res://assets/audio/medieval_background_song.mp3" id="3_uj6h3"]
+
+[node name="AudioManager" type="AudioStreamPlayer" node_paths=PackedStringArray("sfxPlayer", "musicPlayer")]
+script = ExtResource("1_dd38d")
+sfxPlayer = NodePath("SFXPlayer")
+musicPlayer = NodePath("MusicPlayer")
+music = Array[AudioStream]([ExtResource("2_px3vn"), ExtResource("3_uj6h3")])
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_px3vn")
+autoplay = true
+
+[connection signal="finished" from="MusicPlayer" to="." method="_on_music_player_finished"]

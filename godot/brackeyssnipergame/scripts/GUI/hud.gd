@@ -5,10 +5,12 @@ class_name HUD
 @export var scope_overlay : Control
 @export var bolt_config : BoltConfig
 @export var bolt_image_texture : TextureRect
+@export var timer_text : RichTextLabel
 
 var chaos_system : ChaosSystem
 var player : Player
 var bolt_index : int = 0
+var cached_time : int = 0
 
 func _ready():
 	chaos_system = GameManager.game_director.chaos_system
@@ -16,6 +18,19 @@ func _ready():
 	_register_signals()
 	_init_state()
 	_set_bolt_info()
+
+func _process(_delta: float) -> void:
+	var time_left = floor(GameManager.game_director.get_time_left())
+	if time_left != cached_time:
+		cached_time = time_left
+		_set_timer_text(cached_time)
+
+func _set_timer_text(time_left: int) -> void:
+	var minutes = floor(time_left / 60)
+	var seconds = int(time_left) % 60
+	var timer_str = "%02d:%02d" % [minutes, seconds]
+	if timer_text.text != timer_str:
+		timer_text.text = timer_str
 
 func _register_signals():
 	chaos_system.chaos_changed.connect(_sig_chaos_changed)
