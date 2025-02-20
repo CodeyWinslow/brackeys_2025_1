@@ -20,6 +20,7 @@ config/icon="res://assets/textures/icon.svg"
 Console="*res://addons/console/console.gd"
 Logger="*res://scripts/util/logger.gd"
 GameManager="*res://scripts/application/game_manager.gd"
+AudioManager="*res://prefabs/audio_manager.tscn"
 
 [input]
 

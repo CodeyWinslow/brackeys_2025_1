@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://beyq01s3mvo52"]
+
+[ext_resource type="Script" path="res://scripts/GUI/slider_base.gd" id="1_bktiw"]
+
+[node name="SliderBase" type="HSlider"]
+max_value = 1.0
+step = 0.001
+script = ExtResource("1_bktiw")
