@@ -2,6 +2,7 @@ extends Node3D
 
 @export var arrow: PackedScene 
 @export var reload_time = 1.0
+@export var firingSFX: AudioStream
 
 var can_shoot = true
 @export var cooldown_timer : Timer  # Reference to a Timer node
@@ -26,6 +27,9 @@ func shoot():
 	arrowInstance.global_transform = global_transform
 	
 	arrowInstance.fire_arrow()
+	
+	#play firing sound
+	AudioManager.playSFX(firingSFX)
 	
 	# Start cooldown
 	can_shoot = false

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8ak1ey0sgq60"]
+[gd_scene load_steps=4 format=3 uid="uid://c8ak1ey0sgq60"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ac3r8"]
 [ext_resource type="PackedScene" uid="uid://dpebgcbj65k35" path="res://prefabs/crossbow.tscn" id="2_bjgpu"]
+[ext_resource type="AudioStream" uid="uid://chykdp434yy4q" path="res://assets/audio/sfx/crossbow_shot.mp3" id="3_35d6w"]
 
 [node name="Player" type="Node3D" node_paths=PackedStringArray("camera")]
 script = ExtResource("1_ac3r8")
@@ -13,6 +14,7 @@ near = 0.01
 
 [node name="Crossbow" parent="Camera3D" instance=ExtResource("2_bjgpu")]
 transform = Transform3D(-0.0995747, 0.00302081, 0.00870364, 0.00348517, 0.0998021, 0.0052336, -0.00852832, 0.00551467, -0.0994829, 0.028, -0.012, -0.032)
+firingSFX = ExtResource("3_35d6w")
 
 [editable path="Camera3D/Crossbow"]
 [editable path="Camera3D/Crossbow/crossbow"]
