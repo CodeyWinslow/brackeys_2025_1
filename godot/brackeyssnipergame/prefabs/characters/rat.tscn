@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://d6jgg007rgrt"]
+
+[ext_resource type="PackedScene" uid="uid://dt3gs5usb8ow0" path="res://assets/meshes/ch_rat_01.glb" id="1_7df2r"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_asuqh"]
+radius = 0.101984
+height = 0.411773
+
+[node name="Rat" type="StaticBody3D"]
+
+[node name="ch_rat_01" parent="." instance=ExtResource("1_7df2r")]
+
+[node name="Skeleton3D" parent="ch_rat_01/Armature" index="0"]
+bones/1/rotation = Quaternion(0.946904, 0.321452, -0.00163414, 0.00623777)
+bones/2/rotation = Quaternion(-3.42623e-09, 2.75783e-08, -0.0400735, 0.999197)
+bones/3/rotation = Quaternion(0.953158, 0.302473, 9.07829e-09, -6.44999e-08)
+bones/6/rotation = Quaternion(2.52689e-09, 2.3642e-08, 0.0302147, 0.999543)
+bones/11/rotation = Quaternion(-0.439991, 0.898002, -2.8101e-08, 2.85444e-08)
+bones/12/rotation = Quaternion(-4.22702e-09, 4.27402e-08, 0.0984203, 0.995145)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.166344, 0.0145703)
+shape = SubResource("CapsuleShape3D_asuqh")
+
+[editable path="ch_rat_01"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bxi3joe7riqat"]
+[gd_scene load_steps=32 format=3 uid="uid://bxi3joe7riqat"]
 
 [ext_resource type="PackedScene" uid="uid://jxsemljcrvni" path="res://prefabs/director.tscn" id="1_uvbfl"]
 [ext_resource type="PackedScene" uid="uid://bnpp3tnfgwja1" path="res://assets/meshes/castle_pack/stairs-stone.glb" id="4_8gb86"]
@@ -22,6 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://cbbehpjbbi5c5" path="res://prefabs/ground_hills.tscn" id="20_ppihh"]
 [ext_resource type="PackedScene" uid="uid://cx6tm061hy4ix" path="res://assets/meshes/castle_pack/flag-wide.glb" id="21_8mspt"]
 [ext_resource type="PackedScene" uid="uid://pddvgfrexadc" path="res://assets/meshes/castle_pack/tower-square-top-roof-rounded.glb" id="21_mvb15"]
+[ext_resource type="PackedScene" uid="uid://b3lfmgj8c3f0i" path="res://prefabs/static_enviornment_assets/sm_barrel_01_static.tscn" id="21_q1gc1"]
+[ext_resource type="PackedScene" uid="uid://d6jgg007rgrt" path="res://prefabs/characters/rat.tscn" id="22_ihqqi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b7umq"]
 albedo_color = Color(0.875224, 0.682139, 0.427198, 1)
@@ -298,6 +300,12 @@ transform = Transform3D(-31.0689, 0, 44.8893, 0, 54.5924, 0, -44.8893, 0, -31.06
 
 [node name="ground-hills5" parent="StaticGeo" instance=ExtResource("20_ppihh")]
 transform = Transform3D(-12.2992, 0, -53.1889, 0, 104.633, 0, 53.1889, 0, -12.2992, -43.2124, -0.112391, -39.3457)
+
+[node name="SmBarrel01Static" parent="StaticGeo" instance=ExtResource("21_q1gc1")]
+transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 5.38465, 4.30534, 3.72083)
+
+[node name="Rat" parent="StaticGeo" instance=ExtResource("22_ihqqi")]
+transform = Transform3D(0.973367, 0, -0.229251, 0, 1, 0, 0.229251, 0, 0.973367, 5.39363, 4.42719, 3.65812)
 
 [node name="Lighting" type="Node3D" parent="."]
 
