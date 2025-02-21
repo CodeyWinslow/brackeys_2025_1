@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2dc2nrscn15m"]
+
+[ext_resource type="PackedScene" uid="uid://df1erdwickp2i" path="res://assets/meshes/sm_stall_tent_l_01.glb" id="1_eylx0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m7bm5"]
+size = Vector3(0.0771484, 1.33765, 0.0856934)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7pkkx"]
+size = Vector3(2.33447, 0.196136, 2.05762)
+
+[node name="StaticEnviornmentAssetTemplate" type="Node3D"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10693, 0.671509, 0.97724)
+shape = SubResource("BoxShape3D_m7bm5")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.10775, 0.671509, 0.97724)
+shape = SubResource("BoxShape3D_m7bm5")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.10775, 0.671509, -0.980667)
+shape = SubResource("BoxShape3D_m7bm5")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10693, 0.671509, -0.980667)
+shape = SubResource("BoxShape3D_m7bm5")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0217335, 1.50617, 0.0052948)
+shape = SubResource("BoxShape3D_7pkkx")
+
+[node name="sm_stall_tent_l_012" parent="." instance=ExtResource("1_eylx0")]

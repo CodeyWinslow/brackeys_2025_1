@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx7bjyr46uaoa"]
+
+[ext_resource type="PackedScene" uid="uid://cwrnl0nltqjq5" path="res://assets/meshes/sm_planter_01.glb" id="1_pi4jq"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bbn5m"]
+height = 0.671065
+radius = 0.340775
+
+[node name="StaticEnviornmentAssetTemplate" type="Node3D"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.325047, 0)
+shape = SubResource("CylinderShape3D_bbn5m")
+
+[node name="sm_planter_012" parent="." instance=ExtResource("1_pi4jq")]

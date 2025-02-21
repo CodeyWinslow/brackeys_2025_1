@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bykj66ult0bho"]
+
+[ext_resource type="PackedScene" uid="uid://yvg6ayoobsda" path="res://assets/meshes/sm_plate_01.glb" id="1_bqb0t"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bdgop"]
+height = 0.0314172
+radius = 0.123954
+
+[node name="StaticEnviornmentAssetTemplate" type="Node3D"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0140551, 0)
+shape = SubResource("CylinderShape3D_bdgop")
+
+[node name="sm_plate_012" parent="." instance=ExtResource("1_bqb0t")]

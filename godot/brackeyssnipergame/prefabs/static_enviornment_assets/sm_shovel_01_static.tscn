@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7trhjuil60y4"]
+
+[ext_resource type="PackedScene" uid="uid://d18orjw0wg651" path="res://assets/meshes/sm_shovel_01.glb" id="1_najes"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ld4c1"]
+size = Vector3(0.0786133, 0.734802, 0.0852051)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c54nd"]
+size = Vector3(0.316956, 0.370712, 0.0852051)
+
+[node name="StaticEnviornmentAssetTemplate" type="Node3D"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0012207, 0.64151, -0.0203857)
+shape = SubResource("BoxShape3D_ld4c1")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.984072, 0.177772, 0, -0.177772, 0.984072, -0.00552368, 0.0933155, 0.0166124)
+shape = SubResource("BoxShape3D_c54nd")
+
+[node name="sm_shovel_012" parent="." instance=ExtResource("1_najes")]

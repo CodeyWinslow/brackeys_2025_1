@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c61hts5wpj4sc"]
+
+[ext_resource type="PackedScene" uid="uid://bdj355s6cwxk0" path="res://assets/meshes/sm_pitchfork_01.glb" id="1_mlfhd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c1rym"]
+size = Vector3(0.0734863, 0.726196, 0.0710449)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h5u2l"]
+size = Vector3(0.356323, 0.335602, 0.0830383)
+
+[node name="StaticEnviornmentAssetTemplate" type="Node3D"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0020752, 0.650085, -0.0196533)
+shape = SubResource("BoxShape3D_c1rym")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.987295, 0.158899, 0, -0.158899, 0.987295, 0.000549316, 0.11017, 0.0124763)
+shape = SubResource("BoxShape3D_h5u2l")
+
+[node name="sm_pitchfork_012" parent="." instance=ExtResource("1_mlfhd")]

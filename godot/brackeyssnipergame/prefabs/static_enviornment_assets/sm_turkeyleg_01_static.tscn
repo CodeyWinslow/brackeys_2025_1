@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://voy3d45rru2n"]
+
+[ext_resource type="PackedScene" uid="uid://6rydiu1fos6f" path="res://assets/meshes/sm_turkeyleg_01.glb" id="1_wkd5r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ccqn"]
+size = Vector3(0.264954, 0.109314, 0.100586)
+
+[node name="StaticEnviornmentAssetTemplate" type="Node3D"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0148621, -0.00204468, 0.000488281)
+shape = SubResource("BoxShape3D_8ccqn")
+
+[node name="sm_turkeyleg_012" parent="." instance=ExtResource("1_wkd5r")]
