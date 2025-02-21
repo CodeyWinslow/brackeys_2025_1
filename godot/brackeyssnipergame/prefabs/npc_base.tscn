@@ -123,6 +123,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.237803, 0)
 shape = SubResource("SphereShape3D_5s2j8")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 0.25
+target_desired_distance = 0.25
+path_height_offset = 0.26
+path_max_distance = 1.01
+avoidance_enabled = true
+height = 0.52
+radius = 0.26
+neighbor_distance = 10.0
+max_neighbors = 15
+max_speed = 0.5
 
 [node name="ch_dumpling_02" type="Node3D" parent="."]
 transform = Transform3D(0.244264, 0, 0, 0, 0.244264, 0, 0, 0, 0.244264, 0, 0, 0)

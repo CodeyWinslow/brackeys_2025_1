@@ -1,11 +1,13 @@
 extends Node
 class_name GameplayDirector
 
+@export var spawn_player : bool = true
 @export var player_prefab : PackedScene
 @export var player_anchors : Array[Node3D]
 
 @export var chaos_system : ChaosSystem
 @export var incident_system : IncidentSystem
+@export var ai_system : AiSystem
 
 var player : Player
 var round_timer : Timer
@@ -13,7 +15,8 @@ var round_timer : Timer
 func _ready():
 	_validate_properties()
 	GameManager.register_gameplay_director(self)
-	_spawn_player()
+	if spawn_player:
+		_spawn_player()
 	_start_countdown()
 	
 func _exit_tree():

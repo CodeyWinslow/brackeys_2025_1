@@ -34,7 +34,8 @@ func _set_timer_text(time_left: int) -> void:
 
 func _register_signals():
 	chaos_system.chaos_changed.connect(_sig_chaos_changed)
-	player.zoom_state_changed.connect(_sig_zoom_changed)
+	if player != null:
+		player.zoom_state_changed.connect(_sig_zoom_changed)
 
 func _init_state():
 	_set_chaos(chaos_system.get_chaos_amount())
