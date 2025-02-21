@@ -136,6 +136,9 @@ func set_paused(is_paused : bool):
 	if is_paused != paused:
 		if is_paused:
 			pause_screen_instance = global_config.pause_scene.instantiate()
+			if pause_screen_instance is Control:
+				var ctrl = pause_screen_instance as Control
+				ctrl.z_index = 100
 			add_child(pause_screen_instance)
 		else:
 			pause_screen_instance.queue_free()

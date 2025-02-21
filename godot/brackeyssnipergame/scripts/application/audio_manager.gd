@@ -12,6 +12,10 @@ var musicTrack: int = 0
 func _ready() -> void:
 	process_mode = PROCESS_MODE_ALWAYS
 	
+	# save me from self kill
+	if GameManager.is_editor:
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(0))
+	
 func _on_music_player_finished() -> void:
 	play_next_music_track()
 	

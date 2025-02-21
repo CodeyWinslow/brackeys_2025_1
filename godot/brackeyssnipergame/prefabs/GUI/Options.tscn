@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/GUI/options.gd" id="1_2lqd2"]
 [ext_resource type="Texture2D" uid="uid://c3lthq1ow8cm5" path="res://assets/textures/button_light_256.png" id="1_gy6y5"]
 [ext_resource type="Script" path="res://scripts/GUI/play_button.gd" id="2_884vk"]
-[ext_resource type="Theme" uid="uid://f8qsep8o8m6e" path="res://resources/SecondFont.tres" id="3_58ear"]
+[ext_resource type="Theme" path="res://resources/SecondFont.tres" id="3_58ear"]
 [ext_resource type="PackedScene" uid="uid://beyq01s3mvo52" path="res://prefabs/GUI/slider_base.tscn" id="5_vu67q"]
 
 [node name="Options" type="Control"]

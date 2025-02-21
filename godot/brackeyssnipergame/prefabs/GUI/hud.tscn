@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://lk1fd3hp0vm6" path="res://resources/bolts/release_bolt_config.tres" id="2_st5u0"]
 [ext_resource type="Texture2D" uid="uid://c3lthq1ow8cm5" path="res://assets/textures/button_light_256.png" id="3_2d43e"]
 [ext_resource type="Texture2D" uid="uid://b8m44jalstqwr" path="res://assets/textures/crosshair.png" id="3_mdwmi"]
-[ext_resource type="Theme" uid="uid://f8qsep8o8m6e" path="res://resources/SecondFont.tres" id="4_b4xow"]
+[ext_resource type="Theme" path="res://resources/SecondFont.tres" id="4_b4xow"]
 
 [node name="HUD" type="Control" node_paths=PackedStringArray("chaos_meter", "scope_overlay", "bolt_image_texture", "timer_text")]
 layout_mode = 3
@@ -80,6 +80,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("3_mdwmi")
 expand_mode = 4
 stretch_mode = 5
