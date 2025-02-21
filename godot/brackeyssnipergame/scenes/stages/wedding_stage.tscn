@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bxi3joe7riqat"]
+[gd_scene load_steps=33 format=3 uid="uid://bxi3joe7riqat"]
 
 [ext_resource type="PackedScene" uid="uid://jxsemljcrvni" path="res://prefabs/director.tscn" id="1_uvbfl"]
 [ext_resource type="PackedScene" uid="uid://bnpp3tnfgwja1" path="res://assets/meshes/castle_pack/stairs-stone.glb" id="4_8gb86"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://pddvgfrexadc" path="res://assets/meshes/castle_pack/tower-square-top-roof-rounded.glb" id="21_mvb15"]
 [ext_resource type="PackedScene" uid="uid://b3lfmgj8c3f0i" path="res://prefabs/static_enviornment_assets/sm_barrel_01_static.tscn" id="21_q1gc1"]
 [ext_resource type="PackedScene" uid="uid://d6jgg007rgrt" path="res://prefabs/characters/rat.tscn" id="22_ihqqi"]
+[ext_resource type="PackedScene" uid="uid://bo1awardrvlb5" path="res://prefabs/npc_base.tscn" id="25_fa6c2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b7umq"]
 albedo_color = Color(0.875224, 0.682139, 0.427198, 1)
@@ -327,3 +328,6 @@ transform = Transform3D(0.56478, 0, 0.825242, 0, 1, 0, -0.825242, 0, 0.56478, 5.
 player_anchors = [NodePath("../PlayerAnchors/PlayerAnchor1")]
 
 [node name="HUD" parent="." instance=ExtResource("12_hij7k")]
+
+[node name="NpcBase" parent="." instance=ExtResource("25_fa6c2")]
+transform = Transform3D(-0.533452, 0, -0.84583, 0, 1, 0, 0.84583, 0, -0.533452, -0.546123, 0.0193477, 1.33111)
