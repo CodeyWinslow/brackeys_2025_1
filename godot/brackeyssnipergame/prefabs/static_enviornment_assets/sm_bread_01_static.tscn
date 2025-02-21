@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmyn310k1a2wb"]
+
+[ext_resource type="PackedScene" uid="uid://c188pval2gtod" path="res://assets/meshes/sm_bread_01.glb" id="1_gqha7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ndfc4"]
+size = Vector3(0.275757, 0.115723, 0.1604)
+
+[node name="StaticEnviornmentAssetTemplate" type="Node3D"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000671387, 0.0544434, 0.000610352)
+shape = SubResource("BoxShape3D_ndfc4")
+
+[node name="sm_bread_012" parent="." instance=ExtResource("1_gqha7")]

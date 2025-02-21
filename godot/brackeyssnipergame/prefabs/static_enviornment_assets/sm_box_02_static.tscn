@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://brvah5wb2n4po"]
+
+[ext_resource type="PackedScene" uid="uid://yglgaw8meiux" path="res://assets/meshes/sm_box_02.glb" id="1_l1tnf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5chal"]
+size = Vector3(0.369873, 0.274414, 0.43457)
+
+[node name="StaticEnviornmentAssetTemplate" type="Node3D"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00012207, 0.120605, -0.00439453)
+shape = SubResource("BoxShape3D_5chal")
+
+[node name="sm_box_022" parent="." instance=ExtResource("1_l1tnf")]

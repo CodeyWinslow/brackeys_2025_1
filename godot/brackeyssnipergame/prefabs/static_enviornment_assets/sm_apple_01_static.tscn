@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://2x2g3oobtdxa"]
+
+[ext_resource type="PackedScene" uid="uid://bsfooothg0lxl" path="res://assets/meshes/sm_apple_01.glb" id="1_wjdfw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_twsjv"]
+radius = 0.0560536
+
+[node name="StaticEnviornmentAssetTemplate" type="Node3D"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0489994, 0)
+shape = SubResource("SphereShape3D_twsjv")
+
+[node name="sm_apple_012" parent="." instance=ExtResource("1_wjdfw")]

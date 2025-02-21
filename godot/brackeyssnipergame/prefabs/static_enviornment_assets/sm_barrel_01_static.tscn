@@ -7,6 +7,7 @@ height = 0.694855
 radius = 0.374353
 
 [node name="SmBarrel01Static" type="StaticBody3D"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 
 [node name="sm_barrel_012" parent="." instance=ExtResource("1_3dlne")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)

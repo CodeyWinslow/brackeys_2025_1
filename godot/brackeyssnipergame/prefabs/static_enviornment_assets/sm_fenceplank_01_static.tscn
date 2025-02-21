@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctgj1uxva04pp"]
+
+[ext_resource type="PackedScene" uid="uid://gcv0ygkw6nk" path="res://assets/meshes/sm_fenceplank_01.glb" id="1_xkfmu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_53eys"]
+size = Vector3(1.39746, 0.504456, 1)
+
+[node name="StaticEnviornmentAssetTemplate" type="Node3D"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00146484, 0.661957, 0)
+shape = SubResource("BoxShape3D_53eys")
+
+[node name="sm_fenceplank_012" parent="." instance=ExtResource("1_xkfmu")]
