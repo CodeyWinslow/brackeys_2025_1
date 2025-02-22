@@ -1,8 +1,9 @@
-[gd_scene load_steps=65 format=3 uid="uid://capmktedb3t8n"]
+[gd_scene load_steps=67 format=3 uid="uid://capmktedb3t8n"]
 
 [ext_resource type="PackedScene" uid="uid://b3lfmgj8c3f0i" path="res://prefabs/static_enviornment_assets/sm_barrel_01_static.tscn" id="1_iwniv"]
 [ext_resource type="PackedScene" uid="uid://dj4d73gosqihk" path="res://assets/meshes/town_pack/planks.glb" id="1_mn83r"]
 [ext_resource type="PackedScene" uid="uid://dn56mua8xvuki" path="res://prefabs/beat_game_director.tscn" id="1_sxeib"]
+[ext_resource type="PackedScene" uid="uid://cf4v88ewtdi6y" path="res://prefabs/camera_control_setup.tscn" id="2_g5i7w"]
 [ext_resource type="PackedScene" uid="uid://cnys1qlhnsh6b" path="res://assets/meshes/town_pack/roofHighFlat.glb" id="2_m1k1g"]
 [ext_resource type="PackedScene" uid="uid://cp4eec24yovu" path="res://assets/meshes/castle_pack/wall-narrow-stairs-rail.glb" id="4_lisax"]
 [ext_resource type="PackedScene" uid="uid://gtlkhbnrpo0f" path="res://assets/meshes/town_pack/wallWoodDetailDiagonal.glb" id="5_p3afq"]
@@ -77,9 +78,15 @@ glow_bloom = 0.32
 fog_light_color = Color(0.0902904, 0.227838, 0.309953, 1)
 fog_density = 0.001
 fog_sky_affect = 0.0
-volumetric_fog_enabled = true
 adjustment_enabled = true
 adjustment_color_correction = SubResource("GradientTexture1D_6axah")
+
+[sub_resource type="Curve3D" id="Curve3D_8phjq"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 3.91, -0.555, 0, 0, 0, 0, -2.01, 1.384, -3.985),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_yk6n1"]
 
@@ -117,10 +124,10 @@ size = Vector3(78.41, 0.518066, 72.595)
 
 [node name="MedievalMusicVenue" type="Node3D"]
 
-[node name="BeatGameDirector" parent="." node_paths=PackedStringArray("food_throwing_npcs", "stageCameraPosition", "ratCameraPosition") instance=ExtResource("1_sxeib")]
+[node name="BeatGameDirector" parent="." node_paths=PackedStringArray("food_throwing_npcs", "cameraController", "ratController") instance=ExtResource("1_sxeib")]
 food_throwing_npcs = NodePath("../NPCs/FoodThrowingPatrons")
-stageCameraPosition = NodePath("../CameraStuff/StageCameraPoint")
-ratCameraPosition = NodePath("../CameraStuff/RatCameraPoint")
+cameraController = NodePath("../CameraControlSetup")
+ratController = NodePath("../NPCs/Rat")
 
 [node name="Lighting" type="Node3D" parent="."]
 
@@ -176,16 +183,24 @@ light_energy = 0.5
 spot_range = 5.524
 spot_angle = 22.37
 
-[node name="CameraStuff" type="Node3D" parent="."]
+[node name="CameraControlSetup" parent="." node_paths=PackedStringArray("stageCameraPosition", "ratCameraPosition", "camera") instance=ExtResource("2_g5i7w")]
+stageCameraPosition = NodePath("StageCameraPoint")
+ratCameraPosition = NodePath("RatCameraPoint")
+camera = NodePath("RatCameraPoint/Camera3D")
 
-[node name="StageCameraPoint" type="Node3D" parent="CameraStuff"]
+[node name="StageCameraPoint" type="Node3D" parent="CameraControlSetup"]
 transform = Transform3D(0.0871558, 0.172987, -0.98106, 0, 0.984808, 0.173648, 0.996195, -0.0151344, 0.0858317, -2.65, 0.945, 25.66)
 
-[node name="RatCameraPoint" type="Node3D" parent="CameraStuff"]
+[node name="Path3D" type="Path3D" parent="CameraControlSetup/StageCameraPoint"]
+curve = SubResource("Curve3D_8phjq")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="CameraControlSetup/StageCameraPoint/Path3D"]
+transform = Transform3D(0.892838, 0.133382, 0.430139, 0, 0.955131, -0.296175, -0.45034, 0.264442, 0.852788, 0, 0, 0)
+
+[node name="RatCameraPoint" type="Node3D" parent="CameraControlSetup"]
 transform = Transform3D(-0.834848, -0.09559, 0.542118, 0, 0.984808, 0.173648, -0.550481, 0.14497, -0.822165, 1.324, 1.619, 23.3)
 
-[node name="Camera3D" type="Camera3D" parent="CameraStuff/RatCameraPoint"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="Camera3D" type="Camera3D" parent="CameraControlSetup/RatCameraPoint"]
 script = ExtResource("41_s4ttd")
 sway_amount_x = 0.0
 
@@ -467,7 +482,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5286
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.52862, 0.0180664, -1.92118)
 
 [node name="wall-narrow-stairs-rail3" parent="Tavern/LeftWall" instance=ExtResource("4_lisax")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.51657, 0.018066, -1.92797)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.51657, 0.018066, -1.65094)
 
 [node name="wallWoodDetailDiagonal9" parent="Tavern/LeftWall" instance=ExtResource("5_p3afq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.46533, 1.01807, -1.42749)
@@ -992,29 +1007,23 @@ transform = Transform3D(0.219996, 0, 0.821037, 0, 0.85, 0, -0.821037, 0, 0.21999
 
 [node name="FoodThrowingPatrons" type="Node3D" parent="NPCs"]
 
-[node name="NpcPatron" parent="NPCs/FoodThrowingPatrons" node_paths=PackedStringArray("player") instance=ExtResource("41_131tl")]
+[node name="NpcPatron" parent="NPCs/FoodThrowingPatrons" instance=ExtResource("41_131tl")]
 transform = Transform3D(-0.773352, -0.0462561, 0.632288, -0.095151, 0.994506, -0.0436244, -0.626796, -0.0938998, -0.773504, -1.34263, 0.194498, 23.8097)
-player = NodePath("../../../CameraStuff/RatCameraPoint/Camera3D")
 
-[node name="NpcPatron2" parent="NPCs/FoodThrowingPatrons" node_paths=PackedStringArray("player") instance=ExtResource("41_131tl")]
+[node name="NpcPatron2" parent="NPCs/FoodThrowingPatrons" instance=ExtResource("41_131tl")]
 transform = Transform3D(-0.565685, 0, 0.565685, 0, 0.8, 0, -0.565685, 0, -0.565685, 0.348793, 0.416219, 23.9452)
-player = NodePath("../../../CameraStuff/RatCameraPoint/Camera3D")
 
-[node name="NpcPatron4" parent="NPCs/FoodThrowingPatrons" node_paths=PackedStringArray("player") instance=ExtResource("41_131tl")]
+[node name="NpcPatron4" parent="NPCs/FoodThrowingPatrons" instance=ExtResource("41_131tl")]
 transform = Transform3D(0.383383, 0.227502, 0.664274, -0.113587, 0.76697, -0.197117, -0.692904, 0.000147889, 0.399856, 1.34962, 0.286136, 26.1978)
-player = NodePath("../../../CameraStuff/RatCameraPoint/Camera3D")
 
-[node name="NpcPatron3" parent="NPCs/FoodThrowingPatrons" node_paths=PackedStringArray("player") instance=ExtResource("41_131tl")]
+[node name="NpcPatron3" parent="NPCs/FoodThrowingPatrons" instance=ExtResource("41_131tl")]
 transform = Transform3D(0.248034, 0, 0.813006, 0, 0.85, 0, -0.813006, 0, 0.248034, -0.703053, 5.96046e-08, 26.3926)
-player = NodePath("../../../CameraStuff/RatCameraPoint/Camera3D")
 
-[node name="NpcPatron6" parent="NPCs/FoodThrowingPatrons" node_paths=PackedStringArray("player") instance=ExtResource("41_131tl")]
+[node name="NpcPatron6" parent="NPCs/FoodThrowingPatrons" instance=ExtResource("41_131tl")]
 transform = Transform3D(-0.0264047, 0.221715, 0.82015, 0.00713442, 0.820574, -0.221601, -0.84956, 0, -0.0273515, 3.3169, 5.96046e-08, 25.4274)
-player = NodePath("../../../CameraStuff/RatCameraPoint/Camera3D")
 
-[node name="NpcPatron5" parent="NPCs/FoodThrowingPatrons" node_paths=PackedStringArray("player") instance=ExtResource("41_131tl")]
+[node name="NpcPatron5" parent="NPCs/FoodThrowingPatrons" instance=ExtResource("41_131tl")]
 transform = Transform3D(-0.0157708, 0.136001, 0.838901, 0.00255629, 0.839049, -0.135977, -0.84985, 0, -0.0159766, 0.0497376, 0.304717, 25.2228)
-player = NodePath("../../../CameraStuff/RatCameraPoint/Camera3D")
 
 [node name="RatDialogueHUD" type="Control" parent="."]
 layout_mode = 3
