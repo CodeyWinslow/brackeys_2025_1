@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://satsha8mfms"]
 
-[ext_resource type="Script" path="res://scripts/prefabs/chandelier.gd" id="1_5fi3c"]
+[ext_resource type="Script" path="res://scripts/chandelier.gd" id="1_5fi3c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d6gur"]
 size = Vector3(1, 2, 1)
