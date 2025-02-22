@@ -1,4 +1,4 @@
-[gd_scene load_steps=201 format=3 uid="uid://capmktedb3t8n"]
+[gd_scene load_steps=205 format=3 uid="uid://capmktedb3t8n"]
 
 [ext_resource type="PackedScene" uid="uid://b3lfmgj8c3f0i" path="res://prefabs/static_enviornment_assets/sm_barrel_01_static.tscn" id="1_iwniv"]
 [ext_resource type="PackedScene" uid="uid://dj4d73gosqihk" path="res://assets/meshes/town_pack/planks.glb" id="1_mn83r"]
@@ -230,6 +230,98 @@ background_mode = 2
 sky = SubResource("Sky_avw88")
 ambient_light_source = 3
 ambient_light_color = Color(0.27451, 0.823529, 0.823529, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_3m24n"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.5, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_iakua"]
+resource_name = "camera_end_rotate"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow3D:progress_ratio")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PathFollow3D/Camera3D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.178821, 0.0811653, -0.00631517), Vector3(-0.178821, -3.06043, -0.00631518)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PathFollow3D/Camera3D:fov")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.566667, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [81.8, 90.0, 90.0, 45.0]
+}
+
+[sub_resource type="Animation" id="Animation_lwfxt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PathFollow3D/Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.178821, 0.0811653, -0.00631517)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PathFollow3D/Camera3D:fov")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [81.8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lk4aa"]
+_data = {
+"RESET": SubResource("Animation_lwfxt"),
+"camera_end_rotate": SubResource("Animation_iakua")
+}
 
 [node name="MedievalMusicVenue" type="Node3D"]
 
@@ -1638,10 +1730,6 @@ transform = Transform3D(0.559896, 0, 0.215676, 0, 0.6, 0, -0.215676, 0, 0.559896
 [node name="StaticEnviornmentAssetTemplate18" parent="." instance=ExtResource("197_o6bpi")]
 transform = Transform3D(0.559896, 0, 0.215676, 0, 0.6, 0, -0.215676, 0, 0.559896, -1.22287, 0.494917, 24.1345)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.0799551, 0.177792, -0.980815, -0.00621443, 0.984035, 0.177869, 0.996779, -0.00812636, 0.0797835, -2.64853, 0.94498, 25.6662)
-fov = 81.8
-
 [node name="StaticEnviornmentAssetTemplate3" parent="." instance=ExtResource("195_o2j3w")]
 transform = Transform3D(-0.415543, 0, -0.43281, 0, 0.6, 0, 0.43281, 0, -0.415543, 8.20833, 0.018066, 25.9258)
 
@@ -1659,3 +1747,22 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 6.84341, 0.029236, 24.0
 
 [node name="StaticEnviornmentAssetTemplate19" parent="." instance=ExtResource("176_8owep")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 8.21043, 0.472241, 25.6447)
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.64559, 0.944097, 25.6632)
+curve = SubResource("Curve3D_3m24n")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 1.5, 0, 0)
+progress = 1.5
+rotation_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Path3D/PathFollow3D"]
+transform = Transform3D(0.996779, -0.00812631, 0.0797833, -0.00621443, 0.984034, 0.177869, -0.079955, -0.177792, 0.980815, -0.00293541, 0.000882924, 0.00576639)
+fov = 81.8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Path3D/PathFollow3D"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_lk4aa")
+}
