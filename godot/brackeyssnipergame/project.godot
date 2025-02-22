@@ -23,6 +23,12 @@ Logger="*res://scripts/util/logger.gd"
 GameManager="*res://scripts/application/game_manager.gd"
 AudioManager="*res://prefabs/audio_manager.tscn"
 
+[display]
+
+window/size/viewport_width=1080
+window/size/viewport_height=720
+window/size/resizable=false
+
 [input]
 
 pause={

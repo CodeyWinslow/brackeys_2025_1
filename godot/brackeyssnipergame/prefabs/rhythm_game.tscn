@@ -1,0 +1,126 @@
+[gd_scene load_steps=11 format=3 uid="uid://btxonkb8nyiqs"]
+
+[ext_resource type="Script" path="res://scripts/beat_game_controller.gd" id="1_ra71r"]
+[ext_resource type="Resource" uid="uid://qmc2ilvpr5j7" path="res://resources/song_info/test_song/test_song.tres" id="2_xuvyn"]
+[ext_resource type="PackedScene" uid="uid://c58w5xgofq8bb" path="res://prefabs/letter_note.tscn" id="3_o8b07"]
+[ext_resource type="AudioStream" uid="uid://dkqw2y4ejvm3a" path="res://assets/audio/jaunt.mp3" id="4_r2ps7"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_81yck"]
+
+[sub_resource type="Animation" id="Animation_owfub"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="Animation" id="Animation_1rv1h"]
+resource_name = "heartbeat_anim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 0.406127, 2.92817),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fd24p"]
+_data = {
+"RESET": SubResource("Animation_owfub"),
+"heartbeat_anim": SubResource("Animation_1rv1h")
+}
+
+[sub_resource type="Gradient" id="Gradient_qwe0b"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.270588)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5521i"]
+gradient = SubResource("Gradient_qwe0b")
+width = 100
+
+[node name="RhythmGame" type="Node2D"]
+
+[node name="BeatGameManager" type="Node" parent="." node_paths=PackedStringArray("audio_player", "letter_spawn_location", "letter_trigger_location", "heartbeat_anim", "text_preview")]
+script = ExtResource("1_ra71r")
+song = ExtResource("2_xuvyn")
+audio_player = NodePath("AudioStreamPlayer")
+beats_per_letter = 2
+first_letter_beat_delay = 8
+letter_spawn_location = NodePath("../LocationReferences/SpawnLocation")
+letter_trigger_location = NodePath("../LocationReferences/HitLocation")
+letter_trigger_check_distance = 60.0
+letter_prefab = ExtResource("3_o8b07")
+letter_speed = 400.0
+heartbeat_anim = NodePath("../BeatBarContainer/AnimationPlayer")
+text_preview = NodePath("../UI/MarginContainer/RichTextLabel")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BeatGameManager"]
+stream = ExtResource("4_r2ps7")
+autoplay = true
+bus = &"GameMusic"
+
+[node name="LocationReferences" type="Node2D" parent="."]
+
+[node name="SpawnLocation" type="Node2D" parent="LocationReferences"]
+position = Vector2(1286, 154)
+
+[node name="HitLocation" type="Node2D" parent="LocationReferences"]
+position = Vector2(167, 154)
+
+[node name="BeatBarContainer" type="Node2D" parent="."]
+position = Vector2(168, 226)
+scale = Vector2(1.1, 1.1)
+
+[node name="BeatTrigger" type="Sprite2D" parent="BeatBarContainer"]
+scale = Vector2(46.75, 353.75)
+texture = SubResource("CanvasTexture_81yck")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BeatBarContainer"]
+root_node = NodePath("../BeatTrigger")
+libraries = {
+"": SubResource("AnimationLibrary_fd24p")
+}
+
+[node name="UI" type="Control" parent="."]
+custom_minimum_size = Vector2(1080, 720)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1080.0
+offset_bottom = 720.0
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -43.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="TextureRect" type="TextureRect" parent="UI/MarginContainer"]
+layout_mode = 2
+texture = SubResource("GradientTexture1D_5521i")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][color=green]Here[/color] [color=yellow]is[/color] some example text for testing[/center]"
+fit_content = true
