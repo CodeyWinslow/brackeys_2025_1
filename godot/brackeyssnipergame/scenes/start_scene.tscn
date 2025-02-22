@@ -2,16 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://bt3cr534gm5ah" path="res://scenes/GUI/main_menu.tscn" id="1_is85g"]
 [ext_resource type="Script" path="res://scripts/start_scene.gd" id="1_nddwb"]
-[ext_resource type="PackedScene" uid="uid://cwbou5otgers8" path="res://prefabs/temp_castle.tscn" id="2_relrn"]
+[ext_resource type="PackedScene" uid="uid://cbcwnrgcrk16o" path="res://prefabs/main_menu_background.tscn" id="3_8x02y"]
 
-[node name="StartScene" type="Node3D" node_paths=PackedStringArray("castle_asset")]
+[node name="StartScene" type="Node3D"]
 script = ExtResource("1_nddwb")
-castle_asset = NodePath("TempCastle")
 
 [node name="Shell" parent="." instance=ExtResource("1_is85g")]
 
-[node name="TempCastle" parent="." instance=ExtResource("2_relrn")]
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.911022, 0.412357, 0, -0.412357, 0.911022, -0.159707, 4.35392, 5.23787)
-fov = 104.063
+[node name="MedievalMusicVenue" parent="." instance=ExtResource("3_8x02y")]
