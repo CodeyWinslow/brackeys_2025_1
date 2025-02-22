@@ -13,6 +13,7 @@ var stages : Array[PackedScene]
 var current_stage = 0
 
 var game_director : GameplayDirector = null
+var music_director : MusicDirector = null
 var paused : bool = false
 var pause_screen_instance : Node = null
 
@@ -128,7 +129,21 @@ func unregister_gameplay_director(director : GameplayDirector):
 		return
 		
 	game_director = null
+
+func register_music_director(director : MusicDirector):
+	if game_director != null:
+		Logger.print_error('tried registering a MusicDirector while one is already registered')
+		return
+		
+	music_director = director
 	
+func unregister_music_director(director : MusicDirector):
+	if game_director != director:
+		Logger.print_error('tried unregistering a MusicDirector while it wasn\'t registered')
+		return
+		
+	music_director = null
+
 func get_gameplay_director() -> GameplayDirector:
 	return game_director
 
