@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dn56mua8xvuki"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/beat_game_director.gd" id="1_cvnf7"]
+
+[node name="BeatGameDirector" type="Node"]
+script = ExtResource("1_cvnf7")

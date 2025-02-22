@@ -25,10 +25,6 @@ func _process(delta):
 			is_idling = false
 			elapsed_time = 0
 	
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and event.keycode == KEY_SPACE:
-		throw_random_food_at_player()
-	
 func throw_random_food_at_player():
 	if throwableFoods.is_empty() or not player or not throwPoint:
 		print("Error, no foods to throw or no player/throw point.")

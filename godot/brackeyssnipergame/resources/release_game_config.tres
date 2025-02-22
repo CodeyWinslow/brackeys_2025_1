@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="GameConfig" load_steps=3 format=3 uid="uid://dx233o6fqmpks"]
 
 [ext_resource type="Script" path="res://scripts/resources/res_game_config.gd" id="1_fjaog"]
-[ext_resource type="PackedScene" uid="uid://capmktedb3t8n" path="res://scenes/stages/medieval_music_venue.tscn" id="2_qerl2"]
+[ext_resource type="PackedScene" uid="uid://bxi3joe7riqat" path="res://scenes/stages/wedding_stage.tscn" id="2_ojfym"]
 
 [resource]
 script = ExtResource("1_fjaog")
-stages = Array[PackedScene]([ExtResource("2_qerl2")])
+stages = Array[PackedScene]([ExtResource("2_ojfym")])

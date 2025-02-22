@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://q0l83x3lsh41"]
+[gd_scene load_steps=6 format=3 uid="uid://q0l83x3lsh41"]
 
 [ext_resource type="Texture2D" uid="uid://c3lthq1ow8cm5" path="res://assets/textures/button_light_256.png" id="1_0vtss"]
 [ext_resource type="Script" path="res://scripts/GUI/credits.gd" id="1_485nn"]
 [ext_resource type="Script" path="res://scripts/GUI/play_button.gd" id="2_ux2y1"]
-[ext_resource type="Theme" uid="uid://f8qsep8o8m6e" path="res://resources/SecondFont.tres" id="3_rkoyg"]
+[ext_resource type="Theme" path="res://resources/SecondFont.tres" id="3_rkoyg"]
+[ext_resource type="AudioStream" uid="uid://dbiye4qq75eqv" path="res://assets/audio/sfx/button_click_sound.mp3" id="4_y615b"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -46,6 +47,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("1_0vtss")
 script = ExtResource("2_ux2y1")
+click_sound = ExtResource("4_y615b")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/BackButton"]
 layout_mode = 1

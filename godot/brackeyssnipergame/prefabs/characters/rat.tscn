@@ -1,26 +1,161 @@
-[gd_scene load_steps=3 format=3 uid="uid://d6jgg007rgrt"]
+[gd_scene load_steps=9 format=3 uid="uid://d6jgg007rgrt"]
 
 [ext_resource type="PackedScene" uid="uid://dt3gs5usb8ow0" path="res://assets/meshes/ch_rat_01.glb" id="1_7df2r"]
+[ext_resource type="Script" path="res://scripts/gameplay/rat_controller.gd" id="1_lnfoc"]
+[ext_resource type="Animation" uid="uid://ljig25vxy3ns" path="res://resources/animations/rat/baseratanim.res" id="2_3mewq"]
+[ext_resource type="AnimationLibrary" uid="uid://bmiho55wsiuhi" path="res://resources/animations/rat/rat_anim_lib.tres" id="3_dkrwx"]
+
+[sub_resource type="Animation" id="Animation_bms0w"]
+resource_name = "Shame"
+length = 2.0667
+tracks/0/type = "rotation_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D:rat_body_1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0.0333328, 1, 0.945527, 0.325479, -0.00166067, 0.00623076, 0.666667, 1, 0.90491, 0.425553, -0.00232296, 0.00601532, 0.7, 1, 0.902481, 0.430682, -0.00235706, 0.00600204, 0.733333, 1, 0.901231, 0.433247, -0.00100019, 0.00885333, 1.03333, 1, 0.899257, 0.432597, 0.0237301, 0.0602791, 1.06667, 1, 0.89945, 0.432673, 0.0223118, 0.0573306, 1.23333, 1, 0.901274, 0.43321, -0.00569427, -0.000911863, 1.26667, 1, -0.901187, -0.4331, 0.0113046, 0.0125849, 1.4, 1, -0.899331, -0.431936, 0.0336824, 0.0591627, 1.43333, 1, -0.898987, -0.431742, 0.03609, 0.0641757, 1.56667, 1, -0.901261, -0.433179, 0.00770143, 0.00508778, 1.6, 1, 0.902297, 0.431066, -0.00235961, 0.00600104, 1.96667, 1, 0.942958, 0.33285, -0.00170926, 0.00621761, 2, 1, 0.946126, 0.323736, -0.00164918, 0.00623381, 2.03333, 1, 0.946904, 0.321452, -0.00163414, 0.00623777)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D:rat_body_2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0.0333328, 1, -3.39835e-09, 2.76984e-08, -0.0443255, 0.999017, 0.7, 1, -6.51128e-09, 2.69815e-08, -0.157416, 0.987532, 0.733333, 1, -0.00313021, 0.000508101, -0.160216, 0.987077, 1.03333, 1, -0.0594651, 0.00965202, -0.159926, 0.985289, 1.06667, 1, -0.0562347, 0.00912767, -0.159957, 0.985479, 1.36667, 1, 0.0586296, -0.00951636, -0.159934, 0.985339, 1.4, 1, 0.0713459, -0.0115804, -0.159798, 0.9845, 1.43333, 1, 0.0768335, -0.0124711, -0.159731, 0.984087, 1.56667, 1, 0.0121381, -0.00197014, -0.160205, 0.987007, 1.6, 1, -6.38886e-09, 2.68091e-08, -0.157835, 0.987466, 2, 1, -3.35313e-09, 2.75649e-08, -0.0424838, 0.999097, 2.03333, 1, -3.42623e-09, 2.75783e-08, -0.0400735, 0.999197)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("Armature/Skeleton3D:rat_body_3")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array()
+tracks/3/type = "position_3d"
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/path = NodePath("Armature/Skeleton3D:arms_1")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array()
+tracks/4/type = "rotation_3d"
+tracks/4/imported = true
+tracks/4/enabled = true
+tracks/4/path = NodePath("Armature/Skeleton3D:arms_1")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array()
+tracks/5/type = "rotation_3d"
+tracks/5/imported = true
+tracks/5/enabled = true
+tracks/5/path = NodePath("Armature/Skeleton3D:tail_2")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array()
+tracks/6/type = "rotation_3d"
+tracks/6/imported = true
+tracks/6/enabled = true
+tracks/6/path = NodePath("Armature/Skeleton3D:tail_3")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array()
+
+[sub_resource type="Animation" id="Animation_cl6lp"]
+resource_name = "Nod"
+length = 2.0
+tracks/0/type = "rotation_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D:rat_body_1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.946778, -0.321888, 4.41649e-08, 1.70831e-08, 0.0333333, 1, -0.946778, -0.321888, 4.41649e-08, 1.70831e-08, 0.0666667, 1, -0.947377, -0.32012, 4.41967e-08, 1.70006e-08, 0.133333, 1, -0.948959, -0.315398, 4.42808e-08, 1.67803e-08, 0.266667, 1, -0.952055, -0.305928, 4.44458e-08, 1.63383e-08, 0.3, 1, -0.952814, -0.303555, 4.44864e-08, 1.62275e-08, 0.366667, 1, -0.954315, -0.298803, 4.45667e-08, 1.60056e-08, 0.7, 1, -0.961465, -0.274928, 4.49518e-08, 1.489e-08, 0.866667, 1, -0.964815, -0.262928, 4.51338e-08, 1.43289e-08, 0.933333, 1, -0.966113, -0.258119, 4.52046e-08, 1.41039e-08, 1.03333, 1, -0.968014, -0.250896, 4.53087e-08, 1.37658e-08, 1.06667, 1, -0.967701, -0.2521, 4.52915e-08, 1.38222e-08, 1.16667, 1, -0.965791, -0.259322, 4.5187e-08, 1.41601e-08, 1.23333, 1, -0.964487, -0.26413, 4.51159e-08, 1.43851e-08, 1.3, 1, -0.963159, -0.268933, 4.50436e-08, 1.46097e-08, 1.43333, 1, -0.960431, -0.27852, 4.48958e-08, 1.5058e-08, 1.93333, 1, -0.949351, -0.314217, 4.43017e-08, 1.67252e-08, 2, 1, -0.947775, -0.31894, 4.42179e-08, 1.69456e-08)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D:rat_body_2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -3.19359e-09, 2.75689e-08, -0.0400735, 0.999197, 0.133333, 1, -3.1584e-09, 2.7573e-08, -0.0387979, 0.999247, 0.233333, 1, -3.12e-09, 2.75774e-08, -0.0374064, 0.9993, 0.333333, 1, -3.08159e-09, 2.75817e-08, -0.0360147, 0.999351, 0.433333, 1, -3.04317e-09, 2.75859e-08, -0.0346229, 0.9994, 0.466667, 1, -3.00641e-09, 2.759e-08, -0.0332914, 0.999446, 0.633333, 1, -2.46256e-09, 2.76438e-08, -0.0136047, 0.999908, 0.7, 1, -2.24462e-09, 2.76624e-08, -0.00572431, 0.999984, 0.733333, 1, -2.1356e-09, 2.7671e-08, -0.00178359, 0.999998, 0.766667, 1, -2.02654e-09, 2.76792e-08, 0.00215718, 0.999998, 1.03333, 1, -1.1534e-09, 2.77293e-08, 0.0336647, 0.999433, 1.06667, 1, -1.11793e-09, 2.77308e-08, 0.0349428, 0.999389, 1.16667, 1, -1.08525e-09, 2.77321e-08, 0.0361207, 0.999347, 1.26667, 1, -1.05256e-09, 2.77333e-08, 0.0372985, 0.999304, 1.36667, 1, -1.01987e-09, 2.77346e-08, 0.0384763, 0.99926, 1.43333, 1, -9.98081e-10, 2.77354e-08, 0.0392614, 0.999229, 1.46667, 1, -1.07411e-09, 2.77325e-08, 0.0365221, 0.999333, 1.53333, 1, -1.74781e-09, 2.76982e-08, 0.0122232, 0.999925, 1.56667, 1, -2.08486e-09, 2.76749e-08, 4.97578e-05, 1, 1.83333, 1, -4.76609e-09, 2.7341e-08, -0.0971904, 0.995266)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("Armature/Skeleton3D:rat_body_3")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -0.953158, -0.302473, -9.07829e-09, 6.44999e-08)
+tracks/3/type = "position_3d"
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/path = NodePath("Armature/Skeleton3D:arms_1")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 9.15627, 1.6406, -9.82325e-07)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = true
+tracks/4/enabled = true
+tracks/4/path = NodePath("Armature/Skeleton3D:arms_1")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 2.52689e-09, 2.3642e-08, 0.0302147, 0.999543)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = true
+tracks/5/enabled = true
+tracks/5/path = NodePath("Armature/Skeleton3D:tail_2")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, -0.439991, 0.898002, -2.8101e-08, 2.85444e-08)
+tracks/6/type = "rotation_3d"
+tracks/6/imported = true
+tracks/6/enabled = true
+tracks/6/path = NodePath("Armature/Skeleton3D:tail_3")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, -4.22702e-09, 4.27402e-08, 0.0984203, 0.995145)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wed2y"]
+_data = {
+"Armature|Take 001|BaseLayer": ExtResource("2_3mewq"),
+"Nod": SubResource("Animation_cl6lp"),
+"Shame": SubResource("Animation_bms0w")
+}
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_asuqh"]
 radius = 0.101984
 height = 0.411773
 
-[node name="Rat" type="StaticBody3D"]
+[node name="Rat" type="StaticBody3D" node_paths=PackedStringArray("animationController")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_lnfoc")
+animationController = NodePath("ch_rat_01/AnimationPlayer")
 
 [node name="ch_rat_01" parent="." instance=ExtResource("1_7df2r")]
 
 [node name="Skeleton3D" parent="ch_rat_01/Armature" index="0"]
-bones/1/rotation = Quaternion(0.946904, 0.321452, -0.00163414, 0.00623777)
-bones/2/rotation = Quaternion(-3.42623e-09, 2.75783e-08, -0.0400735, 0.999197)
+bones/1/rotation = Quaternion(0.945527, 0.325479, -0.00166067, 0.00623076)
+bones/2/rotation = Quaternion(-3.39835e-09, 2.76984e-08, -0.0443255, 0.999017)
+bones/2/scale = Vector3(1, 1, 1)
 bones/3/rotation = Quaternion(0.953158, 0.302473, 9.07829e-09, -6.44999e-08)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(-0.439213, -0.554159, -0.439213, 0.554159)
+bones/5/rotation = Quaternion(0.470679, 0.882305, -1.30662e-07, 4.89006e-09)
 bones/6/rotation = Quaternion(2.52689e-09, 2.3642e-08, 0.0302147, 0.999543)
+bones/8/rotation = Quaternion(-1.76293e-08, 3.11072e-09, -0.305387, 0.952228)
+bones/9/rotation = Quaternion(2.43154e-08, -4.29255e-09, -0.637536, 0.77042)
+bones/10/rotation = Quaternion(3.79898e-08, -9.59479e-09, -0.267336, 0.963603)
 bones/11/rotation = Quaternion(-0.439991, 0.898002, -2.8101e-08, 2.85444e-08)
+bones/11/scale = Vector3(1, 1, 1)
 bones/12/rotation = Quaternion(-4.22702e-09, 4.27402e-08, 0.0984203, 0.995145)
+bones/13/rotation = Quaternion(-0.00336708, 0.707099, 0.00336708, 0.707099)
+
+[node name="AnimationPlayer" parent="ch_rat_01" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_wed2y"),
+"rat_anim_lib": ExtResource("3_dkrwx")
+}
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.166344, 0.0145703)
 shape = SubResource("CapsuleShape3D_asuqh")
+
+[connection signal="animation_finished" from="ch_rat_01/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 
 [editable path="ch_rat_01"]

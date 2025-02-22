@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bt3cr534gm5ah"]
+[gd_scene load_steps=12 format=3 uid="uid://bt3cr534gm5ah"]
 
 [ext_resource type="Script" path="res://scripts/GUI/main_menu.gd" id="1_2wb4s"]
 [ext_resource type="Texture2D" uid="uid://cnarjjjpbt7py" path="res://assets/textures/button_dark_512.png" id="2_3vuga"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c3lthq1ow8cm5" path="res://assets/textures/button_light_256.png" id="4_52nja"]
 [ext_resource type="Script" path="res://scripts/GUI/play_button.gd" id="5_jfnns"]
 [ext_resource type="Theme" path="res://resources/SecondFont.tres" id="6_3ptvw"]
+[ext_resource type="AudioStream" uid="uid://dbiye4qq75eqv" path="res://assets/audio/sfx/button_click_sound.mp3" id="6_rnykr"]
 [ext_resource type="Script" path="res://scripts/GUI/options_button.gd" id="7_tw7u8"]
 [ext_resource type="Script" path="res://scripts/GUI/credits_button.gd" id="8_r6uag"]
 [ext_resource type="PackedScene" uid="uid://q0l83x3lsh41" path="res://prefabs/GUI/Credits.tscn" id="9_ji3pb"]
@@ -103,6 +104,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("4_52nja")
 script = ExtResource("5_jfnns")
+click_sound = ExtResource("6_rnykr")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/MarginContainer/Container/MarginContainer/MenuButtons/Control/PlayButton"]
 layout_mode = 1
@@ -134,6 +136,7 @@ pivot_offset = Vector2(128, 44)
 size_flags_horizontal = 4
 texture_normal = ExtResource("4_52nja")
 script = ExtResource("7_tw7u8")
+click_sound = ExtResource("6_rnykr")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/MarginContainer/Container/MarginContainer/MenuButtons/Control2/OptionsButton"]
 layout_mode = 1
@@ -166,6 +169,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("4_52nja")
 script = ExtResource("8_r6uag")
+click_sound = ExtResource("6_rnykr")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/MarginContainer/Container/MarginContainer/MenuButtons/Control3/CreditsButton"]
 layout_mode = 1

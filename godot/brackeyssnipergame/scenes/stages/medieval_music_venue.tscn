@@ -1,7 +1,8 @@
-[gd_scene load_steps=62 format=3 uid="uid://capmktedb3t8n"]
+[gd_scene load_steps=65 format=3 uid="uid://capmktedb3t8n"]
 
 [ext_resource type="PackedScene" uid="uid://b3lfmgj8c3f0i" path="res://prefabs/static_enviornment_assets/sm_barrel_01_static.tscn" id="1_iwniv"]
 [ext_resource type="PackedScene" uid="uid://dj4d73gosqihk" path="res://assets/meshes/town_pack/planks.glb" id="1_mn83r"]
+[ext_resource type="PackedScene" uid="uid://dn56mua8xvuki" path="res://prefabs/beat_game_director.tscn" id="1_sxeib"]
 [ext_resource type="PackedScene" uid="uid://cnys1qlhnsh6b" path="res://assets/meshes/town_pack/roofHighFlat.glb" id="2_m1k1g"]
 [ext_resource type="PackedScene" uid="uid://cp4eec24yovu" path="res://assets/meshes/castle_pack/wall-narrow-stairs-rail.glb" id="4_lisax"]
 [ext_resource type="PackedScene" uid="uid://gtlkhbnrpo0f" path="res://assets/meshes/town_pack/wallWoodDetailDiagonal.glb" id="5_p3afq"]
@@ -88,6 +89,24 @@ albedo_color = Color(0.236941, 0.109586, 0, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_wo7q4"]
 size = Vector3(9.99945, 0.0978394, 5.99524)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_bqh6j"]
+size = Vector3(0.0880737, 2.22069, 6.02853)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oewf0"]
+size = Vector3(0.0880737, 2.22069, 4.20518)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i0qwy"]
+size = Vector3(0.0880737, 2.22069, 0.756035)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cc34h"]
+size = Vector3(0.0880737, 2.22069, 1.09188)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jc224"]
+size = Vector3(0.0880737, 2.22069, 4.63586)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i04tk"]
+size = Vector3(1.06458, 0.894836, 1.89169)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_3w3c1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7lkj"]
@@ -96,99 +115,12 @@ albedo_color = Color(0.193782, 0.194871, 0.0858134, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_kkun7"]
 size = Vector3(78.41, 0.518066, 72.595)
 
-[sub_resource type="Curve3D" id="Curve3D_3m24n"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.5, 0, 0),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
-[sub_resource type="Animation" id="Animation_lwfxt"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PathFollow3D:progress_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PathFollow3D/Camera3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.178821, 0.0811653, -0.00631517)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PathFollow3D/Camera3D:fov")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [81.8]
-}
-
-[sub_resource type="Animation" id="Animation_iakua"]
-resource_name = "camera_end_rotate"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PathFollow3D:progress_ratio")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PathFollow3D/Camera3D:rotation")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-0.178821, 0.0811653, -0.00631517), Vector3(-0.178821, -3.06043, -0.00631518)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PathFollow3D/Camera3D:fov")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.566667, 2.5, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [81.8, 90.0, 90.0, 45.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lk4aa"]
-_data = {
-"RESET": SubResource("Animation_lwfxt"),
-"camera_end_rotate": SubResource("Animation_iakua")
-}
-
 [node name="MedievalMusicVenue" type="Node3D"]
+
+[node name="BeatGameDirector" parent="." node_paths=PackedStringArray("food_throwing_npcs", "stageCameraPosition", "ratCameraPosition") instance=ExtResource("1_sxeib")]
+food_throwing_npcs = NodePath("../NPCs/FoodThrowingPatrons")
+stageCameraPosition = NodePath("../CameraStuff/StageCameraPoint")
+ratCameraPosition = NodePath("../CameraStuff/RatCameraPoint")
 
 [node name="Lighting" type="Node3D" parent="."]
 
@@ -244,17 +176,21 @@ light_energy = 0.5
 spot_range = 5.524
 spot_angle = 22.37
 
+[node name="CameraStuff" type="Node3D" parent="."]
+
+[node name="StageCameraPoint" type="Node3D" parent="CameraStuff"]
+transform = Transform3D(0.0871558, 0.172987, -0.98106, 0, 0.984808, 0.173648, 0.996195, -0.0151344, 0.0858317, -2.65, 0.945, 25.66)
+
+[node name="RatCameraPoint" type="Node3D" parent="CameraStuff"]
+transform = Transform3D(-0.834848, -0.09559, 0.542118, 0, 0.984808, 0.173648, -0.550481, 0.14497, -0.822165, 1.324, 1.619, 23.3)
+
+[node name="Camera3D" type="Camera3D" parent="CameraStuff/RatCameraPoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("41_s4ttd")
+sway_amount_x = 0.0
+
 [node name="Tavern" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25)
-
-[node name="StaticEnviornmentAssetTemplate" parent="Tavern" instance=ExtResource("173_8bq8a")]
-transform = Transform3D(0.6, 0, -1.77636e-15, 0, 0.6, 0, 1.77636e-15, 0, 0.6, -1.09141, 0.0489502, -0.657494)
-
-[node name="StaticEnviornmentAssetTemplate3" parent="Tavern" instance=ExtResource("173_8bq8a")]
-transform = Transform3D(-2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, 1.93016, 0.0489502, 0.297695)
-
-[node name="StaticEnviornmentAssetTemplate2" parent="Tavern" instance=ExtResource("173_8bq8a")]
-transform = Transform3D(-0.6, 0, -5.24537e-08, 0, 0.6, 0, 5.24537e-08, 0, -0.6, -0.0610681, 0.0489502, 1.77105)
 
 [node name="Floor" type="StaticBody3D" parent="Tavern"]
 
@@ -487,7 +423,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.60137, 2.00825, 3.63248)
 transform = Transform3D(0.275273, 0, -0.533127, 0, 0.6, 0, 0.533127, 0, 0.275273, -0.0751426, 0, -0.164579)
 
 [node name="StaticEnviornmentAssetTemplate2" parent="Tavern/Ceiling" instance=ExtResource("177_qb3j0")]
-transform = Transform3D(-0.0252928, 0, -0.599467, 0, 0.6, 0, 0.599467, 0, -0.0252928, 0.0104168, 0, 0.252626)
+transform = Transform3D(-0.0252928, 0, -0.599467, 0, 0.6, 0, 0.599467, 0, -0.0252928, 0.132875, 0.0617421, 0.252626)
 
 [node name="StaticEnviornmentAssetTemplate5" parent="Tavern/Ceiling" instance=ExtResource("177_qb3j0")]
 transform = Transform3D(-0.599338, 0, 0.0281698, 0, 0.6, 0, -0.0281698, 0, -0.599338, -1.38807, 0, -0.319447)
@@ -548,6 +484,41 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.465
 [node name="wallWoodDetailDiagonal13" parent="Tavern/LeftWall" instance=ExtResource("5_p3afq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.46533, 1.01807, -1.42749)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Tavern/LeftWall"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.386191, 0, -2.12359)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tavern/LeftWall/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.241314, 1.02804, 0.345535)
+shape = SubResource("BoxShape3D_bqh6j")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Tavern/LeftWall"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.386191, 0, 1.86472)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tavern/LeftWall/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.241314, 1.02804, 1.25721)
+shape = SubResource("BoxShape3D_oewf0")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="Tavern/LeftWall"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.386191, 0, 1.86472)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tavern/LeftWall/StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.245798, 1.02804, -1.69906)
+shape = SubResource("BoxShape3D_i0qwy")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="Tavern/LeftWall"]
+transform = Transform3D(0.989543, 0, -0.144235, 0, 1, 0, 0.144235, 0, 0.989543, 2.38326, 0, 3.22237)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tavern/LeftWall/StaticBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.245798, 1.02804, -1.69906)
+shape = SubResource("BoxShape3D_i0qwy")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="Tavern/LeftWall"]
+transform = Transform3D(0.989543, 0, -0.144235, 0, 1, 0, 0.144235, 0, 0.989543, 2.38326, 0, 0.525488)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tavern/LeftWall/StaticBody3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.245798, 1.02804, -1.86699)
+shape = SubResource("BoxShape3D_cc34h")
+
 [node name="BackWall" type="Node3D" parent="Tavern"]
 
 [node name="wallWoodDetailDiagonal4" parent="Tavern/BackWall" instance=ExtResource("5_p3afq")]
@@ -604,6 +575,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.46533, 1.01807, 1.57251)
 [node name="wallWoodDetailDiagonal13" parent="Tavern/BackWall" instance=ExtResource("5_p3afq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.46533, 1.01807, 2.57251)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Tavern/BackWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98542, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tavern/BackWall/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.061554, 1.02804, 0.345276)
+shape = SubResource("BoxShape3D_jc224")
+
 [node name="Stage" type="Node3D" parent="Tavern"]
 
 [node name="stairsWoodHandrail3" parent="Tavern/Stage" instance=ExtResource("6_rxjxf")]
@@ -614,6 +592,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49159, -0.109591, 0.246098
 
 [node name="wallWoodBlockHalf3" parent="Tavern/Stage" instance=ExtResource("7_y1153")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49159, -0.111958, 1.19565)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tavern/Stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.58228, 0, 0.812428)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tavern/Stage/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0322876, -0.0525818, -0.108261)
+shape = SubResource("BoxShape3D_i04tk")
 
 [node name="RightWall" type="Node3D" parent="Tavern"]
 
@@ -866,6 +851,27 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.17861, 0.474958, 0.36
 [node name="StaticEnviornmentAssetTemplate6" parent="Tavern/Inside" instance=ExtResource("33_jfdtu")]
 transform = Transform3D(0.383999, 0.180591, -0.424184, 0.00756821, 0.549508, 0.240798, 0.460964, -0.159461, 0.349406, -0.208365, 0.0760283, 1.37334)
 
+[node name="StaticEnviornmentAssetTemplate7" parent="Tavern/Inside" instance=ExtResource("41_oytwh")]
+transform = Transform3D(-0.095124, 0.0621963, -0.589138, 0.00991402, 0.596768, 0.0614011, 0.592329, 0, -0.0956392, 2.83584, 0.136233, 3.60865)
+
+[node name="StaticEnviornmentAssetTemplate8" parent="Tavern/Inside" instance=ExtResource("42_qlvh2")]
+transform = Transform3D(0.210232, 0.280981, 0.486674, 8.47306e-09, 0.519615, -0.3, -0.561963, 0.105116, 0.182067, 2.82514, 0.243066, 3.48113)
+
+[node name="StaticEnviornmentAssetTemplate9" parent="Tavern/Inside" instance=ExtResource("43_uw5fy")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.01613, 1.16467, 0.49502)
+
+[node name="StaticEnviornmentAssetTemplate10" parent="Tavern/Inside" instance=ExtResource("184_50kar")]
+transform = Transform3D(0.582835, 0, 0.142489, 0, 0.6, 0, -0.142489, 0, 0.582835, 0.884349, 1.43406, 0.452627)
+
+[node name="StaticEnviornmentAssetTemplate11" parent="Tavern/Inside" instance=ExtResource("173_8bq8a")]
+transform = Transform3D(0.6, 0, -1.77636e-15, 0, 0.6, 0, 1.77636e-15, 0, 0.6, -1.09141, 0.0489502, 1.40051)
+
+[node name="StaticEnviornmentAssetTemplate12" parent="Tavern/Inside" instance=ExtResource("173_8bq8a")]
+transform = Transform3D(-2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, 1.93016, 0.0489502, 2.3557)
+
+[node name="StaticEnviornmentAssetTemplate13" parent="Tavern/Inside" instance=ExtResource("173_8bq8a")]
+transform = Transform3D(-0.6, 0, -5.24537e-08, 0, 0.6, 0, 5.24537e-08, 0, -0.6, -0.0610681, 0.0489502, 3.82905)
+
 [node name="Outside" type="Node3D" parent="Tavern"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.058)
 
@@ -973,53 +979,62 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -1.25051, 0.45455, 24.1
 [node name="StaticEnviornmentAssetTemplate12" parent="StaticGeo/Vista/ground" instance=ExtResource("179_85j0k")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.889195, 0.45455, 24.1524)
 
-[node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.64559, 0.944097, 25.6632)
-curve = SubResource("Curve3D_3m24n")
-
-[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 0, 0)
-progress = 1.5
-rotation_mode = 4
-loop = false
-
-[node name="Camera3D" type="Camera3D" parent="Path3D/PathFollow3D"]
-transform = Transform3D(0.996779, -0.00812635, 0.0797834, -0.00621443, 0.984034, 0.17787, -0.079955, -0.177792, 0.980815, -0.00293541, 0.000882924, 0.00576639)
-fov = 81.8
-script = ExtResource("41_s4ttd")
-sway_amount_x = 0.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Path3D/PathFollow3D"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_lk4aa")
-}
-
-[node name="StaticEnviornmentAssetTemplate" parent="Path3D" instance=ExtResource("41_oytwh")]
-transform = Transform3D(-0.095124, 0.0621963, -0.589138, 0.00991402, 0.596768, 0.0614011, 0.592329, 0, -0.0956392, 5.48143, -0.807864, 0.887449)
-
-[node name="StaticEnviornmentAssetTemplate2" parent="Path3D" instance=ExtResource("42_qlvh2")]
-transform = Transform3D(0.210232, 0.280981, 0.486674, 8.47306e-09, 0.519615, -0.3, -0.561963, 0.105116, 0.182067, 5.47073, -0.701031, 0.759933)
-
-[node name="StaticEnviornmentAssetTemplate3" parent="Path3D" instance=ExtResource("43_uw5fy")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 3.66172, 0.220572, -2.22618)
-
-[node name="StaticEnviornmentAssetTemplate4" parent="Path3D" instance=ExtResource("184_50kar")]
-transform = Transform3D(0.582835, 0, 0.142489, 0, 0.6, 0, -0.142489, 0, 0.582835, 3.52994, 0.489966, -2.26857)
-
-[node name="Rat" parent="Path3D" instance=ExtResource("44_rrkxu")]
-transform = Transform3D(-0.197121, 0, 0.348056, 0, 0.4, 0, -0.348056, 0, -0.197121, 3.57511, 0.466713, -2.18263)
-
 [node name="NPCs" type="Node3D" parent="."]
 
-[node name="NpcPatron" parent="NPCs" instance=ExtResource("41_131tl")]
+[node name="Rat" parent="NPCs" instance=ExtResource("44_rrkxu")]
+transform = Transform3D(-0.197121, 0, 0.348056, 0, 0.4, 0, -0.348056, 0, -0.197121, 0.929522, 1.41081, 23.4806)
+
+[node name="NpcPatron7" parent="NPCs" instance=ExtResource("41_131tl")]
+transform = Transform3D(-0.821037, 0, -0.219996, 0, 0.85, 0, 0.219996, 0, -0.821037, 6.00482, 0, 26.2225)
+
+[node name="NpcPatron8" parent="NPCs" instance=ExtResource("41_131tl")]
+transform = Transform3D(0.219996, 0, 0.821037, 0, 0.85, 0, -0.821037, 0, 0.219996, 6.4573, 0, 24.5403)
+
+[node name="FoodThrowingPatrons" type="Node3D" parent="NPCs"]
+
+[node name="NpcPatron" parent="NPCs/FoodThrowingPatrons" node_paths=PackedStringArray("player") instance=ExtResource("41_131tl")]
 transform = Transform3D(-0.773352, -0.0462561, 0.632288, -0.095151, 0.994506, -0.0436244, -0.626796, -0.0938998, -0.773504, -1.34263, 0.194498, 23.8097)
+player = NodePath("../../../CameraStuff/RatCameraPoint/Camera3D")
 
-[node name="NpcPatron2" parent="NPCs" instance=ExtResource("41_131tl")]
+[node name="NpcPatron2" parent="NPCs/FoodThrowingPatrons" node_paths=PackedStringArray("player") instance=ExtResource("41_131tl")]
 transform = Transform3D(-0.565685, 0, 0.565685, 0, 0.8, 0, -0.565685, 0, -0.565685, 0.348793, 0.416219, 23.9452)
+player = NodePath("../../../CameraStuff/RatCameraPoint/Camera3D")
 
-[node name="NpcPatron4" parent="NPCs" instance=ExtResource("41_131tl")]
-transform = Transform3D(0.4, 0, 0.69282, 0, 0.8, 0, -0.69282, 0, 0.4, 1.34962, 0.239288, 26.1978)
+[node name="NpcPatron4" parent="NPCs/FoodThrowingPatrons" node_paths=PackedStringArray("player") instance=ExtResource("41_131tl")]
+transform = Transform3D(0.383383, 0.227502, 0.664274, -0.113587, 0.76697, -0.197117, -0.692904, 0.000147889, 0.399856, 1.34962, 0.286136, 26.1978)
+player = NodePath("../../../CameraStuff/RatCameraPoint/Camera3D")
 
-[node name="NpcPatron3" parent="NPCs" instance=ExtResource("41_131tl")]
+[node name="NpcPatron3" parent="NPCs/FoodThrowingPatrons" node_paths=PackedStringArray("player") instance=ExtResource("41_131tl")]
 transform = Transform3D(0.248034, 0, 0.813006, 0, 0.85, 0, -0.813006, 0, 0.248034, -0.703053, 5.96046e-08, 26.3926)
+player = NodePath("../../../CameraStuff/RatCameraPoint/Camera3D")
+
+[node name="NpcPatron6" parent="NPCs/FoodThrowingPatrons" node_paths=PackedStringArray("player") instance=ExtResource("41_131tl")]
+transform = Transform3D(-0.0264047, 0.221715, 0.82015, 0.00713442, 0.820574, -0.221601, -0.84956, 0, -0.0273515, 3.3169, 5.96046e-08, 25.4274)
+player = NodePath("../../../CameraStuff/RatCameraPoint/Camera3D")
+
+[node name="NpcPatron5" parent="NPCs/FoodThrowingPatrons" node_paths=PackedStringArray("player") instance=ExtResource("41_131tl")]
+transform = Transform3D(-0.0157708, 0.136001, 0.838901, 0.00255629, 0.839049, -0.135977, -0.84985, 0, -0.0159766, 0.0497376, 0.304717, 25.2228)
+player = NodePath("../../../CameraStuff/RatCameraPoint/Camera3D")
+
+[node name="RatDialogueHUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="RatDialogueHUD"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -281.5
+offset_top = -131.0
+offset_right = 281.5
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+text = "[center]Alright listen up, you want to be a bard? Well nows your chance. I worked hard to get you this gig so make sure nothing goes wrong. [/center]"

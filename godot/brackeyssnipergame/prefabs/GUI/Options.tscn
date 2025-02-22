@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://o7gli1hefjg"]
+[gd_scene load_steps=7 format=3 uid="uid://o7gli1hefjg"]
 
 [ext_resource type="Script" path="res://scripts/GUI/options.gd" id="1_2lqd2"]
 [ext_resource type="Texture2D" uid="uid://c3lthq1ow8cm5" path="res://assets/textures/button_light_256.png" id="1_gy6y5"]
 [ext_resource type="Script" path="res://scripts/GUI/play_button.gd" id="2_884vk"]
 [ext_resource type="Theme" path="res://resources/SecondFont.tres" id="3_58ear"]
+[ext_resource type="AudioStream" uid="uid://dbiye4qq75eqv" path="res://assets/audio/sfx/button_click_sound.mp3" id="4_hfyth"]
 [ext_resource type="PackedScene" uid="uid://beyq01s3mvo52" path="res://prefabs/GUI/slider_base.tscn" id="5_vu67q"]
 
 [node name="Options" type="Control"]
@@ -32,6 +33,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("1_gy6y5")
 script = ExtResource("2_884vk")
+click_sound = ExtResource("4_hfyth")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/BackButton"]
 layout_mode = 1
