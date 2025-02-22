@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/GUI/main_menu.gd" id="1_2wb4s"]
 [ext_resource type="Texture2D" uid="uid://cnarjjjpbt7py" path="res://assets/textures/button_dark_512.png" id="2_3vuga"]
-[ext_resource type="Theme" path="res://resources/TitleFont.tres" id="3_d6fs7"]
+[ext_resource type="Theme" uid="uid://cnp58wdcjgj2f" path="res://resources/TitleFont.tres" id="3_d6fs7"]
 [ext_resource type="Texture2D" uid="uid://c3lthq1ow8cm5" path="res://assets/textures/button_light_256.png" id="4_52nja"]
 [ext_resource type="Script" path="res://scripts/GUI/play_button.gd" id="5_jfnns"]
 [ext_resource type="Theme" path="res://resources/SecondFont.tres" id="6_3ptvw"]
@@ -62,7 +62,7 @@ offset_bottom = 38.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_d6fs7")
-text = "Secret Squire"
+text = "Bard's Big Gig"
 
 [node name="MarginContainer" type="MarginContainer" parent="MainMenu/MarginContainer/Container"]
 layout_mode = 2
