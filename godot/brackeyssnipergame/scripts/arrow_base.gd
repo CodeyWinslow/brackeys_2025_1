@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-var launch_force = 200.0
+var launch_force = 20.0
 var current_time = 0
 var lifetime = 100 #seconds
 @export var smoke_emitter : CPUParticles3D

@@ -12,9 +12,13 @@ camera = NodePath("Camera3D")
 fov = 65.0
 near = 0.01
 
-[node name="Crossbow" parent="Camera3D" instance=ExtResource("2_bjgpu")]
+[node name="Crossbow" parent="Camera3D" node_paths=PackedStringArray("firingPointTransform") instance=ExtResource("2_bjgpu")]
 transform = Transform3D(-0.0995747, 0.00302081, 0.00870364, 0.00348517, 0.0998021, 0.0052336, -0.00852832, 0.00551467, -0.0994829, 0.028, -0.012, -0.032)
 firingSFX = ExtResource("3_35d6w")
+firingPointTransform = NodePath("../../FiringPoint")
+
+[node name="FiringPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.10389)
 
 [editable path="Camera3D/Crossbow"]
 [editable path="Camera3D/Crossbow/crossbow"]

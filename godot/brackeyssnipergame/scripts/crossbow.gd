@@ -3,6 +3,7 @@ extends Node3D
 @export var arrow: PackedScene 
 @export var reload_time = 1.0
 @export var firingSFX: AudioStream
+@export var firingPointTransform: Node3D
 
 var can_shoot = true
 @export var cooldown_timer : Timer  # Reference to a Timer node
@@ -24,7 +25,7 @@ func shoot():
 	get_tree().get_root().add_child(arrowInstance)
 	
 	# Set position and rotation
-	arrowInstance.global_transform = global_transform
+	arrowInstance.global_transform = firingPointTransform.global_transform
 	
 	arrowInstance.fire_arrow()
 	
