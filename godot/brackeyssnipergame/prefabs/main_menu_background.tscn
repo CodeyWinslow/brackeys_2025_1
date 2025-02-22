@@ -36,6 +36,20 @@
 [ext_resource type="PackedScene" uid="uid://voy3d45rru2n" path="res://prefabs/static_enviornment_assets/sm_turkeyleg_01_static.tscn" id="187_4eyfs"]
 [ext_resource type="Script" path="res://scripts/gameplay/camera_sway.gd" id="190_fpk20"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h2jv8"]
+sky_top_color = Color(1.14311e-07, 0.106276, 0.192761, 1)
+sky_horizon_color = Color(0.502844, 0.289269, 0.173231, 1)
+sky_curve = 0.0923358
+
+[sub_resource type="Sky" id="Sky_avw88"]
+sky_material = SubResource("ProceduralSkyMaterial_h2jv8")
+
+[sub_resource type="Environment" id="Environment_iiwly"]
+background_mode = 2
+sky = SubResource("Sky_avw88")
+ambient_light_source = 3
+ambient_light_color = Color(0.27451, 0.823529, 0.823529, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_yk6n1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fginq"]
@@ -52,21 +66,18 @@ albedo_color = Color(0.193782, 0.194871, 0.0858134, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_kkun7"]
 size = Vector3(78.41, 0.518066, 72.595)
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h2jv8"]
-sky_top_color = Color(1.14311e-07, 0.106276, 0.192761, 1)
-sky_horizon_color = Color(0.502844, 0.289269, 0.173231, 1)
-sky_curve = 0.0923358
-
-[sub_resource type="Sky" id="Sky_avw88"]
-sky_material = SubResource("ProceduralSkyMaterial_h2jv8")
-
-[sub_resource type="Environment" id="Environment_iiwly"]
-background_mode = 2
-sky = SubResource("Sky_avw88")
-ambient_light_source = 3
-ambient_light_color = Color(0.27451, 0.823529, 0.823529, 1)
-
 [node name="MedievalMusicVenue" type="Node3D"]
+
+[node name="Lighting" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
+transform = Transform3D(-0.840292, 0.440026, -0.31668, 2.53848e-08, 0.584136, 0.811656, 0.542133, 0.682028, -0.490845, 1.2111, 3.89935, 39.67)
+light_color = Color(0.847059, 1, 1, 1)
+light_energy = 0.25
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
+environment = SubResource("Environment_iiwly")
 
 [node name="Tavern" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25)
@@ -681,17 +692,6 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -1.25051, 0.45455, 24.1
 
 [node name="StaticEnviornmentAssetTemplate12" parent="StaticGeo/Vista/ground" instance=ExtResource("180_ejaba")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.889195, 0.45455, 24.1524)
-
-[node name="Lighting" type="Node3D" parent="."]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
-transform = Transform3D(-0.840292, 0.440026, -0.31668, 2.53848e-08, 0.584136, 0.811656, 0.542133, 0.682028, -0.490845, 1.2111, 3.89935, 39.67)
-light_color = Color(0.847059, 1, 1, 1)
-light_energy = 0.25
-shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
-environment = SubResource("Environment_iiwly")
 
 [node name="StaticEnviornmentAssetTemplate13" parent="." instance=ExtResource("181_qv3is")]
 transform = Transform3D(0.53668, 0, -0.268281, 0, 0.6, 0, 0.268281, 0, 0.53668, 2.50885, 0.460417, 26.362)
