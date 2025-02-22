@@ -637,7 +637,6 @@ transform = Transform3D(-4.37114e-08, 0, 0.986099, 0, 1, 0, -1, 0, -4.31037e-08,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.997383)
 
 [node name="wallWood9" parent="Tavern/Bar" instance=ExtResource("138_wfyf4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="wallWood6" parent="Tavern/Bar" instance=ExtResource("138_wfyf4")]
 transform = Transform3D(-4.37114e-08, 0.392066, -8.63593e-08, -1, -1.71377e-08, -8.63593e-08, -4.43276e-08, 1.73793e-08, 2.00352, -1.40582, -0.0812156, 0.427323)
@@ -1211,7 +1210,12 @@ light_bake_mode = 1
 transform = Transform3D(-0.6, 0, 5.24537e-08, 0, 0.6, 0, -5.24537e-08, 0, -0.6, 1.03067, 0.0489502, 4.20312)
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="random/StaticEnviornmentAssetTemplate3"]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.205009, 1.09772, 0.718441)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.168243, 1.09772, 0.652985)
+light_color = Color(0.691504, 0.456845, 0.12234, 1)
+light_bake_mode = 1
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="random/StaticEnviornmentAssetTemplate3"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 5.1437, 2.07636, 1.42523)
 light_color = Color(0.691504, 0.456845, 0.12234, 1)
 light_bake_mode = 1
 
@@ -1219,7 +1223,7 @@ light_bake_mode = 1
 transform = Transform3D(-0.6, 0, 5.24537e-08, 0, 0.6, 0, -5.24537e-08, 0, -0.6, 2.03232, 0.0489502, 4.20312)
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="random/StaticEnviornmentAssetTemplate4"]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.602612, 1.23744, 0.875214)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.19876, 1.19127, 0.604221)
 light_color = Color(0.691504, 0.456845, 0.12234, 1)
 light_bake_mode = 1
 
