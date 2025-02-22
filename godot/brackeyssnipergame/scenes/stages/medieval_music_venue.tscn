@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://capmktedb3t8n"]
+[gd_scene load_steps=55 format=3 uid="uid://capmktedb3t8n"]
 
 [ext_resource type="PackedScene" uid="uid://b3lfmgj8c3f0i" path="res://prefabs/static_enviornment_assets/sm_barrel_01_static.tscn" id="1_iwniv"]
 [ext_resource type="PackedScene" uid="uid://dj4d73gosqihk" path="res://assets/meshes/town_pack/planks.glb" id="1_mn83r"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dwc50uipafdmv" path="res://assets/meshes/town_pack/bannerGreen.glb" id="15_fbydv"]
 [ext_resource type="PackedScene" uid="uid://bbhfj20gd5ew1" path="res://assets/meshes/town_pack/cart.glb" id="19_k1v8q"]
 [ext_resource type="PackedScene" uid="uid://cbbehpjbbi5c5" path="res://prefabs/ground_hills.tscn" id="20_d557n"]
+[ext_resource type="Script" path="res://scripts/gameplay/camera_sway.gd" id="41_s4ttd"]
 [ext_resource type="PackedScene" uid="uid://q4heifi21srm" path="res://assets/meshes/town_pack/road.glb" id="56_y3bsp"]
 [ext_resource type="PackedScene" uid="uid://cab0okfg6und3" path="res://assets/meshes/town_pack/wallWood.glb" id="138_wfyf4"]
 [ext_resource type="PackedScene" uid="uid://cf8hmbpmryqix" path="res://prefabs/static_enviornment_assets/sm_lightpost_01_static.tscn" id="159_fta7i"]
@@ -949,6 +950,8 @@ rotation_mode = 4
 [node name="Camera3D" type="Camera3D" parent="Path3D/PathFollow3D"]
 transform = Transform3D(0.996779, -0.00812635, 0.0797834, -0.00621443, 0.984034, 0.17787, -0.079955, -0.177792, 0.980815, -0.00293541, 0.000882924, 0.00576639)
 fov = 81.8
+script = ExtResource("41_s4ttd")
+sway_amount_x = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Path3D/PathFollow3D"]
 root_node = NodePath("../..")
