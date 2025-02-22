@@ -1,7 +1,7 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ba2qnqoou88i7"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cnp58wdcjgj2f"]
 
 [ext_resource type="FontFile" uid="uid://bts00mgvxjy43" path="res://assets/fenwick-woodtype/FenwickWoodtype.ttf" id="1_hlyvb"]
 
 [resource]
 default_font = ExtResource("1_hlyvb")
-default_font_size = 70
+default_font_size = 61

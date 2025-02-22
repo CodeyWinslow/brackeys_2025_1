@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://2v3vnehqaeg0"]
+
+[ext_resource type="PackedScene" uid="uid://bsfooothg0lxl" path="res://assets/meshes/sm_apple_01.glb" id="1_4d7sq"]
+[ext_resource type="Script" path="res://scripts/gameplay/throwable_food.gd" id="1_idcxj"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pds5g"]
+radius = 0.052209
+
+[node name="RbTemplate" type="RigidBody3D" node_paths=PackedStringArray("rb")]
+script = ExtResource("1_idcxj")
+rb = NodePath(".")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0286579, 0)
+shape = SubResource("SphereShape3D_pds5g")
+
+[node name="sm_apple_012" parent="." instance=ExtResource("1_4d7sq")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)

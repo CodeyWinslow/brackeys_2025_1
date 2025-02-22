@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://nfe3u8ta47ya"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/throwable_food.gd" id="1_2ow6k"]
+[ext_resource type="PackedScene" uid="uid://bjkxww2hc25vx" path="res://assets/meshes/sm_pie_01.glb" id="1_qfnoo"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_y2w2v"]
+height = 0.0748687
+radius = 0.132291
+
+[node name="RbTemplate" type="RigidBody3D" node_paths=PackedStringArray("rb")]
+script = ExtResource("1_2ow6k")
+rb = NodePath(".")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.022078, 0)
+shape = SubResource("CylinderShape3D_y2w2v")
+
+[node name="sm_pie_012" parent="." instance=ExtResource("1_qfnoo")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)

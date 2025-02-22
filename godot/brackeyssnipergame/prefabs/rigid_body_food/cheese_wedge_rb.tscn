@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://npf2pe02p5du"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/throwable_food.gd" id="1_6g4a5"]
+[ext_resource type="PackedScene" uid="uid://dleel2h6mlvp5" path="res://assets/meshes/sm_cheesewedge_01.glb" id="1_a3a8h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pich7"]
+size = Vector3(0.131592, 0.115234, 0.134033)
+
+[node name="RbTemplate" type="RigidBody3D" node_paths=PackedStringArray("rb")]
+script = ExtResource("1_6g4a5")
+rb = NodePath(".")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.00183105, -0.000976563, 0.00939941)
+shape = SubResource("BoxShape3D_pich7")
+
+[node name="sm_cheesewedge_012" parent="." instance=ExtResource("1_a3a8h")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/GUI/main_menu.gd" id="1_2wb4s"]
 [ext_resource type="Texture2D" uid="uid://cnarjjjpbt7py" path="res://assets/textures/button_dark_512.png" id="2_3vuga"]
-[ext_resource type="Theme" path="res://resources/TitleFont.tres" id="3_d6fs7"]
+[ext_resource type="Theme" uid="uid://cnp58wdcjgj2f" path="res://resources/TitleFont.tres" id="3_d6fs7"]
 [ext_resource type="Texture2D" uid="uid://c3lthq1ow8cm5" path="res://assets/textures/button_light_256.png" id="4_52nja"]
 [ext_resource type="Script" path="res://scripts/GUI/play_button.gd" id="5_jfnns"]
 [ext_resource type="Theme" path="res://resources/SecondFont.tres" id="6_3ptvw"]
@@ -25,17 +25,25 @@ main_menu_node = NodePath("MainMenu")
 
 [node name="MainMenu" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MainMenu"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -257.0
+offset_right = 256.0
+offset_bottom = 257.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_top = 10
@@ -43,6 +51,8 @@ theme_override_constants/margin_top = 10
 [node name="Container" type="VBoxContainer" parent="MainMenu/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
 
 [node name="Title" type="TextureRect" parent="MainMenu/MarginContainer/Container"]
 layout_mode = 2
@@ -62,7 +72,7 @@ offset_bottom = 38.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_d6fs7")
-text = "Secret Squire"
+text = "Bard's Big Gig"
 
 [node name="MarginContainer" type="MarginContainer" parent="MainMenu/MarginContainer/Container"]
 layout_mode = 2
@@ -75,14 +85,25 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 20
+alignment = 1
 
-[node name="PlayButton" type="TextureButton" parent="MainMenu/MarginContainer/Container/MarginContainer/MenuButtons"]
+[node name="Control" type="Control" parent="MainMenu/MarginContainer/Container/MarginContainer/MenuButtons"]
+custom_minimum_size = Vector2(256, 88)
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="PlayButton" type="TextureButton" parent="MainMenu/MarginContainer/Container/MarginContainer/MenuButtons/Control"]
+layout_mode = 2
+offset_right = 256.0
+offset_bottom = 88.0
+pivot_offset = Vector2(128, 44)
 size_flags_horizontal = 4
+size_flags_vertical = 4
 texture_normal = ExtResource("4_52nja")
 script = ExtResource("5_jfnns")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/MarginContainer/Container/MarginContainer/MenuButtons/PlayButton"]
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/MarginContainer/Container/MarginContainer/MenuButtons/Control/PlayButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -99,37 +120,53 @@ mouse_filter = 2
 theme = ExtResource("6_3ptvw")
 text = "Play"
 
-[node name="OptionsButton" type="TextureButton" parent="MainMenu/MarginContainer/Container/MarginContainer/MenuButtons"]
+[node name="Control2" type="Control" parent="MainMenu/MarginContainer/Container/MarginContainer/MenuButtons"]
+custom_minimum_size = Vector2(256, 88)
 layout_mode = 2
+size_flags_vertical = 4
+
+[node name="OptionsButton" type="TextureButton" parent="MainMenu/MarginContainer/Container/MarginContainer/MenuButtons/Control2"]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 88.0
+pivot_offset = Vector2(128, 44)
 size_flags_horizontal = 4
 texture_normal = ExtResource("4_52nja")
 script = ExtResource("7_tw7u8")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/MarginContainer/Container/MarginContainer/MenuButtons/OptionsButton"]
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/MarginContainer/Container/MarginContainer/MenuButtons/Control2/OptionsButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -62.5
-offset_top = -29.5
-offset_right = 62.5
-offset_bottom = 29.5
+offset_left = -61.0
+offset_top = -29.0
+offset_right = 61.0
+offset_bottom = 29.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("6_3ptvw")
 text = "Options"
 
-[node name="CreditsButton" type="TextureButton" parent="MainMenu/MarginContainer/Container/MarginContainer/MenuButtons"]
+[node name="Control3" type="Control" parent="MainMenu/MarginContainer/Container/MarginContainer/MenuButtons"]
+custom_minimum_size = Vector2(256, 88)
 layout_mode = 2
+size_flags_vertical = 4
+
+[node name="CreditsButton" type="TextureButton" parent="MainMenu/MarginContainer/Container/MarginContainer/MenuButtons/Control3"]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 88.0
+pivot_offset = Vector2(128, 44)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("4_52nja")
 script = ExtResource("8_r6uag")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/MarginContainer/Container/MarginContainer/MenuButtons/CreditsButton"]
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/MarginContainer/Container/MarginContainer/MenuButtons/Control3/CreditsButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -154,8 +191,8 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
-[connection signal="pressed" from="MainMenu/MarginContainer/Container/MarginContainer/MenuButtons/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="MainMenu/MarginContainer/Container/MarginContainer/MenuButtons/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="MainMenu/MarginContainer/Container/MarginContainer/MenuButtons/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="MainMenu/MarginContainer/Container/MarginContainer/MenuButtons/Control/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainMenu/MarginContainer/Container/MarginContainer/MenuButtons/Control2/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainMenu/MarginContainer/Container/MarginContainer/MenuButtons/Control3/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="credits_back_button_pressed" from="Credits" to="." method="_on_credits_credits_back_button_pressed"]
 [connection signal="options_back_button_pressed" from="Options" to="." method="_on_options_options_back_button_pressed"]
