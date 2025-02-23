@@ -96,4 +96,36 @@ layout_mode = 2
 theme = ExtResource("6_1w7pn")
 text = "Confirm"
 
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -98.0
+offset_right = 266.0
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="BackButton" type="TextureButton" parent="MarginContainer3"]
+layout_mode = 2
+texture_normal = ExtResource("5_j3w3t")
+script = ExtResource("7_a8ih3")
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer3/BackButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MarginContainer3/BackButton/CenterContainer"]
+layout_mode = 2
+theme = ExtResource("6_1w7pn")
+text = "Back"
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="pressed" from="MarginContainer2/ConfirmButton" to="." method="_on_confirm_button_pressed"]
+[connection signal="pressed" from="MarginContainer3/BackButton" to="." method="_on_back_button_pressed"]

@@ -20,6 +20,8 @@ var beatHits = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if songConfig == null:
+		songConfig = GameManager.get_selected_song()
 	timer.wait_time = 10
 	timer.start()
 	_play_rat_intro()

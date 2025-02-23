@@ -12,6 +12,8 @@ var game_flow_state : GameFlowState = GameFlowState.SHELL
 var stages : Array[PackedScene]
 var current_stage = 0
 
+var selected_song : SongConfig = null
+
 var game_director : GameplayDirector = null
 var music_director : MusicDirector = null
 var ui_layer : CanvasLayer
@@ -169,5 +171,14 @@ func set_paused(is_paused : bool):
 		paused = is_paused
 		get_tree().paused = paused
 		_update_mouse_mode()
+
+func set_selected_song(song: SongConfig) -> void:
+	selected_song = song
+
+func get_selected_song() -> SongConfig:
+	if selected_song == null:
+		Logger.print_error("No song was selected")
+	return selected_song
+
 
 # Console commands

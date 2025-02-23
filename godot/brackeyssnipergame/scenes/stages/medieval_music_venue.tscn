@@ -1,9 +1,8 @@
-[gd_scene load_steps=82 format=3 uid="uid://capmktedb3t8n"]
+[gd_scene load_steps=81 format=3 uid="uid://capmktedb3t8n"]
 
 [ext_resource type="PackedScene" uid="uid://b3lfmgj8c3f0i" path="res://prefabs/static_enviornment_assets/sm_barrel_01_static.tscn" id="1_iwniv"]
 [ext_resource type="PackedScene" uid="uid://dj4d73gosqihk" path="res://assets/meshes/town_pack/planks.glb" id="1_mn83r"]
 [ext_resource type="PackedScene" uid="uid://dn56mua8xvuki" path="res://prefabs/beat_game_director.tscn" id="1_sxeib"]
-[ext_resource type="Resource" uid="uid://bfnhgeh2g30nu" path="res://resources/release_serene_song_config.tres" id="2_2bhed"]
 [ext_resource type="PackedScene" uid="uid://cf4v88ewtdi6y" path="res://prefabs/camera_control_setup.tscn" id="2_g5i7w"]
 [ext_resource type="PackedScene" uid="uid://cnys1qlhnsh6b" path="res://assets/meshes/town_pack/roofHighFlat.glb" id="2_m1k1g"]
 [ext_resource type="PackedScene" uid="uid://cp4eec24yovu" path="res://assets/meshes/castle_pack/wall-narrow-stairs-rail.glb" id="4_lisax"]
@@ -418,7 +417,6 @@ cameraController = NodePath("../CameraControlSetup")
 ratController = NodePath("../NPCs/Rat")
 beatGameController = NodePath("../HUD/RhythmGameViewportContainer/RhythmGameViewport/RhythmGame")
 hud = NodePath("../HUD")
-songConfig = ExtResource("2_2bhed")
 
 [node name="Lighting" type="Node3D" parent="."]
 
