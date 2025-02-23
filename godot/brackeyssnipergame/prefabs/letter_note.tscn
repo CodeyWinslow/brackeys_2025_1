@@ -1,15 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://c58w5xgofq8bb"]
+[gd_scene load_steps=5 format=3 uid="uid://c58w5xgofq8bb"]
 
 [ext_resource type="Script" path="res://scripts/letter_controller.gd" id="1_8mog3"]
 [ext_resource type="Texture2D" uid="uid://u7wf2gm4undb" path="res://assets/textures/ui_paper_sml_01.png" id="2_yinet"]
-[ext_resource type="Theme" path="res://resources/SecondFont.tres" id="3_2rjof"]
+[ext_resource type="Theme" uid="uid://cqhrqnorklqfc" path="res://resources/SecondFont.tres" id="3_2rjof"]
 
-[node name="Letter" type="Node2D" node_paths=PackedStringArray("letter_label")]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7c257"]
+
+[node name="Letter" type="Node2D" node_paths=PackedStringArray("letter_label", "note_missed", "note_correct")]
 script = ExtResource("1_8mog3")
 letter_label = NodePath("Label")
+note_missed = NodePath("Sprite2D/NoteMissed")
+note_correct = NodePath("Sprite2D/NoteCorrect")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_7c257")
 texture = ExtResource("2_yinet")
+
+[node name="NoteCorrect" type="ColorRect" parent="Sprite2D"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.29538, 0.733539, 0.474394, 0.541176)
+
+[node name="NoteMissed" type="ColorRect" parent="Sprite2D"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.939257, 0, 0.0778133, 0.541176)
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 8

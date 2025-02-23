@@ -11,6 +11,7 @@ musicPlayer = NodePath("MusicPlayer")
 music = Array[AudioStream]([ExtResource("2_px3vn"), ExtResource("3_uj6h3")])
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SoundEffects"
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_px3vn")
