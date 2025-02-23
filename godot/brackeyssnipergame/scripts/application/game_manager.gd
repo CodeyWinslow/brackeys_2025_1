@@ -88,6 +88,7 @@ func start_game():
 		return
 	
 	Logger.print('starting game!')
+	AudioManager.set_music_playing(false)
 	_load_current_stage()
 	_update_mouse_mode()
 	
@@ -97,6 +98,7 @@ func quit_to_menu():
 		return
 	
 	set_paused(false)
+	AudioManager.set_music_playing(true)
 	Logger.print('quitting to menu')
 	current_stage = 0
 	_load_shell()
