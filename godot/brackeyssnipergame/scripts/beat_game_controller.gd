@@ -66,6 +66,8 @@ func _ready():
 	if autostart and autostart_config:
 		init(autostart_config)
 		start_game()
+		
+	_register_commands()
 	
 func _input(event):
 	if event is InputEventKey:
@@ -267,3 +269,10 @@ func _update_text_preview():
 	
 func _play_heartbeat(time : float):
 	heartbeat_target.heartbeat(time)
+
+func _register_commands():
+	Console.add_command('game.skipbeatgame', _cmd_skip)
+	
+func _cmd_skip():
+	audio_player.stop()
+	game_finished.emit()
