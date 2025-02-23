@@ -2,7 +2,7 @@ extends Node3D
 
 @export var rb : RigidBody3D
 var time_alive : float = 0.0
-const LIFETIME : float = 30.0 
+const LIFETIME : float = 5.0 
 
 func throw_food(player, throwPoint):
 	var direction = (player.global_transform.origin - throwPoint.global_transform.origin).normalized()

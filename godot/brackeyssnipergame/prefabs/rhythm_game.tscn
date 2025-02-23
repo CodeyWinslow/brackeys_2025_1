@@ -1,12 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://btxonkb8nyiqs"]
+[gd_scene load_steps=12 format=3 uid="uid://btxonkb8nyiqs"]
 
 [ext_resource type="Script" path="res://scripts/beat_game_controller.gd" id="1_ra71r"]
+[ext_resource type="Resource" uid="uid://bwftt77m7tu5d" path="res://resources/release_jaunt_song_config.tres" id="2_kuhjh"]
 [ext_resource type="PackedScene" uid="uid://c58w5xgofq8bb" path="res://prefabs/letter_note.tscn" id="3_o8b07"]
 [ext_resource type="AudioStream" uid="uid://dkqw2y4ejvm3a" path="res://assets/audio/jaunt.mp3" id="4_r2ps7"]
 [ext_resource type="Texture2D" uid="uid://b0sj63itfql4k" path="res://assets/textures/ui_gitten_lrg_01.png" id="5_pfn3w"]
 [ext_resource type="Texture2D" uid="uid://cewcvxihlnkc5" path="res://assets/textures/ui_scroll_01.png" id="6_fayi6"]
 [ext_resource type="Script" path="res://scripts/gameplay/beat_trigger.gd" id="6_kucxm"]
-[ext_resource type="Theme" path="res://resources/SecondFont.tres" id="7_5mi0o"]
+<<<<<<< HEAD
+[ext_resource type="Theme" uid="uid://f8qsep8o8m6e" path="res://resources/SecondFont.tres" id="7_5mi0o"]
+=======
+[ext_resource type="Theme" uid="uid://cqhrqnorklqfc" path="res://resources/SecondFont.tres" id="7_5mi0o"]
+>>>>>>> 0d7cbff5a1adac9cec9b1139120fa4f1d31e8465
 
 [sub_resource type="Animation" id="Animation_owfub"]
 length = 0.001
@@ -46,6 +51,7 @@ _data = {
 
 [node name="RhythmGame" type="Node2D" node_paths=PackedStringArray("audio_player", "heartbeat_target", "text_preview", "letter_spawn_location", "letter_trigger_location")]
 script = ExtResource("1_ra71r")
+autostart_config = ExtResource("2_kuhjh")
 letter_prefab = ExtResource("3_o8b07")
 audio_player = NodePath("AudioStreamPlayer")
 heartbeat_target = NodePath("VisualRoot/BeatBarContainer/BeatTrigger")

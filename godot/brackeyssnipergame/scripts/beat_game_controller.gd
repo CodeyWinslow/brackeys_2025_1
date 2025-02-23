@@ -21,7 +21,7 @@ signal note_random
 signal game_finished
 
 @export var autostart : bool = true
-@export var autostart_config : SongConfig = preload("res://resources/release_jaunt_song_config.tres")
+@export var autostart_config : SongConfig
 
 @export var letter_prefab : PackedScene
 @export var audio_player : AudioStreamPlayer
