@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TextFileResource" load_steps=2 format=3 uid="uid://bp8wjsf7v1glg"]
+
+[ext_resource type="Script" path="res://scripts/resources/res_text_file.gd" id="1_yq3er"]
+
+[resource]
+script = ExtResource("1_yq3er")
+text_file_name = "song"

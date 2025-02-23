@@ -21,27 +21,26 @@ signal note_random
 signal game_finished
 
 @export var autostart : bool = true
-@export var visual_root : Node2D
+@export var autostart_config : SongConfig = preload("res://resources/release_jaunt_song_config.tres")
 
-@export var song : TextFileResource
+@export var letter_prefab : PackedScene
 @export var audio_player : AudioStreamPlayer
-@export var song_bpm : int = 120
-@export var beats_per_letter : int = 4
-
-@export var first_letter_beat_delay : int = 4
+@export var heartbeat_target : BeatTrigger
+@export var text_preview : RichTextLabel
 
 @export var letter_spawn_location : Node2D
 @export var letter_trigger_location : Node2D
-
 @export var letter_trigger_check_distance : float = 20.0
-
-@export var letter_prefab : PackedScene
-@export var letter_speed : float = 50.0
-
-@export var heartbeat_target : BeatTrigger
 @export var heartbeat_apex_time : float = 0.2
-@export var text_preview : RichTextLabel
 
+# song specific configuration
+var song : TextFileResource
+var song_bpm : int = 120
+var beats_per_note : int = 4
+var first_note_beat_delay : int = 4
+var note_speed : float = 50.0
+
+var config : SongConfig
 var song_words : Array[String]
 var is_spawning : bool = true
 
@@ -64,17 +63,8 @@ var recorded_results : Array[RecordedLetterResult]
 var results_per_word : Array
 
 func _ready():
-	song_words.append_array(song.get_text().strip_escapes().split(' ', false))
-	for word in song_words:
-		results_per_word.append([])
-	
-	_cache_spawn_vars()
-	_update_text_preview()
-	
-	letter_travel_time = abs(letter_spawn_location.global_position.x - letter_trigger_location.global_position.x) / letter_speed
-	assert(letter_travel_time < first_letter_beat_delay * time_between_beats) # we will miss our first letter if our first beat is too early
-	
-	if autostart:
+	if autostart and autostart_config:
+		init(autostart_config)
 		start_game()
 	
 func _input(event):
@@ -91,7 +81,7 @@ func _process(_delta):
 	
 	# move spawned letters
 	for letter in spawned_letters:
-		var next_pos = letter.global_position + Vector2.LEFT * delta * letter_speed
+		var next_pos = letter.global_position + Vector2.LEFT * delta * note_speed
 		letter.global_position = next_pos
 	
 	# clean up any missed notes
@@ -117,8 +107,8 @@ func _process(_delta):
 		var future_beat : int = floor(lookahead_time / time_between_beats)
 		if future_beat > latest_beat_lookahead:
 			latest_beat_lookahead = future_beat
-			if future_beat > first_letter_beat_delay \
-				and (future_beat - first_letter_beat_delay) % beats_per_letter == 0:
+			if future_beat > first_note_beat_delay \
+				and (future_beat - first_note_beat_delay) % beats_per_note == 0:
 				
 				var time_into_beat = lookahead_time - (future_beat * time_between_beats)
 				
@@ -127,9 +117,39 @@ func _process(_delta):
 					spawned_letters.append(new_letter)
 					_increment_letter()
 
+func init(song_config : SongConfig):
+	config = song_config
+	_parse_config()
+	
+	song_words = []
+	song_words.append_array(song.get_text().strip_escapes().split(' ', false))
+	results_per_word = []
+	for word in song_words:
+		results_per_word.append([])
+	
+	spawn_word_index = 0
+	spawn_letter_index = 0
+	latest_heartbeat_lookahead = -1
+	latest_beat_lookahead = -1
+	current_word = ''
+	current_letter = ''
+	letter_travel_time = abs(letter_spawn_location.global_position.x - letter_trigger_location.global_position.x) / note_speed
+	assert(letter_travel_time < first_note_beat_delay * time_between_beats) # we will miss our first letter if our first beat is too early
+	
+	_cache_spawn_vars()
+	_update_text_preview()
+
 func start_game():
 	visible = true
 	audio_player.play()
+
+func _parse_config():
+	song = config.text
+	song_bpm = config.bpm
+	beats_per_note = config.beats_per_note
+	first_note_beat_delay = config.first_note_beat_delay
+	note_speed = config.note_speed
+	audio_player.stream = config.audio
 
 func _are_all_notes_spawned(): 
 	return spawn_word_index >= len(song_words)
@@ -205,7 +225,7 @@ func _spawn_next_letter(time_spent : float):
 	var instance : LetterController = letter_prefab.instantiate() as LetterController
 	if instance:
 		add_child(instance)
-		instance.global_position = spawn_location + Vector2.LEFT * letter_speed * time_spent
+		instance.global_position = spawn_location + Vector2.LEFT * note_speed * time_spent
 		instance.set_info(current_letter, spawn_word_index)
 		
 	return instance
@@ -218,9 +238,9 @@ func _update_text_preview():
 			var result = results_per_word[wi][li] as RecordedLetterResult
 			match result.result:
 				LetterResultType.Hit:
-					output += '[color=green]%s[/color]' % result.letter
+					output += '[color=#112f8c]%s[/color]' % result.letter
 				_:
-					output += '[color=red]%s[/color]' % result.letter
+					output += '[color=#732c2c]%s[/color]' % result.letter
 		if len(results_per_word[wi]) < len(song_words[wi]):
 			output += song_words[wi].substr(len(results_per_word[wi]))
 		output += ' '

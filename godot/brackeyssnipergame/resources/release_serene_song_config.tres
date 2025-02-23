@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SongConfig" load_steps=4 format=3 uid="uid://bfnhgeh2g30nu"]
+
+[ext_resource type="AudioStream" uid="uid://lu3k07wjgti6" path="res://assets/audio/serene.mp3" id="1_m4ic8"]
+[ext_resource type="Script" path="res://scripts/resources/res_song_config.gd" id="2_ha4tv"]
+[ext_resource type="Resource" uid="uid://bp8wjsf7v1glg" path="res://resources/song_info/serene/serene_song.tres" id="3_tpltc"]
+
+[resource]
+script = ExtResource("2_ha4tv")
+name = "Jaunt"
+text = ExtResource("3_tpltc")
+audio = ExtResource("1_m4ic8")
+bpm = 120
+beats_per_note = 2
+first_note_beat_delay = 8
+note_speed = 400.0
