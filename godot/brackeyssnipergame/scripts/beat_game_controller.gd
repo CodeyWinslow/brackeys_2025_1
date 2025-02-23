@@ -70,8 +70,8 @@ func _ready():
 func _input(event):
 	if event is InputEventKey:
 		var key = event as InputEventKey
-		if key.keycode >= KEY_A and key.keycode <= KEY_Z and key.pressed and not key.echo:
-			_on_letter_pressed(key.as_text_key_label())
+		if _is_valid_key(key.keycode) and key.pressed and not key.echo:
+			_on_letter_pressed(key)
 	
 func _process(_delta):
 	# determine elapsed time in song + delta
@@ -151,6 +151,11 @@ func _parse_config():
 	note_speed = config.note_speed
 	audio_player.stream = config.audio
 
+func _is_valid_key(key : Key):
+	return (key >= KEY_A and key <= KEY_Z) \
+		or key == KEY_COMMA \
+		or key == KEY_PERIOD
+
 func _are_all_notes_spawned(): 
 	return spawn_word_index >= len(song_words)
 
@@ -162,7 +167,19 @@ func _increment_letter():
 		
 	_cache_spawn_vars()
 		
-func _on_letter_pressed(input_letter : String):
+func _on_letter_pressed(input_key : InputEventKey):
+	var input_letter : String = ''
+	
+	if input_key.keycode >= KEY_A and input_key.keycode <= KEY_Z:
+		input_letter = input_key.as_text_key_label()
+	elif input_key.keycode == KEY_COMMA:
+		input_letter = ','
+	elif input_key.keycode == KEY_PERIOD:
+		input_letter = '.'
+	
+	if input_letter.is_empty():
+		return
+	
 	heartbeat_target.trigger()
 	
 	if spawned_letters.is_empty():
