@@ -319,10 +319,10 @@ transform = Transform3D(0.999983, 0, 0, 0, 0.999998, 0, 0, 0, 0.999993, 0, 0, 0)
 rotation_mode = 0
 
 [node name="RatCameraPoint" type="Node3D" parent="CameraControlSetup"]
-transform = Transform3D(-0.834848, -0.09559, 0.542118, 0, 0.984808, 0.173648, -0.550481, 0.14497, -0.822165, 1.324, 1.619, 23.3)
+transform = Transform3D(-0.761538, -0.248025, 0.598785, 0, 0.92388, 0.382684, -0.64812, 0.291428, -0.70357, 1.324, 1.619, 23.3)
 
 [node name="Path3D2" type="Path3D" parent="CameraControlSetup/RatCameraPoint"]
-transform = Transform3D(-0.621148, -0.136087, 0.771787, 0.136087, 0.951117, 0.277232, -0.771787, 0.277232, -0.572264, 2.01855, 0.0582418, -4.21172)
+transform = Transform3D(-0.712026, -0.121928, 0.691485, 0.268702, 0.862529, 0.42877, -0.648705, 0.491099, -0.58138, 1.49679, 1.05072, -4.29792)
 curve = SubResource("Curve3D_ngdd0")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="CameraControlSetup/RatCameraPoint/Path3D2"]
@@ -330,7 +330,7 @@ transform = Transform3D(0.999972, 0, 0, 0, 0.999988, 0, 0, 0, 0.999985, -2.01, 1
 rotation_mode = 0
 
 [node name="Camera3D" type="Camera3D" parent="CameraControlSetup/RatCameraPoint/Path3D2/PathFollow3D"]
-transform = Transform3D(-0.621167, 0.136088, -0.7718, -0.136089, 0.951127, 0.277241, 0.771798, 0.277238, -0.572283, 0.00533676, 0.00292933, 0.000740647)
+transform = Transform3D(-0.621168, 0.136089, -0.771798, -0.136089, 0.951128, 0.27724, 0.771799, 0.277238, -0.572282, 0.00533485, 0.0029285, 0.000741005)
 script = ExtResource("41_s4ttd")
 sway_amount_x = 0.0
 
