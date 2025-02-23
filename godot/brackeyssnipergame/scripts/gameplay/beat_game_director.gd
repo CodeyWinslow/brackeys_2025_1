@@ -80,6 +80,9 @@ func _on_camera_control_setup_transition_finished(position: String) -> void:
 		beatGameController.start_game()
 		playing = true
 	if position == "rat":
+		var accuracy: float = float(beatHits) / float(beatHits + beatErrors + (beatBlunders / 3))
 		beatGameController.visible = false
+		hud.show_summary_view(accuracy * 100)
 		hud.show_menu_button()
+		hud.hide_score_labels()
 		GameManager.push_cursor_unlock()
