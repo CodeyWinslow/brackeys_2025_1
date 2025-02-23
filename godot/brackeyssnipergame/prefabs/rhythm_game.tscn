@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b0sj63itfql4k" path="res://assets/textures/ui_gitten_lrg_01.png" id="5_pfn3w"]
 [ext_resource type="Texture2D" uid="uid://cewcvxihlnkc5" path="res://assets/textures/ui_scroll_01.png" id="6_fayi6"]
 [ext_resource type="Script" path="res://scripts/gameplay/beat_trigger.gd" id="6_kucxm"]
-[ext_resource type="Theme" path="res://resources/SecondFont.tres" id="7_5mi0o"]
+[ext_resource type="Theme" uid="uid://cqhrqnorklqfc" path="res://resources/SecondFont.tres" id="7_5mi0o"]
 
 [sub_resource type="Animation" id="Animation_owfub"]
 length = 0.001

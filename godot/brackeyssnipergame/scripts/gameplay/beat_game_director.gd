@@ -20,7 +20,7 @@ var beatHits = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	timer.wait_time = 5
+	timer.wait_time = 10
 	timer.start()
 	_play_rat_intro()
 	
@@ -42,6 +42,7 @@ func _throw_food():
 			npc.throw_random_food_at_player()
 
 func _on_timer_timeout() -> void:
+	hud.disable_dialoge()
 	_begin_game()
 
 func _on_rhythm_game_note_incorrect() -> void:
@@ -73,3 +74,4 @@ func _on_camera_control_setup_transition_finished(position: String) -> void:
 		playing = true
 	if position == "rat":
 		beatGameController.visible = false
+		hud.show_menu_button()

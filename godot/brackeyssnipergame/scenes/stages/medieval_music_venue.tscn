@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://capmktedb3t8n"]
+[gd_scene load_steps=82 format=3 uid="uid://capmktedb3t8n"]
 
 [ext_resource type="PackedScene" uid="uid://b3lfmgj8c3f0i" path="res://prefabs/static_enviornment_assets/sm_barrel_01_static.tscn" id="1_iwniv"]
 [ext_resource type="PackedScene" uid="uid://dj4d73gosqihk" path="res://assets/meshes/town_pack/planks.glb" id="1_mn83r"]
@@ -30,8 +30,12 @@
 [ext_resource type="PackedScene" uid="uid://d6jgg007rgrt" path="res://prefabs/characters/rat.tscn" id="44_rrkxu"]
 [ext_resource type="PackedScene" uid="uid://btxonkb8nyiqs" path="res://prefabs/rhythm_game.tscn" id="49_dhlbr"]
 [ext_resource type="Script" path="res://scripts/GUI/beat_game_hud.gd" id="49_xhjtu"]
-[ext_resource type="Theme" path="res://resources/SecondFont.tres" id="50_lndft"]
+[ext_resource type="Theme" uid="uid://cqhrqnorklqfc" path="res://resources/SecondFont.tres" id="50_lndft"]
 [ext_resource type="Texture2D" uid="uid://cewcvxihlnkc5" path="res://assets/textures/ui_scroll_01.png" id="51_q3j0b"]
+[ext_resource type="Texture2D" uid="uid://c3lthq1ow8cm5" path="res://assets/textures/button_light_256.png" id="53_2a8vj"]
+[ext_resource type="Script" path="res://scripts/GUI/play_button.gd" id="54_30ivg"]
+[ext_resource type="AudioStream" uid="uid://dbiye4qq75eqv" path="res://assets/audio/sfx/button_click_sound.mp3" id="55_b8xn4"]
+[ext_resource type="FontFile" uid="uid://bts00mgvxjy43" path="res://assets/fenwick-woodtype/FenwickWoodtype.ttf" id="56_1fxxp"]
 [ext_resource type="PackedScene" uid="uid://cab0okfg6und3" path="res://assets/meshes/town_pack/wallWood.glb" id="138_wfyf4"]
 [ext_resource type="PackedScene" uid="uid://cf8hmbpmryqix" path="res://prefabs/static_enviornment_assets/sm_lightpost_01_static.tscn" id="159_fta7i"]
 [ext_resource type="PackedScene" uid="uid://b2dc2nrscn15m" path="res://prefabs/static_enviornment_assets/sm_stall_tent_l_01_static.tscn" id="159_hlun0"]
@@ -53,6 +57,10 @@
 [ext_resource type="PackedScene" uid="uid://bc74dobowatw3" path="res://prefabs/static_enviornment_assets/sm_stall_s_01_static.tscn" id="195_o2j3w"]
 [ext_resource type="PackedScene" uid="uid://dji5v3xigjkpk" path="res://prefabs/static_enviornment_assets/sm_stall_s_02_static.tscn" id="196_cmkxf"]
 [ext_resource type="PackedScene" uid="uid://voy3d45rru2n" path="res://prefabs/static_enviornment_assets/sm_turkeyleg_01_static.tscn" id="197_o6bpi"]
+
+[sub_resource type="Theme" id="Theme_0irfl"]
+default_font = ExtResource("56_1fxxp")
+default_font_size = 55
 
 [sub_resource type="Gradient" id="Gradient_bbkvf"]
 offsets = PackedFloat32Array(0.019305, 0.602317, 0.65251, 1)
@@ -238,6 +246,172 @@ size = Vector3(78.41, 0.518066, 72.595)
 
 [node name="MedievalMusicVenue" type="Node3D"]
 
+[node name="HUD" type="Control" parent="." node_paths=PackedStringArray("errorsLabel", "correctLabel", "dialog", "menu_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("49_xhjtu")
+errorsLabel = NodePath("VBoxContainer/Control2/RichTextLabel")
+correctLabel = NodePath("VBoxContainer/Control/RichTextLabel")
+dialog = NodePath("Dialog")
+menu_button = NodePath("MenuButton")
+
+[node name="MenuButton" type="Control" parent="HUD"]
+visible = false
+custom_minimum_size = Vector2(256, 88)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -150.0
+offset_right = 128.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="MenuButton" type="TextureButton" parent="HUD/MenuButton"]
+layout_mode = 2
+offset_right = 256.0
+offset_bottom = 88.0
+pivot_offset = Vector2(128, 44)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("53_2a8vj")
+script = ExtResource("54_30ivg")
+click_sound = ExtResource("55_b8xn4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HUD/MenuButton/MenuButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -29.0
+offset_right = 64.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_0irfl")
+text = "Menu"
+
+[node name="Dialog" type="Control" parent="HUD"]
+custom_minimum_size = Vector2(1080, 720)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1080.0
+offset_bottom = 720.0
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="HUD/Dialog"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -520.0
+offset_top = -337.715
+offset_right = 520.0
+offset_bottom = -37.715
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.745, 0.745)
+pivot_offset = Vector2(520, 300)
+texture = ExtResource("51_q3j0b")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Dialog/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HUD/Dialog/TextureRect/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("50_lndft")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 41
+bbcode_enabled = true
+text = "[center]Welcome to the Lute n' Shute Tavern. You wanted your chance to make it as a Bard? Well here's your big debut gig, remember nothing can go wrong... [/center]"
+fit_content = true
+
+[node name="RhythmGameViewportContainer" type="SubViewportContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RhythmGameViewport" type="SubViewport" parent="HUD/RhythmGameViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1080, 720)
+render_target_update_mode = 4
+
+[node name="RhythmGame" parent="HUD/RhythmGameViewportContainer/RhythmGameViewport" instance=ExtResource("49_dhlbr")]
+visible = false
+autostart = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_bottom = 124.0
+grow_horizontal = 0
+
+[node name="Control" type="Control" parent="HUD/VBoxContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HUD/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("50_lndft")
+text = "Correct: 0"
+
+[node name="Control2" type="Control" parent="HUD/VBoxContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HUD/VBoxContainer/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("50_lndft")
+text = "Errors: 0"
+
 [node name="BeatGameDirector" parent="." node_paths=PackedStringArray("food_throwing_npcs", "cameraController", "ratController", "beatGameController", "hud") instance=ExtResource("1_sxeib")]
 food_throwing_npcs = NodePath("../NPCs/FoodThrowingPatrons")
 cameraController = NodePath("../CameraControlSetup")
@@ -330,7 +504,7 @@ transform = Transform3D(0.999972, 0, 0, 0, 0.999988, 0, 0, 0, 0.999985, -2.01, 1
 rotation_mode = 0
 
 [node name="Camera3D" type="Camera3D" parent="CameraControlSetup/RatCameraPoint/Path3D2/PathFollow3D"]
-transform = Transform3D(-0.621168, 0.136089, -0.771798, -0.136089, 0.951128, 0.27724, 0.771799, 0.277238, -0.572282, 0.00533485, 0.0029285, 0.000741005)
+transform = Transform3D(-0.621168, 0.136089, -0.771797, -0.136089, 0.951128, 0.27724, 0.771799, 0.277238, -0.572282, 0.00534248, 0.00292885, 0.000742078)
 script = ExtResource("41_s4ttd")
 sway_amount_x = 0.0
 
@@ -1166,128 +1340,11 @@ player = NodePath("../../../CameraControlSetup/RatCameraPoint/Path3D2/PathFollow
 transform = Transform3D(-0.0157708, 0.136001, 0.838901, 0.00255629, 0.839049, -0.135977, -0.84985, 0, -0.0159766, 0.0497376, 0.304717, 25.2228)
 player = NodePath("../../../CameraControlSetup/RatCameraPoint/Path3D2/PathFollow3D/Camera3D")
 
-[node name="HUD" type="Control" parent="." node_paths=PackedStringArray("errorsLabel", "correctLabel")]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("49_xhjtu")
-errorsLabel = NodePath("VBoxContainer/Control2/RichTextLabel")
-correctLabel = NodePath("VBoxContainer/Control/RichTextLabel")
-
-[node name="Dialog" type="Control" parent="HUD"]
-custom_minimum_size = Vector2(1080, 720)
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1080.0
-offset_bottom = 720.0
-size_flags_vertical = 4
-
-[node name="TextureRect" type="TextureRect" parent="HUD/Dialog"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -520.0
-offset_top = -337.715
-offset_right = 520.0
-offset_bottom = -37.715
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(0.745, 0.745)
-pivot_offset = Vector2(520, 300)
-texture = ExtResource("51_q3j0b")
-
-[node name="MarginContainer" type="MarginContainer" parent="HUD/Dialog/TextureRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 50
-
-[node name="RichTextLabel" type="RichTextLabel" parent="HUD/Dialog/TextureRect/MarginContainer"]
-layout_mode = 2
-theme = ExtResource("50_lndft")
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 41
-bbcode_enabled = true
-text = "[center]Welcome to the Lute n' Shute Tavern. You wanted your chance to make it as a Bard? Well here's your big debut gig, remember nothing can go wrong... [/center]"
-fit_content = true
-
-[node name="RhythmGameViewportContainer" type="SubViewportContainer" parent="HUD"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="RhythmGameViewport" type="SubViewport" parent="HUD/RhythmGameViewportContainer"]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(1080, 720)
-render_target_update_mode = 4
-
-[node name="RhythmGame" parent="HUD/RhythmGameViewportContainer/RhythmGameViewport" instance=ExtResource("49_dhlbr")]
-visible = false
-autostart = false
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -200.0
-offset_bottom = 124.0
-grow_horizontal = 0
-
-[node name="Control" type="Control" parent="HUD/VBoxContainer"]
-custom_minimum_size = Vector2(200, 60)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-
-[node name="RichTextLabel" type="RichTextLabel" parent="HUD/VBoxContainer/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme = ExtResource("50_lndft")
-text = "Correct: 0"
-
-[node name="Control2" type="Control" parent="HUD/VBoxContainer"]
-custom_minimum_size = Vector2(200, 60)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-
-[node name="RichTextLabel" type="RichTextLabel" parent="HUD/VBoxContainer/Control2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme = ExtResource("50_lndft")
-text = "Errors: 0"
-
-[connection signal="transitionFinished" from="CameraControlSetup" to="BeatGameDirector" method="_on_camera_control_setup_transition_finished"]
-[connection signal="animation_finished" from="CameraControlSetup/AnimationPlayer" to="CameraControlSetup" method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="HUD/MenuButton/MenuButton" to="HUD" method="_on_menu_button_pressed"]
 [connection signal="game_finished" from="HUD/RhythmGameViewportContainer/RhythmGameViewport/RhythmGame" to="BeatGameDirector" method="_on_rhythm_game_game_finished"]
 [connection signal="note_hit" from="HUD/RhythmGameViewportContainer/RhythmGameViewport/RhythmGame" to="BeatGameDirector" method="_on_rhythm_game_note_hit"]
 [connection signal="note_incorrect" from="HUD/RhythmGameViewportContainer/RhythmGameViewport/RhythmGame" to="BeatGameDirector" method="_on_rhythm_game_note_incorrect"]
 [connection signal="note_missed" from="HUD/RhythmGameViewportContainer/RhythmGameViewport/RhythmGame" to="BeatGameDirector" method="_on_rhythm_game_note_missed"]
 [connection signal="note_random" from="HUD/RhythmGameViewportContainer/RhythmGameViewport/RhythmGame" to="BeatGameDirector" method="_on_rhythm_game_note_random"]
+[connection signal="transitionFinished" from="CameraControlSetup" to="BeatGameDirector" method="_on_camera_control_setup_transition_finished"]
+[connection signal="animation_finished" from="CameraControlSetup/AnimationPlayer" to="CameraControlSetup" method="_on_animation_player_animation_finished"]

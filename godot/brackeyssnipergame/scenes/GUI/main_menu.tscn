@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://cnp58wdcjgj2f" path="res://resources/TitleFont.tres" id="3_d6fs7"]
 [ext_resource type="Texture2D" uid="uid://c3lthq1ow8cm5" path="res://assets/textures/button_light_256.png" id="4_52nja"]
 [ext_resource type="Script" path="res://scripts/GUI/play_button.gd" id="5_jfnns"]
-[ext_resource type="Theme" path="res://resources/SecondFont.tres" id="6_3ptvw"]
+[ext_resource type="Theme" uid="uid://cqhrqnorklqfc" path="res://resources/SecondFont.tres" id="6_3ptvw"]
 [ext_resource type="AudioStream" uid="uid://dbiye4qq75eqv" path="res://assets/audio/sfx/button_click_sound.mp3" id="6_rnykr"]
 [ext_resource type="Script" path="res://scripts/GUI/options_button.gd" id="7_tw7u8"]
 [ext_resource type="Script" path="res://scripts/GUI/credits_button.gd" id="8_r6uag"]
