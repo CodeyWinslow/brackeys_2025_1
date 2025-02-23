@@ -245,7 +245,7 @@ func _spawn_next_letter(time_spent : float):
 	if instance:
 		add_child(instance)
 		instance.global_position = spawn_location + Vector2.LEFT * note_speed * time_spent
-		instance.set_info(current_letter, spawn_word_index)
+		instance.set_info(current_letter.to_lower(), spawn_word_index)
 		
 	return instance
 
@@ -261,7 +261,7 @@ func _update_text_preview():
 				_:
 					output += '[color=#732c2c]%s[/color]' % result.letter
 		if len(results_per_word[wi]) < len(song_words[wi]):
-			output += song_words[wi].substr(len(results_per_word[wi]))
+			output += song_words[wi].substr(len(results_per_word[wi])).to_lower()
 		output += ' '
 	
 	output += '[/center]'

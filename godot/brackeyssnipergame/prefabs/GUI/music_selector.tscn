@@ -19,7 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uc5ql")
-songs = Array[ExtResource("2_y6m40")]([ExtResource("3_yr1xh"), ExtResource("4_vc4bp")])
+songs = Array[ExtResource("2_y6m40")]([ExtResource("4_vc4bp"), ExtResource("3_yr1xh")])
 music_selection_texture = ExtResource("5_j3w3t")
 selected_song_texture = ExtResource("6_d7tgu")
 song_option_vbox = NodePath("MarginContainer/SongOptions")
@@ -126,6 +126,7 @@ theme = ExtResource("6_1w7pn")
 text = "Back"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"GameMusic"
 
 [connection signal="pressed" from="MarginContainer2/ConfirmButton" to="." method="_on_confirm_button_pressed"]
 [connection signal="pressed" from="MarginContainer3/BackButton" to="." method="_on_back_button_pressed"]

@@ -62,4 +62,5 @@ func _on_confirm_button_pressed() -> void:
 
 
 func _on_back_button_pressed() -> void:
+	audio_player.stop()
 	back_button_pressed.emit()

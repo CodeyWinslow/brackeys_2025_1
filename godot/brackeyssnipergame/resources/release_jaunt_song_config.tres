@@ -10,6 +10,6 @@ name = "Jaunt"
 text = ExtResource("3_g2pfe")
 audio = ExtResource("1_lniwd")
 bpm = 120
-beats_per_note = 2
+beats_per_note = 1
 first_note_beat_delay = 8
 note_speed = 400.0
