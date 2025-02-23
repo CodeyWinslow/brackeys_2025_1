@@ -1,3 +1,5 @@
+class_name CameraSway
+
 extends Camera3D
 
 @export var sway_speed: float = 2.0   # Speed of the sway
@@ -8,15 +10,27 @@ extends Camera3D
 var time_passed: float = 0.0
 var base_rotation: Vector3
 
+var disabled: bool = false
+
+func reset_base_sway():
+	base_rotation = rotation
+
 func _ready() -> void:
 	# Store the initial rotation
 	base_rotation = rotation
+	
+func disable_sway():
+	disabled = true
+	
+func enable_sway():
+	disabled = false
 
 func _process(delta: float) -> void:
-	time_passed += delta
-	var sway_angle = sin(time_passed * sway_speed)
-	
-	# Apply sway on top of the base rotation
-	rotation.x = base_rotation.x + (sway_angle * sway_amount_x)  # Pitch
-	rotation.y = base_rotation.y + (sway_angle * sway_amount_y)  # Yaw
-	rotation.z = base_rotation.z + (sway_angle * sway_amount_z)  # Roll
+	if !disabled:
+		time_passed += delta
+		var sway_angle = sin(time_passed * sway_speed)
+		
+		# Apply sway on top of the base rotation
+		rotation.x = base_rotation.x + (sway_angle * sway_amount_x)  # Pitch
+		rotation.y = base_rotation.y + (sway_angle * sway_amount_y)  # Yaw
+		rotation.z = base_rotation.z + (sway_angle * sway_amount_z)  # Roll

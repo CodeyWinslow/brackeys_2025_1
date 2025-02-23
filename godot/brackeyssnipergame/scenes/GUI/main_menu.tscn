@@ -73,7 +73,7 @@ offset_bottom = 38.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_d6fs7")
-text = "Bard's Big Gay
+text = "Bard's Big Gig
 "
 
 [node name="MarginContainer" type="MarginContainer" parent="MainMenu/MarginContainer/Container"]
