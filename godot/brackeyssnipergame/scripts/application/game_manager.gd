@@ -11,6 +11,7 @@ var game_flow_state : GameFlowState = GameFlowState.SHELL
 
 var stages : Array[PackedScene]
 var current_stage = 0
+var game_cursor_unlock_count : int = 0
 
 var game_director : GameplayDirector = null
 var music_director : MusicDirector = null
@@ -66,7 +67,8 @@ func _validate_globals():
 
 func _update_mouse_mode():
 	var mouse_mode = Input.MOUSE_MODE_VISIBLE
-	if game_flow_state == GameFlowState.INGAME and not paused and not debug_mouse_released:
+	if 	game_cursor_unlock_count < 1 and \
+		game_flow_state == GameFlowState.INGAME and not paused and not debug_mouse_released:
 		mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Input.set_mouse_mode(mouse_mode)
 
@@ -80,7 +82,7 @@ func _load_shell():
 	var scene : PackedScene = global_config.shell_scene
 	get_tree().change_scene_to_packed(scene)
 
-# Game Flow API
+# Game App API
 
 func start_game():
 	if game_flow_state != GameFlowState.SHELL:
@@ -115,6 +117,14 @@ func proceed_stage():
 	else:
 		current_stage = next_stage
 		_load_current_stage()
+
+func push_cursor_unlock():
+	game_cursor_unlock_count += 1
+	_update_mouse_mode()
+	
+func pop_cursor_unlock():
+	game_cursor_unlock_count -= 1
+	_update_mouse_mode()
 
 func _load_current_stage():
 	game_flow_state = GameFlowState.INGAME
