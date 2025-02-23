@@ -6,11 +6,12 @@
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7c257"]
 
-[node name="Letter" type="Node2D" node_paths=PackedStringArray("letter_label", "note_missed", "note_correct")]
+[node name="Letter" type="Node2D" node_paths=PackedStringArray("letter_label", "note_missed", "note_correct", "sprite")]
 script = ExtResource("1_8mog3")
 letter_label = NodePath("Label")
 note_missed = NodePath("Sprite2D/NoteMissed")
 note_correct = NodePath("Sprite2D/NoteCorrect")
+sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_7c257")
