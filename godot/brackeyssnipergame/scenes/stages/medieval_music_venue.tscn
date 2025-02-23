@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://capmktedb3t8n"]
+[gd_scene load_steps=68 format=3 uid="uid://capmktedb3t8n"]
 
 [ext_resource type="PackedScene" uid="uid://b3lfmgj8c3f0i" path="res://prefabs/static_enviornment_assets/sm_barrel_01_static.tscn" id="1_iwniv"]
 [ext_resource type="PackedScene" uid="uid://dj4d73gosqihk" path="res://assets/meshes/town_pack/planks.glb" id="1_mn83r"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://dv6jicd3lwf2i" path="res://prefabs/static_enviornment_assets/sm_sword_01_static.tscn" id="42_qlvh2"]
 [ext_resource type="PackedScene" uid="uid://nd2hwstmynfd" path="res://prefabs/static_enviornment_assets/sm_chest_01_static.tscn" id="43_uw5fy"]
 [ext_resource type="PackedScene" uid="uid://d6jgg007rgrt" path="res://prefabs/characters/rat.tscn" id="44_rrkxu"]
+[ext_resource type="PackedScene" uid="uid://btxonkb8nyiqs" path="res://prefabs/rhythm_game.tscn" id="49_dhlbr"]
 [ext_resource type="PackedScene" uid="uid://cab0okfg6und3" path="res://assets/meshes/town_pack/wallWood.glb" id="138_wfyf4"]
 [ext_resource type="PackedScene" uid="uid://cf8hmbpmryqix" path="res://prefabs/static_enviornment_assets/sm_lightpost_01_static.tscn" id="159_fta7i"]
 [ext_resource type="PackedScene" uid="uid://b2dc2nrscn15m" path="res://prefabs/static_enviornment_assets/sm_stall_tent_l_01_static.tscn" id="159_hlun0"]
@@ -1025,7 +1026,7 @@ transform = Transform3D(-0.0264047, 0.221715, 0.82015, 0.00713442, 0.820574, -0.
 [node name="NpcPatron5" parent="NPCs/FoodThrowingPatrons" instance=ExtResource("41_131tl")]
 transform = Transform3D(-0.0157708, 0.136001, 0.838901, 0.00255629, 0.839049, -0.135977, -0.84985, 0, -0.0159766, 0.0497376, 0.304717, 25.2228)
 
-[node name="RatDialogueHUD" type="Control" parent="."]
+[node name="HUD" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1033,7 +1034,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="RatDialogueHUD"]
+[node name="RichTextLabel" type="RichTextLabel" parent="HUD"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -1047,3 +1048,19 @@ grow_horizontal = 2
 grow_vertical = 0
 bbcode_enabled = true
 text = "[center]Alright listen up, you want to be a bard? Well nows your chance. I worked hard to get you this gig so make sure nothing goes wrong. [/center]"
+
+[node name="RhythmGameViewportContainer" type="SubViewportContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RhythmGameViewport" type="SubViewport" parent="HUD/RhythmGameViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1080, 720)
+render_target_update_mode = 4
+
+[node name="RhythmGame" parent="HUD/RhythmGameViewportContainer/RhythmGameViewport" instance=ExtResource("49_dhlbr")]

@@ -4,8 +4,7 @@
 [ext_resource type="Resource" uid="uid://qmc2ilvpr5j7" path="res://resources/song_info/test_song/test_song.tres" id="2_xuvyn"]
 [ext_resource type="PackedScene" uid="uid://c58w5xgofq8bb" path="res://prefabs/letter_note.tscn" id="3_o8b07"]
 [ext_resource type="AudioStream" uid="uid://dkqw2y4ejvm3a" path="res://assets/audio/jaunt.mp3" id="4_r2ps7"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_81yck"]
+[ext_resource type="Texture2D" uid="uid://b0sj63itfql4k" path="res://assets/textures/ui_gitten_lrg_01.png" id="5_pfn3w"]
 
 [sub_resource type="Animation" id="Animation_owfub"]
 length = 0.001
@@ -51,50 +50,51 @@ colors = PackedColorArray(0, 0, 0, 0.270588)
 gradient = SubResource("Gradient_qwe0b")
 width = 100
 
-[node name="RhythmGame" type="Node2D"]
-
-[node name="BeatGameManager" type="Node" parent="." node_paths=PackedStringArray("audio_player", "letter_spawn_location", "letter_trigger_location", "heartbeat_anim", "text_preview")]
+[node name="RhythmGame" type="Node2D" node_paths=PackedStringArray("visual_root", "audio_player", "letter_spawn_location", "letter_trigger_location", "heartbeat_anim", "text_preview")]
 script = ExtResource("1_ra71r")
+visual_root = NodePath("VisualRoot")
 song = ExtResource("2_xuvyn")
 audio_player = NodePath("AudioStreamPlayer")
 beats_per_letter = 2
 first_letter_beat_delay = 8
-letter_spawn_location = NodePath("../LocationReferences/SpawnLocation")
-letter_trigger_location = NodePath("../LocationReferences/HitLocation")
+letter_spawn_location = NodePath("VisualRoot/LocationReferences/SpawnLocation")
+letter_trigger_location = NodePath("VisualRoot/LocationReferences/HitLocation")
 letter_trigger_check_distance = 60.0
 letter_prefab = ExtResource("3_o8b07")
 letter_speed = 400.0
-heartbeat_anim = NodePath("../BeatBarContainer/AnimationPlayer")
-text_preview = NodePath("../UI/MarginContainer/RichTextLabel")
+heartbeat_anim = NodePath("VisualRoot/BeatBarContainer/AnimationPlayer")
+text_preview = NodePath("VisualRoot/UI/MarginContainer/RichTextLabel")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BeatGameManager"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_r2ps7")
 autoplay = true
 bus = &"GameMusic"
 
-[node name="LocationReferences" type="Node2D" parent="."]
+[node name="VisualRoot" type="Node2D" parent="."]
 
-[node name="SpawnLocation" type="Node2D" parent="LocationReferences"]
+[node name="LocationReferences" type="Node2D" parent="VisualRoot"]
+
+[node name="SpawnLocation" type="Node2D" parent="VisualRoot/LocationReferences"]
 position = Vector2(1286, 154)
 
-[node name="HitLocation" type="Node2D" parent="LocationReferences"]
+[node name="HitLocation" type="Node2D" parent="VisualRoot/LocationReferences"]
 position = Vector2(167, 154)
 
-[node name="BeatBarContainer" type="Node2D" parent="."]
-position = Vector2(168, 226)
+[node name="BeatBarContainer" type="Node2D" parent="VisualRoot"]
+position = Vector2(165, 226)
 scale = Vector2(1.1, 1.1)
 
-[node name="BeatTrigger" type="Sprite2D" parent="BeatBarContainer"]
-scale = Vector2(46.75, 353.75)
-texture = SubResource("CanvasTexture_81yck")
+[node name="BeatTrigger" type="Sprite2D" parent="VisualRoot/BeatBarContainer"]
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("5_pfn3w")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="BeatBarContainer"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VisualRoot/BeatBarContainer"]
 root_node = NodePath("../BeatTrigger")
 libraries = {
 "": SubResource("AnimationLibrary_fd24p")
 }
 
-[node name="UI" type="Control" parent="."]
+[node name="UI" type="Control" parent="VisualRoot"]
 custom_minimum_size = Vector2(1080, 720)
 layout_mode = 3
 anchors_preset = 0
@@ -102,7 +102,7 @@ offset_right = 1080.0
 offset_bottom = 720.0
 size_flags_vertical = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="UI"]
+[node name="MarginContainer" type="MarginContainer" parent="VisualRoot/UI"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -115,11 +115,11 @@ theme_override_constants/margin_left = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="TextureRect" type="TextureRect" parent="UI/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="VisualRoot/UI/MarginContainer"]
 layout_mode = 2
 texture = SubResource("GradientTexture1D_5521i")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="UI/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="VisualRoot/UI/MarginContainer"]
 layout_mode = 2
 bbcode_enabled = true
 text = "[center][color=green]Here[/color] [color=yellow]is[/color] some example text for testing[/center]"

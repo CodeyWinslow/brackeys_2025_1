@@ -6,7 +6,7 @@ class_name LetterController
 var cached_letter : String = ''
 var context_info : Variant
 
-func get_context() -> String:
+func get_context() -> Variant:
 	return context_info
 
 func get_letter() -> String:
