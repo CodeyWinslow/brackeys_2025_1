@@ -1,10 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://q0l83x3lsh41"]
+[gd_scene load_steps=13 format=3 uid="uid://q0l83x3lsh41"]
 
 [ext_resource type="Texture2D" uid="uid://c3lthq1ow8cm5" path="res://assets/textures/button_light_256.png" id="1_0vtss"]
 [ext_resource type="Script" path="res://scripts/GUI/credits.gd" id="1_485nn"]
 [ext_resource type="Script" path="res://scripts/GUI/play_button.gd" id="2_ux2y1"]
-[ext_resource type="Theme" path="res://resources/SecondFont.tres" id="3_rkoyg"]
+[ext_resource type="Texture2D" uid="uid://brbhx43kvl4a6" path="res://assets/credits_photos/commits.png" id="2_x0lle"]
+[ext_resource type="Theme" uid="uid://cqhrqnorklqfc" path="res://resources/SecondFont.tres" id="3_rkoyg"]
+[ext_resource type="Texture2D" uid="uid://y811x86vwjd8" path="res://assets/credits_photos/github.png" id="3_x33bc"]
+[ext_resource type="Texture2D" uid="uid://j2gdugcmyd4b" path="res://assets/credits_photos/mural.png" id="4_t18nk"]
 [ext_resource type="AudioStream" uid="uid://dbiye4qq75eqv" path="res://assets/audio/sfx/button_click_sound.mp3" id="4_y615b"]
+[ext_resource type="Texture2D" uid="uid://bpp432b2xhb0b" path="res://assets/credits_photos/no.png" id="5_5nrqx"]
+[ext_resource type="Texture2D" uid="uid://c7p6wqoaju1a" path="res://assets/credits_photos/rat.png" id="6_ge47d"]
+[ext_resource type="Texture2D" uid="uid://bh4i0prs0thoq" path="res://assets/credits_photos/castle.png" id="7_5sold"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2oq4u"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -15,20 +23,114 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_485nn")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="Images" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Images"]
+layout_mode = 0
+offset_left = 151.0
+offset_top = 72.0
+offset_right = 347.0
+offset_bottom = 143.0
+rotation = 0.0900012
+texture = ExtResource("2_x0lle")
+
+[node name="TextureRect2" type="TextureRect" parent="Images"]
+layout_mode = 0
+offset_left = 437.0
+offset_top = 493.0
+offset_right = 803.0
+offset_bottom = 607.0
+scale = Vector2(0.557931, 0.557931)
+texture = ExtResource("3_x33bc")
+
+[node name="TextureRect3" type="TextureRect" parent="Images"]
+modulate = Color(1, 1, 1, 0.396078)
+material = SubResource("ShaderMaterial_2oq4u")
+layout_mode = 0
+offset_left = 271.0
+offset_top = 684.0
+offset_right = 2357.0
+offset_bottom = 1628.0
+rotation = -0.102648
+scale = Vector2(0.296846, 0.296846)
+texture = ExtResource("4_t18nk")
+
+[node name="TextureRect4" type="TextureRect" parent="Images"]
+layout_mode = 0
+offset_left = 672.0
+offset_top = 116.0
+offset_right = 938.0
+offset_bottom = 384.0
+rotation = -0.0976972
+scale = Vector2(0.576963, 0.482791)
+texture = ExtResource("5_5nrqx")
+
+[node name="TextureRect5" type="TextureRect" parent="Images"]
+layout_mode = 0
+offset_left = 652.0
+offset_top = 290.0
+offset_right = 2572.0
+offset_bottom = 2210.0
+rotation = 0.150419
+scale = Vector2(0.102195, 0.0855147)
+texture = ExtResource("6_ge47d")
+
+[node name="TextureRect6" type="TextureRect" parent="Images"]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 219.0
+offset_right = 1978.0
+offset_bottom = 2139.0
+rotation = -0.0934777
+scale = Vector2(0.178014, 0.148958)
+texture = ExtResource("7_5sold")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -78.0
-offset_top = -13.5
-offset_right = 78.0
-offset_bottom = 13.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "All done by Nathan"
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 81
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]
+[b]Programming[/b]
+Levi
+Codey
+Nathan
+
+[b]Design[/b]
+Levi
+Codey
+
+[b]Art[/b]
+Emma
+
+[b]Special Thanks[/b]
+Iza
+Michael
+
+
+
+
+[b]Attribution[/b]
+Wood Buttons by [i]Havran[/i] https://havran.itch.io/wooden-buttons
+
+
+[/center]"
+fit_content = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
