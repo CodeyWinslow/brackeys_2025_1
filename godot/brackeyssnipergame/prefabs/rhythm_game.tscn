@@ -59,6 +59,7 @@ letter_trigger_check_distance = 60.0
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_r2ps7")
 bus = &"GameMusic"
+playback_type = 1
 
 [node name="VisualRoot" type="Node2D" parent="."]
 

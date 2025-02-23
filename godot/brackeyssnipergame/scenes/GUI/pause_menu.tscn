@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/GUI/pause_menu.gd" id="1_siiuu"]
 [ext_resource type="Texture2D" uid="uid://c3lthq1ow8cm5" path="res://assets/textures/button_light_256.png" id="3_c038b"]
 [ext_resource type="Script" path="res://scripts/GUI/menu_button.gd" id="4_arfiy"]
-[ext_resource type="Theme" path="res://resources/SecondFont.tres" id="4_ddiva"]
+[ext_resource type="Theme" uid="uid://cqhrqnorklqfc" path="res://resources/SecondFont.tres" id="4_ddiva"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -30,15 +30,22 @@ grow_vertical = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 20
 
-[node name="ResumeButton" type="TextureButton" parent="VBoxContainer"]
+[node name="Control" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 88)
 layout_mode = 2
+
+[node name="ResumeButton" type="TextureButton" parent="VBoxContainer/Control"]
+layout_mode = 2
+offset_right = 256.0
+offset_bottom = 88.0
+pivot_offset = Vector2(128, 44)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("3_c038b")
 stretch_mode = 0
 script = ExtResource("4_arfiy")
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer/ResumeButton"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer/Control/ResumeButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -55,15 +62,22 @@ mouse_filter = 2
 theme = ExtResource("4_ddiva")
 text = "Resume"
 
-[node name="ExitButton" type="TextureButton" parent="VBoxContainer"]
+[node name="Control2" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 88)
 layout_mode = 2
+
+[node name="ExitButton" type="TextureButton" parent="VBoxContainer/Control2"]
+layout_mode = 2
+offset_right = 256.0
+offset_bottom = 88.0
+pivot_offset = Vector2(128, 44)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("3_c038b")
 stretch_mode = 0
 script = ExtResource("4_arfiy")
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer/ExitButton"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer/Control2/ExitButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -80,5 +94,5 @@ mouse_filter = 2
 theme = ExtResource("4_ddiva")
 text = "Exit"
 
-[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control2/ExitButton" to="." method="_on_exit_button_pressed"]

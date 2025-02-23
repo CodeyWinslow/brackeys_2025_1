@@ -2,8 +2,13 @@ extends Resource
 class_name TextFileResource
 
 @export var text_file_name: String  # Just the filename (e.g., "myFile")
+@export var raw_text : String
+
 
 func get_text() -> String:
+	return raw_text
+
+func get_text_old() -> String:
 	if resource_path.is_empty():
 		push_error("Resource path is empty. Ensure this resource is saved.")
 		return ""
