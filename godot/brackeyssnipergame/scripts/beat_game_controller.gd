@@ -38,7 +38,7 @@ signal game_finished
 @export var letter_prefab : PackedScene
 @export var letter_speed : float = 50.0
 
-@export var heartbeat_anim : AnimationPlayer
+@export var heartbeat_target : BeatTrigger
 @export var heartbeat_apex_time : float = 0.2
 @export var text_preview : RichTextLabel
 
@@ -143,6 +143,8 @@ func _increment_letter():
 	_cache_spawn_vars()
 		
 func _on_letter_pressed(input_letter : String):
+	heartbeat_target.trigger()
+	
 	if spawned_letters.is_empty():
 		note_random.emit()
 		return
@@ -227,5 +229,4 @@ func _update_text_preview():
 	text_preview.text = output
 	
 func _play_heartbeat(time : float):
-	heartbeat_anim.play('heartbeat_anim')
-	heartbeat_anim.seek(time)
+	heartbeat_target.heartbeat(time)

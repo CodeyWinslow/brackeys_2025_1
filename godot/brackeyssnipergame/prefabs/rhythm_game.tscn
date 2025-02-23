@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://btxonkb8nyiqs"]
+[gd_scene load_steps=12 format=3 uid="uid://btxonkb8nyiqs"]
 
 [ext_resource type="Script" path="res://scripts/beat_game_controller.gd" id="1_ra71r"]
 [ext_resource type="Resource" uid="uid://qmc2ilvpr5j7" path="res://resources/song_info/test_song/test_song.tres" id="2_xuvyn"]
 [ext_resource type="PackedScene" uid="uid://c58w5xgofq8bb" path="res://prefabs/letter_note.tscn" id="3_o8b07"]
 [ext_resource type="AudioStream" uid="uid://dkqw2y4ejvm3a" path="res://assets/audio/jaunt.mp3" id="4_r2ps7"]
 [ext_resource type="Texture2D" uid="uid://b0sj63itfql4k" path="res://assets/textures/ui_gitten_lrg_01.png" id="5_pfn3w"]
+[ext_resource type="Script" path="res://scripts/gameplay/beat_trigger.gd" id="6_kucxm"]
 
 [sub_resource type="Animation" id="Animation_owfub"]
 length = 0.001
@@ -50,7 +51,7 @@ colors = PackedColorArray(0, 0, 0, 0.270588)
 gradient = SubResource("Gradient_qwe0b")
 width = 100
 
-[node name="RhythmGame" type="Node2D" node_paths=PackedStringArray("visual_root", "audio_player", "letter_spawn_location", "letter_trigger_location", "heartbeat_anim", "text_preview")]
+[node name="RhythmGame" type="Node2D" node_paths=PackedStringArray("visual_root", "audio_player", "letter_spawn_location", "letter_trigger_location", "heartbeat_target", "text_preview")]
 script = ExtResource("1_ra71r")
 visual_root = NodePath("VisualRoot")
 song = ExtResource("2_xuvyn")
@@ -62,7 +63,7 @@ letter_trigger_location = NodePath("VisualRoot/LocationReferences/HitLocation")
 letter_trigger_check_distance = 60.0
 letter_prefab = ExtResource("3_o8b07")
 letter_speed = 400.0
-heartbeat_anim = NodePath("VisualRoot/BeatBarContainer/AnimationPlayer")
+heartbeat_target = NodePath("VisualRoot/BeatBarContainer/BeatTrigger")
 text_preview = NodePath("VisualRoot/UI/MarginContainer/RichTextLabel")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -83,9 +84,13 @@ position = Vector2(167, 154)
 position = Vector2(165, 226)
 scale = Vector2(1.1, 1.1)
 
-[node name="BeatTrigger" type="Sprite2D" parent="VisualRoot/BeatBarContainer"]
+[node name="BeatTrigger" type="Sprite2D" parent="VisualRoot/BeatBarContainer" node_paths=PackedStringArray("anim")]
 scale = Vector2(0.37, 0.37)
 texture = ExtResource("5_pfn3w")
+script = ExtResource("6_kucxm")
+anim = NodePath("../AnimationPlayer")
+shake_time = 0.2
+shake_angle = 15.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="VisualRoot/BeatBarContainer"]
 root_node = NodePath("../BeatTrigger")
