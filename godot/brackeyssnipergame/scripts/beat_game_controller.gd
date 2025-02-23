@@ -128,7 +128,7 @@ func _process(_delta):
 					_increment_letter()
 
 func start_game():
-	visual_root.visible = true
+	visible = true
 	audio_player.play()
 
 func _are_all_notes_spawned(): 
