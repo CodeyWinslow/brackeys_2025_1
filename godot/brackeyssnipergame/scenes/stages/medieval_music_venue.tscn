@@ -347,7 +347,9 @@ theme = ExtResource("50_lndft")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 41
 bbcode_enabled = true
-text = "[center]Welcome to the Lute n' Shute Tavern. You wanted your chance to make it as a Bard? Well here's your big debut gig, remember nothing can go wrong... [/center]"
+text = "[center]Welcome to the Lute n' Shute Tavern. You wanted your chance to make it as a Bard? Well here's your big debut gig, remember nothing can go wrong... [/center]
+
+[center]Press SpaceBar to Start[/center]"
 fit_content = true
 
 [node name="RhythmGameViewportContainer" type="SubViewportContainer" parent="HUD"]
