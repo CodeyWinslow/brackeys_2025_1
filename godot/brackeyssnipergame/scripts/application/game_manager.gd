@@ -102,6 +102,7 @@ func quit_to_menu():
 		return
 	
 	set_paused(false)
+	game_cursor_unlock_count = 0
 	AudioManager.set_music_playing(true)
 	Logger.print('quitting to menu')
 	current_stage = 0
@@ -119,14 +120,6 @@ func proceed_stage():
 	else:
 		current_stage = next_stage
 		_load_current_stage()
-
-func push_cursor_unlock():
-	game_cursor_unlock_count += 1
-	_update_mouse_mode()
-	
-func pop_cursor_unlock():
-	game_cursor_unlock_count -= 1
-	_update_mouse_mode()
 
 func _load_current_stage():
 	game_flow_state = GameFlowState.INGAME
@@ -181,6 +174,22 @@ func set_paused(is_paused : bool):
 		paused = is_paused
 		get_tree().paused = paused
 		_update_mouse_mode()
+
+func push_cursor_unlock():
+	if game_flow_state != GameFlowState.INGAME:
+		Logger.print_error('can not request curos unlock when out of game')
+		return
+		
+	game_cursor_unlock_count += 1
+	_update_mouse_mode()
+	
+func pop_cursor_unlock():
+	if game_flow_state != GameFlowState.INGAME:
+		Logger.print_error('can not relinquish curos unlock when out of game')
+		return
+	
+	game_cursor_unlock_count -= 1
+	_update_mouse_mode()
 
 func set_selected_song(song: SongConfig) -> void:
 	selected_song = song
