@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("2_ha4tv")
-name = "Jaunt"
+name = "Serene"
 text = ExtResource("3_tpltc")
 audio = ExtResource("1_m4ic8")
 bpm = 120
