@@ -2,11 +2,5 @@
 
 [ext_resource type="Script" path="res://scripts/gameplay/beat_game_director.gd" id="1_cvnf7"]
 
-[node name="BeatGameDirector" type="Node" node_paths=PackedStringArray("timer")]
+[node name="BeatGameDirector" type="Node"]
 script = ExtResource("1_cvnf7")
-timer = NodePath("Timer")
-
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

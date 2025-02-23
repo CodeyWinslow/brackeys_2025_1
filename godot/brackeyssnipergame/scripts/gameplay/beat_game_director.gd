@@ -10,8 +10,6 @@ extends Node
 
 @export var hud: BeatGameHUD
 
-@export var timer: Timer
-
 @export var songConfig: SongConfig
 
 var playing := false
@@ -22,9 +20,12 @@ var beatHits = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	songConfig = GameManager.get_selected_song()
-	timer.wait_time = 10
-	timer.start()
 	_play_rat_intro()
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("ui_accept") and not playing:
+		hud.disable_dialoge()
+		_begin_game()
 	
 func _begin_game():
 	#cut camera to stage:
