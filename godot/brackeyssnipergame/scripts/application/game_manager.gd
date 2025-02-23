@@ -14,6 +14,7 @@ var current_stage = 0
 
 var game_director : GameplayDirector = null
 var music_director : MusicDirector = null
+var ui_layer : CanvasLayer
 var paused : bool = false
 var pause_screen_instance : Node = null
 
@@ -36,6 +37,10 @@ func _ready():
 	process_mode = PROCESS_MODE_ALWAYS
 	
 	_update_mouse_mode()
+	
+	ui_layer = CanvasLayer.new()
+	ui_layer.layer = 2
+	add_child(ui_layer)
 	
 	# TODO: fixup game flow state if loading into a non-shell scene
 
@@ -154,7 +159,7 @@ func set_paused(is_paused : bool):
 			if pause_screen_instance is Control:
 				var ctrl = pause_screen_instance as Control
 				ctrl.z_index = 100
-			add_child(pause_screen_instance)
+			ui_layer.add_child(pause_screen_instance)
 		else:
 			pause_screen_instance.queue_free()
 			pause_screen_instance = null
