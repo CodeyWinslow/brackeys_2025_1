@@ -233,7 +233,6 @@ albedo_color = Color(0.193782, 0.194871, 0.0858134, 1)
 size = Vector3(78.41, 0.518066, 72.595)
 
 [node name="MedievalMusicVenue" type="Node3D"]
-visible = false
 
 [node name="BeatGameDirector" parent="." node_paths=PackedStringArray("food_throwing_npcs", "cameraController", "ratController") instance=ExtResource("1_sxeib")]
 food_throwing_npcs = NodePath("../NPCs/FoodThrowingPatrons")
@@ -1192,6 +1191,7 @@ size = Vector2i(1080, 720)
 render_target_update_mode = 4
 
 [node name="RhythmGame" parent="HUD/RhythmGameViewportContainer/RhythmGameViewport" instance=ExtResource("49_dhlbr")]
+visible = false
 autostart = false
 
 [connection signal="animation_finished" from="CameraControlSetup/AnimationPlayer" to="CameraControlSetup" method="_on_animation_player_animation_finished"]

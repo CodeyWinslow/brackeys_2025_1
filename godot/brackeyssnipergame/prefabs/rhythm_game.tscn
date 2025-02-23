@@ -67,7 +67,6 @@ text_preview = NodePath("VisualRoot/UI/MarginContainer/RichTextLabel")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_r2ps7")
-autoplay = true
 bus = &"GameMusic"
 
 [node name="VisualRoot" type="Node2D" parent="."]
