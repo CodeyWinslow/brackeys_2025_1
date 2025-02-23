@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://capmktedb3t8n"]
+[gd_scene load_steps=73 format=3 uid="uid://capmktedb3t8n"]
 
 [ext_resource type="PackedScene" uid="uid://b3lfmgj8c3f0i" path="res://prefabs/static_enviornment_assets/sm_barrel_01_static.tscn" id="1_iwniv"]
 [ext_resource type="PackedScene" uid="uid://dj4d73gosqihk" path="res://assets/meshes/town_pack/planks.glb" id="1_mn83r"]
@@ -84,10 +84,119 @@ adjustment_color_correction = SubResource("GradientTexture1D_6axah")
 
 [sub_resource type="Curve3D" id="Curve3D_8phjq"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 3.91, -0.555, 0, 0, 0, 0, -2.01, 1.384, -3.985),
+"points": PackedVector3Array(3.91, -0.555, 0, 0, 0, 0, 0, 0, 0, 3.91, -0.555, 0, 0, 0, 0, -2.01, 1.384, -3.985),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_ngdd0"]
+_data = {
+"points": PackedVector3Array(3.91, -0.555, 0, 0, 0, 0, -2.01, 1.384, -3.985, 1.43, 0.825, -4.07, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_0bn74"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RatCameraPoint/Path3D2/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RatCameraPoint/Path3D2/PathFollow3D/Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.280915, -2.20883, -0.142116)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StageCameraPoint/Path3D/PathFollow3D:progress_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_dou50"]
+resource_name = "animate_camera_to_rat"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StageCameraPoint/Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RatCameraPoint/Path3D2/PathFollow3D/Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.165806, 4.05091, -0.10472)]
+}
+
+[sub_resource type="Animation" id="Animation_h7vp6"]
+resource_name = "animate_camera_to_stage"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RatCameraPoint/Path3D2/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RatCameraPoint/Path3D2/PathFollow3D/Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.280915, -2.20883, -0.142116), Vector3(-0.417134, -3.36849, -0.0139626)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ieguf"]
+_data = {
+"RESET": SubResource("Animation_0bn74"),
+"animate_camera_to_rat": SubResource("Animation_dou50"),
+"animate_camera_to_stage": SubResource("Animation_h7vp6")
+}
 
 [sub_resource type="BoxMesh" id="BoxMesh_yk6n1"]
 
@@ -184,10 +293,13 @@ light_energy = 0.5
 spot_range = 5.524
 spot_angle = 22.37
 
-[node name="CameraControlSetup" parent="." node_paths=PackedStringArray("stageCameraPosition", "ratCameraPosition", "camera") instance=ExtResource("2_g5i7w")]
+[node name="CameraControlSetup" parent="." node_paths=PackedStringArray("stageCameraPosition", "ratCameraPosition", "ratToStagePath", "stageToRatPath", "animationController", "camera") instance=ExtResource("2_g5i7w")]
 stageCameraPosition = NodePath("StageCameraPoint")
 ratCameraPosition = NodePath("RatCameraPoint")
-camera = NodePath("RatCameraPoint/Camera3D")
+ratToStagePath = NodePath("RatCameraPoint/Path3D2/PathFollow3D")
+stageToRatPath = NodePath("StageCameraPoint/Path3D/PathFollow3D")
+animationController = NodePath("AnimationPlayer")
+camera = NodePath("RatCameraPoint/Path3D2/PathFollow3D/Camera3D")
 
 [node name="StageCameraPoint" type="Node3D" parent="CameraControlSetup"]
 transform = Transform3D(0.0871558, 0.172987, -0.98106, 0, 0.984808, 0.173648, 0.996195, -0.0151344, 0.0858317, -2.65, 0.945, 25.66)
@@ -196,14 +308,29 @@ transform = Transform3D(0.0871558, 0.172987, -0.98106, 0, 0.984808, 0.173648, 0.
 curve = SubResource("Curve3D_8phjq")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="CameraControlSetup/StageCameraPoint/Path3D"]
-transform = Transform3D(0.892838, 0.133382, 0.430139, 0, 0.955131, -0.296175, -0.45034, 0.264442, 0.852788, 0, 0, 0)
+transform = Transform3D(0.999983, 0, 0, 0, 0.999998, 0, 0, 0, 0.999993, 0, 0, 0)
+rotation_mode = 0
 
 [node name="RatCameraPoint" type="Node3D" parent="CameraControlSetup"]
 transform = Transform3D(-0.834848, -0.09559, 0.542118, 0, 0.984808, 0.173648, -0.550481, 0.14497, -0.822165, 1.324, 1.619, 23.3)
 
-[node name="Camera3D" type="Camera3D" parent="CameraControlSetup/RatCameraPoint"]
+[node name="Path3D2" type="Path3D" parent="CameraControlSetup/RatCameraPoint"]
+transform = Transform3D(-0.621148, -0.136087, 0.771787, 0.136087, 0.951117, 0.277232, -0.771787, 0.277232, -0.572264, 2.01855, 0.0582418, -4.21172)
+curve = SubResource("Curve3D_ngdd0")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="CameraControlSetup/RatCameraPoint/Path3D2"]
+transform = Transform3D(0.999972, 0, 0, 0, 0.999988, 0, 0, 0, 0.999985, -2.01, 1.384, -3.985)
+rotation_mode = 0
+
+[node name="Camera3D" type="Camera3D" parent="CameraControlSetup/RatCameraPoint/Path3D2/PathFollow3D"]
+transform = Transform3D(-0.621167, 0.136088, -0.771799, -0.136089, 0.951127, 0.277241, 0.771798, 0.277238, -0.572283, 0.00533867, 0.00292921, 0.000740767)
 script = ExtResource("41_s4ttd")
 sway_amount_x = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CameraControlSetup"]
+libraries = {
+"": SubResource("AnimationLibrary_ieguf")
+}
 
 [node name="Tavern" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25)
@@ -1064,3 +1191,6 @@ size = Vector2i(1080, 720)
 render_target_update_mode = 4
 
 [node name="RhythmGame" parent="HUD/RhythmGameViewportContainer/RhythmGameViewport" instance=ExtResource("49_dhlbr")]
+autostart = false
+
+[connection signal="animation_finished" from="CameraControlSetup/AnimationPlayer" to="CameraControlSetup" method="_on_animation_player_animation_finished"]
