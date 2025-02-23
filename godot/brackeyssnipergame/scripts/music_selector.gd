@@ -9,6 +9,9 @@ extends Control
 @export var audio_player : AudioStreamPlayer
 
 var button_to_song_map = {}
+var selected_song: SongConfig = null
+
+signal back_button_pressed
 
 func _ready() -> void:
 	for song in songs:
@@ -46,6 +49,17 @@ func _create_label(song: SongConfig) -> CenterContainer:
 func _sample_song(button: TextureButton) -> void:
 	audio_player.stop()
 	var songConfig : SongConfig = button_to_song_map[button]
+	selected_song = songConfig
 	audio_player.stream = songConfig.audio
 	audio_player.play()
 	audio_player.seek(20)
+
+
+func _on_confirm_button_pressed() -> void:
+	if selected_song != null:
+		GameManager.set_selected_song(selected_song)
+		GameManager.start_game()
+
+
+func _on_back_button_pressed() -> void:
+	back_button_pressed.emit()

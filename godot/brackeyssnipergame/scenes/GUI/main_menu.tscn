@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bt3cr534gm5ah"]
+[gd_scene load_steps=13 format=3 uid="uid://bt3cr534gm5ah"]
 
 [ext_resource type="Script" path="res://scripts/GUI/main_menu.gd" id="1_2wb4s"]
 [ext_resource type="Texture2D" uid="uid://cnarjjjpbt7py" path="res://assets/textures/button_dark_512.png" id="2_3vuga"]
@@ -11,8 +11,9 @@
 [ext_resource type="Script" path="res://scripts/GUI/credits_button.gd" id="8_r6uag"]
 [ext_resource type="PackedScene" uid="uid://q0l83x3lsh41" path="res://prefabs/GUI/Credits.tscn" id="9_ji3pb"]
 [ext_resource type="PackedScene" uid="uid://o7gli1hefjg" path="res://prefabs/GUI/Options.tscn" id="10_cdswb"]
+[ext_resource type="PackedScene" uid="uid://dwv3sa32uwuwd" path="res://prefabs/GUI/music_selector.tscn" id="12_uty6x"]
 
-[node name="Shell" type="Control" node_paths=PackedStringArray("credit_menu_node", "options_menu_node", "main_menu_node")]
+[node name="Shell" type="Control" node_paths=PackedStringArray("credit_menu_node", "options_menu_node", "main_menu_node", "music_selection_node")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,6 +24,7 @@ script = ExtResource("1_2wb4s")
 credit_menu_node = NodePath("Credits")
 options_menu_node = NodePath("Options")
 main_menu_node = NodePath("MainMenu")
+music_selection_node = NodePath("MusicSelector")
 
 [node name="MainMenu" type="Control" parent="."]
 layout_mode = 1
@@ -196,8 +198,13 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
+[node name="MusicSelector" parent="." instance=ExtResource("12_uty6x")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="MainMenu/MarginContainer/Container/MarginContainer/MenuButtons/Control/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenu/MarginContainer/Container/MarginContainer/MenuButtons/Control2/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MainMenu/MarginContainer/Container/MarginContainer/MenuButtons/Control3/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="credits_back_button_pressed" from="Credits" to="." method="_on_credits_credits_back_button_pressed"]
 [connection signal="options_back_button_pressed" from="Options" to="." method="_on_options_options_back_button_pressed"]
+[connection signal="back_button_pressed" from="MusicSelector" to="." method="_on_music_selector_back_button_pressed"]
