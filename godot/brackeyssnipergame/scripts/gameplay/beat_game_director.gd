@@ -16,12 +16,12 @@ extends Node
 
 var playing := false
 var beatErrors = 0
+var beatBlunders = 0
 var beatHits = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if songConfig == null:
-		songConfig = GameManager.get_selected_song()
+	songConfig = GameManager.get_selected_song()
 	timer.wait_time = 10
 	timer.start()
 	_play_rat_intro()
@@ -34,8 +34,6 @@ func _play_rat_intro():
 	ratController.playTalkingAnimation()
 	
 func _beat_error():
-	beatErrors += 1
-	hud.UpdateErrors(beatErrors)
 	_throw_food()
 	
 func _throw_food():
@@ -49,14 +47,20 @@ func _on_timer_timeout() -> void:
 
 func _on_rhythm_game_note_incorrect() -> void:
 	if playing:
+		beatErrors += 1
+		hud.UpdateErrors(beatErrors)
 		_beat_error()
 
 func _on_rhythm_game_note_missed() -> void:
 	if playing:
+		beatErrors += 1
+		hud.UpdateErrors(beatErrors)
 		_beat_error()
 
 func _on_rhythm_game_note_random() -> void:
 	if playing:
+		beatBlunders += 1
+		hud.UpdateBlunders(beatBlunders)
 		_beat_error()
 
 func _on_rhythm_game_note_hit() -> void:
@@ -77,3 +81,4 @@ func _on_camera_control_setup_transition_finished(position: String) -> void:
 	if position == "rat":
 		beatGameController.visible = false
 		hud.show_menu_button()
+		GameManager.push_cursor_unlock()

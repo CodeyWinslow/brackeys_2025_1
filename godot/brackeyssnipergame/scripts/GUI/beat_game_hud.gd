@@ -4,15 +4,19 @@ extends Control
 
 @export var errorsLabel: RichTextLabel
 @export var correctLabel: RichTextLabel
+@export var missesLabel: RichTextLabel
+
 @export var dialog: Control
 @export var menu_button: Control
-
 
 func UpdateErrors(errors):
 	errorsLabel.text = "Errors: " + str(errors)
 	
 func UpdateCorrectNotes(correct):
 	correctLabel.text = "Correct: " + str(correct)
+	
+func UpdateBlunders(blunders):
+	missesLabel.text = "Blunders: " + str(blunders)
 
 func disable_dialoge():
 	dialog.visible = false
