@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GameManagerGlobals" load_steps=5 format=3 uid="uid://cq026whimwpng"]
 
-[ext_resource type="Resource" uid="uid://x7xdhydsr1al" path="res://resources/release_game_config.tres" id="1_4ktkx"]
+[ext_resource type="Resource" uid="uid://dx233o6fqmpks" path="res://resources/release_game_config.tres" id="1_4ktkx"]
 [ext_resource type="Script" path="res://scripts/resources/res_game_manager_globals.gd" id="1_fb3nu"]
 [ext_resource type="PackedScene" uid="uid://b7ko7erdet6wk" path="res://scenes/GUI/pause_menu.tscn" id="2_fobc4"]
 [ext_resource type="PackedScene" uid="uid://cotilti8uvxif" path="res://scenes/start_scene.tscn" id="4_maj7b"]

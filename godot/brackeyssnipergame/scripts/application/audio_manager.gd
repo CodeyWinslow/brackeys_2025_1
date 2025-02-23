@@ -14,7 +14,7 @@ func _ready() -> void:
 	
 	# save me from self kill
 	if GameManager.is_editor:
-		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(musicPlayer.bus), linear_to_db(0))
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(musicPlayer.bus), linear_to_db(0.2))
 	
 func _on_music_player_finished() -> void:
 	play_next_music_track()
@@ -34,3 +34,9 @@ func play_next_music_track():
 		musicTrack = 0
 	musicPlayer.stream = music[musicTrack]
 	musicPlayer.play()
+
+func set_music_playing(is_playing : bool):
+	if is_playing:
+		play_random_music_track()
+	else:
+		musicPlayer.stop()

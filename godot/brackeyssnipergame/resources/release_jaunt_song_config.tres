@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://scripts/resources/res_song_config.gd" id="1_b5cap"]
 [ext_resource type="AudioStream" uid="uid://dkqw2y4ejvm3a" path="res://assets/audio/jaunt.mp3" id="1_lniwd"]
-[ext_resource type="Resource" uid="uid://qmc2ilvpr5j7" path="res://resources/song_info/test_song/test_song.tres" id="2_a4f45"]
+[ext_resource type="Resource" uid="uid://b5o0cyf3e5on0" path="res://resources/song_info/jaunt/jaunt_song.tres" id="3_g2pfe"]
 
 [resource]
 script = ExtResource("1_b5cap")
 name = "Jaunt"
-text = ExtResource("2_a4f45")
+text = ExtResource("3_g2pfe")
 audio = ExtResource("1_lniwd")
 bpm = 120
 beats_per_note = 2
